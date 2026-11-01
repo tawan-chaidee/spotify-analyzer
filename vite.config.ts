@@ -6,7 +6,8 @@ import { defineConfig, loadEnv } from "vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".");
-  const dataSource = env.VITE_DATA_SOURCE === "mock" ? "mock" : "live";
+  const dataSource =
+    mode === "mock" || env.VITE_DATA_SOURCE === "mock" ? "mock" : "live";
   const siteUrl = normalizeSiteUrl(env.VITE_SITE_URL);
   let outputDirectory = "";
 

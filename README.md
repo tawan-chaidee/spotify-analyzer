@@ -46,10 +46,9 @@ Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
    http://127.0.0.1:8000/callback
    ```
 
-3. Create `.env.development`:
+3. Create `.env.local`:
 
    ```text
-   VITE_DATA_SOURCE=live
    VITE_SPOTIFY_CLIENT_ID=<your-public-client-id>
    VITE_SITE_URL=http://127.0.0.1:8000/
    ```
@@ -61,6 +60,8 @@ Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
    ```
 
 The Spotify Client ID is public. This project does not use a Client Secret.
+Mock mode is selected by `npm run dev:mock`; no local environment changes are
+needed.
 
 ## How it works
 

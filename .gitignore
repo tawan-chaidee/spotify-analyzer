@@ -2,8 +2,6 @@
 .env
 .env.*
 !.env.example
-!.env.mock
-!.env.development
 
 # JavaScript and TypeScript
 node_modules/
