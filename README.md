@@ -8,29 +8,6 @@ TypeScript. It loads all three available Spotify time ranges, shows movement
 against the yearly ranking, exports CSV or JSON, and creates read-only share
 links that recipients can open without Spotify access.
 
-<table>
-  <tr>
-    <th>Desktop</th>
-    <th>Mobile</th>
-  </tr>
-  <tr>
-    <td>
-      <img
-        src="docs/screenshots/dashboard-desktop.png"
-        alt="Spotify Top Explorer desktop dashboard"
-        width="900"
-      >
-    </td>
-    <td>
-      <img
-        src="docs/screenshots/dashboard-mobile.png"
-        alt="Spotify Top Explorer mobile dashboard"
-        width="260"
-      >
-    </td>
-  </tr>
-</table>
-
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
@@ -100,7 +77,7 @@ Live and mock data implement the same `SpotifyClient` boundary. React handles
 presentation; authentication, API access, ranking calculations, exports, and
 sharing remain framework-independent services.
 
-## Quality checks
+## Tests
 
 ```bash
 npm run check
@@ -111,6 +88,31 @@ npm run test:coverage
 The project currently has 29 passing unit/component tests and 8 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
+
+### Visual regression baselines
+
+<table>
+  <tr>
+    <th>Desktop</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="docs/screenshots/dashboard-desktop.png"
+        alt="Spotify Top Explorer desktop dashboard"
+        width="900"
+      >
+    </td>
+    <td>
+      <img
+        src="docs/screenshots/dashboard-mobile.png"
+        alt="Spotify Top Explorer mobile dashboard"
+        width="260"
+      >
+    </td>
+  </tr>
+</table>
 
 ## Production
 
