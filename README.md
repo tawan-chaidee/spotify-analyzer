@@ -109,14 +109,6 @@ VITE_SPOTIFY_CLIENT_ID=<public-client-id>
 VITE_SITE_URL=https://your-production-domain/
 ```
 
-## Documentation
-
-- [Architecture](ARCHITECTURE.md)
-- [Implementation details](IMPLEMENTATION_DETAILS.md)
-- [Testing](TESTING.md)
-- [Cloudflare deployment](DEPLOYMENT.md)
-- [Execution plan](PLAN.md)
-
 ## Privacy
 
 OAuth tokens stay in the visitor's browser. Share snapshots never include
