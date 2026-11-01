@@ -8,7 +8,28 @@ TypeScript. It loads all three available Spotify time ranges, shows movement
 against the yearly ranking, exports CSV or JSON, and creates read-only share
 links that recipients can open without Spotify access.
 
-![Spotify Top Explorer dashboard](docs/screenshots/dashboard-desktop.png)
+<table>
+  <tr>
+    <th>Desktop</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="docs/screenshots/dashboard-desktop.png"
+        alt="Spotify Top Explorer desktop dashboard"
+        width="900"
+      >
+    </td>
+    <td>
+      <img
+        src="docs/screenshots/dashboard-mobile.png"
+        alt="Spotify Top Explorer mobile dashboard"
+        width="260"
+      >
+    </td>
+  </tr>
+</table>
 
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
