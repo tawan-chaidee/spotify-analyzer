@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#f1dfc8"/>
+  <rect x="310" y="32" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="454" y="32" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="382" y="104" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="526" y="104" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="310" y="176" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="454" y="176" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="382" y="248" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <rect x="526" y="248" width="72" height="72" fill="#ff7b9c" opacity=".72"/>
+  <path d="M30 520 C160 410 255 650 390 500 S600 380 650 455" fill="none" stroke="#8cb8d8" stroke-width="58"/>
+  <rect x="24" y="24" width="592" height="592" rx="16" fill="none" stroke="#312a38" stroke-width="6"/>
+  <text x="46" y="72" fill="#312a38" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">SO SAD · ALBUM 31</text>
+  <text x="46" y="405" fill="#312a38" font-family="Georgia, serif" font-size="54" font-weight="700"><tspan x="46" dy="0">KID A</tspan></text>
+  <text x="48" y="590" fill="#312a38" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">RADIOHEAD</text>
+</svg>

@@ -1,0 +1,1345 @@
+{
+  "source": "Spotify Web API catalog search",
+  "market": "TH",
+  "artists": [
+    {
+      "id": "2uYWxilOVlUdk4oV9DvwqK",
+      "name": "Mitski"
+    },
+    {
+      "id": "7gW0r5CkdEUMm42w9XpyZO",
+      "name": "Laufey"
+    },
+    {
+      "id": "1r1uxoy19fzMxunt3ONAkG",
+      "name": "Phoebe Bridgers"
+    },
+    {
+      "id": "4Z8W4fKeB5YxbusRsdQVPb",
+      "name": "Radiohead"
+    },
+    {
+      "id": "00FQb4jTyendYWaN8pK0wa",
+      "name": "Lana Del Rey"
+    },
+    {
+      "id": "3uwAm6vQy7kWPS2bciKWx9",
+      "name": "girl in red"
+    },
+    {
+      "id": "3l0CmX0FuQjFxr8SK7Vqag",
+      "name": "Clairo"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "3sslYZcFKtUvIEWN9lADgr",
+      "name": "First Love/Late Spring",
+      "duration_ms": 278640,
+      "explicit": false,
+      "album": {
+        "id": "3I2KkX13lHXuYqfBjSOopo",
+        "name": "Bury Me At Makeout Creek",
+        "release_date": "2014-11-11"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "2P5yIMu2DNeMXTyOANKS6k",
+      "name": "Nobody",
+      "duration_ms": 193429,
+      "explicit": false,
+      "album": {
+        "id": "42cH7mrkfljkqkxA2Ip9Xq",
+        "name": "Be the Cowboy",
+        "release_date": "2018-08-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "2Co0IjcLTSHMtodwD4gzfg",
+      "name": "I Bet on Losing Dogs",
+      "duration_ms": 170240,
+      "explicit": false,
+      "album": {
+        "id": "4Coa8Eb9SzjrkwWEom963Q",
+        "name": "Puberty 2",
+        "release_date": "2016-06-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "3vkCueOmm7xQDoJ17W1Pm3",
+      "name": "My Love Mine All Mine",
+      "duration_ms": 137773,
+      "explicit": false,
+      "album": {
+        "id": "2Cn1d2KgbkAqbZCJ1RzdkA",
+        "name": "The Land Is Inhospitable and So Are We",
+        "release_date": "2023-09-15"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "3jjsRKEsF42ccXf8kWR3nu",
+      "name": "Washing Machine Heart",
+      "duration_ms": 128198,
+      "explicit": false,
+      "album": {
+        "id": "42cH7mrkfljkqkxA2Ip9Xq",
+        "name": "Be the Cowboy",
+        "release_date": "2018-08-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "51vArgRF64yIWk3JIcRITo",
+      "name": "Pink in the Night",
+      "duration_ms": 136667,
+      "explicit": false,
+      "album": {
+        "id": "42cH7mrkfljkqkxA2Ip9Xq",
+        "name": "Be the Cowboy",
+        "release_date": "2018-08-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "7FHj19QQigvMH1onMYRNLn",
+      "name": "I Want You",
+      "duration_ms": 183792,
+      "explicit": false,
+      "album": {
+        "id": "7K4SuWzgUEweJScduBcC6f",
+        "name": "Retired from Sad, New Career in Business",
+        "release_date": "2013-08-01"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "5411TEB6tlzvuF5A4oyldr",
+      "name": "Francis Forever",
+      "duration_ms": 149680,
+      "explicit": false,
+      "album": {
+        "id": "3I2KkX13lHXuYqfBjSOopo",
+        "name": "Bury Me At Makeout Creek",
+        "release_date": "2014-11-11"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "3XCveEutwTaDiekRkkfdp9",
+      "name": "Liquid Smooth",
+      "duration_ms": 169773,
+      "explicit": false,
+      "album": {
+        "id": "22MICAVuz34zzqm4Se5Lga",
+        "name": "Lush",
+        "release_date": "2012-01-31"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "3pANfZVFdtuVnJsE6xa5Ox",
+      "name": "Me and My Husband",
+      "duration_ms": 137141,
+      "explicit": false,
+      "album": {
+        "id": "42cH7mrkfljkqkxA2Ip9Xq",
+        "name": "Be the Cowboy",
+        "release_date": "2018-08-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "7fd3aMiuwHWKsTdZafjOfZ",
+      "name": "A Pearl",
+      "duration_ms": 156145,
+      "explicit": false,
+      "album": {
+        "id": "42cH7mrkfljkqkxA2Ip9Xq",
+        "name": "Be the Cowboy",
+        "release_date": "2018-08-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "3NE5nGm06kB8QQbQqJaOke",
+      "name": "Once More to See You",
+      "duration_ms": 180999,
+      "explicit": false,
+      "album": {
+        "id": "4Coa8Eb9SzjrkwWEom963Q",
+        "name": "Puberty 2",
+        "release_date": "2016-06-17"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "5Qk72xAbHXMzOWL6gS5Gcp",
+      "name": "I Don't Smoke",
+      "duration_ms": 198533,
+      "explicit": false,
+      "album": {
+        "id": "3I2KkX13lHXuYqfBjSOopo",
+        "name": "Bury Me At Makeout Creek",
+        "release_date": "2014-11-11"
+      },
+      "artists": [
+        {
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "name": "Mitski"
+        }
+      ]
+    },
+    {
+      "id": "08PdFBcXzpkn1cWNgmKqhn",
+      "name": "Promise",
+      "duration_ms": 234266,
+      "explicit": false,
+      "album": {
+        "id": "1rpCHilZQkw84A3Y9czvMO",
+        "name": "Bewitched",
+        "release_date": "2023-09-08"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "4KGGeE7RJsgLNZmnxGFlOj",
+      "name": "Falling Behind",
+      "duration_ms": 173640,
+      "explicit": false,
+      "album": {
+        "id": "0Ydm84ftyiWRGOIFkdl30L",
+        "name": "Everything I Know About Love",
+        "release_date": "2022-08-26"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "43iIQbw5hx986dUEZbr3eN",
+      "name": "From The Start",
+      "duration_ms": 169573,
+      "explicit": false,
+      "album": {
+        "id": "1rpCHilZQkw84A3Y9czvMO",
+        "name": "Bewitched",
+        "release_date": "2023-09-08"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "4nwjvcUjV7cexhwA40Bh5i",
+      "name": "Lover Girl",
+      "duration_ms": 164400,
+      "explicit": false,
+      "album": {
+        "id": "5rMOCuiWWbEBcHaKM69Hmv",
+        "name": "A Matter of Time",
+        "release_date": "2025-08-22"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "608wYP5XWenLz8cOSYjX7X",
+      "name": "Fragile",
+      "duration_ms": 241080,
+      "explicit": false,
+      "album": {
+        "id": "0Ydm84ftyiWRGOIFkdl30L",
+        "name": "Everything I Know About Love",
+        "release_date": "2022-08-26"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "6cx5CvFhqN19efStehJqoW",
+      "name": "Valentine",
+      "duration_ms": 168906,
+      "explicit": false,
+      "album": {
+        "id": "0Ydm84ftyiWRGOIFkdl30L",
+        "name": "Everything I Know About Love",
+        "release_date": "2022-08-26"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "6dWilYAxP2aJbTTt0UsatK",
+      "name": "Lover Girl",
+      "duration_ms": 164400,
+      "explicit": false,
+      "album": {
+        "id": "6Qj5rkXFYGlCe7X6VqqoRS",
+        "name": "Lover Girl",
+        "release_date": "2025-06-25"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "1Ukxccao1BlWrPhYkcXbwZ",
+      "name": "From The Start",
+      "duration_ms": 169573,
+      "explicit": false,
+      "album": {
+        "id": "1BOZNMzXTIkz8nUfGCxfpe",
+        "name": "From The Start",
+        "release_date": "2023-05-11"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "2SEeyc2KS9DIjiJPCYtfgJ",
+      "name": "Goddess",
+      "duration_ms": 267866,
+      "explicit": true,
+      "album": {
+        "id": "1hmlhl74JfLyUqmqtCwvFb",
+        "name": "Bewitched: The Goddess Edition",
+        "release_date": "2024-04-26"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "0UqHzMvRQnaOXEPKgFVhxN",
+      "name": "Madwoman",
+      "duration_ms": 239333,
+      "explicit": false,
+      "album": {
+        "id": "4DWK6TLXHl1fly2zi5RlO7",
+        "name": "A Matter of Time: The Final Hour",
+        "release_date": "2026-04-10"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "59Y1f3y8FuLjadWY9Bx2LC",
+      "name": "Letter To My 13 Year Old Self",
+      "duration_ms": 262680,
+      "explicit": false,
+      "album": {
+        "id": "1rpCHilZQkw84A3Y9czvMO",
+        "name": "Bewitched",
+        "release_date": "2023-09-08"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "39fD0qvjgk8RarJnoBiDTx",
+      "name": "Lovesick",
+      "duration_ms": 225360,
+      "explicit": false,
+      "album": {
+        "id": "1rpCHilZQkw84A3Y9czvMO",
+        "name": "Bewitched",
+        "release_date": "2023-09-08"
+      },
+      "artists": [
+        {
+          "id": "7gW0r5CkdEUMm42w9XpyZO",
+          "name": "Laufey"
+        }
+      ]
+    },
+    {
+      "id": "21uFPefbgeR3QLVJWATlrr",
+      "name": "Scott Street",
+      "duration_ms": 305000,
+      "explicit": true,
+      "album": {
+        "id": "5rcJ5xCMYYLCgGilFDKRZl",
+        "name": "Stranger in the Alps (Deluxe Edition)",
+        "release_date": "2018-10-02"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "0pJW1Xw3aY4Eh6k5iuBkfI",
+      "name": "I Know The End",
+      "duration_ms": 344692,
+      "explicit": false,
+      "album": {
+        "id": "6Pp6qGEywDdofgFC1oFbSH",
+        "name": "Punisher",
+        "release_date": "2020-06-18"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "04mAOoQNsXmDJlyupJwmkO",
+      "name": "Waiting Room",
+      "duration_ms": 393962,
+      "explicit": false,
+      "album": {
+        "id": "1SiSNGAf4CVJgF63NJyTw9",
+        "name": "Lost Ark Studio Compilation, Vol. 8",
+        "release_date": "2016-08-12"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "6Uwi2Qk3H7fM4b4W4ExrAp",
+      "name": "Scott Street",
+      "duration_ms": 305000,
+      "explicit": true,
+      "album": {
+        "id": "0qWcLfCZ8wtcoOdX14oGNI",
+        "name": "Stranger in the Alps",
+        "release_date": "2017-09-22"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "5xo8RrjJ9CVNrtRg2S3B1R",
+      "name": "Motion Sickness",
+      "duration_ms": 229760,
+      "explicit": false,
+      "album": {
+        "id": "0qWcLfCZ8wtcoOdX14oGNI",
+        "name": "Stranger in the Alps",
+        "release_date": "2017-09-22"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "2hAQCoAswuQ643VhIuRC2p",
+      "name": "The Governor’s Waltz",
+      "duration_ms": 207205,
+      "explicit": false,
+      "album": {
+        "id": "2NSzwyYvQvdOQAoEjrlw9c",
+        "name": "Lost Weekend",
+        "release_date": "2026-08-14"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "46RNrAkGsqWTDrv2ZPOAbx",
+      "name": "Moon Song",
+      "duration_ms": 277676,
+      "explicit": false,
+      "album": {
+        "id": "6Pp6qGEywDdofgFC1oFbSH",
+        "name": "Punisher",
+        "release_date": "2020-06-18"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "4SKvKJaqkRl1bUZWEqTYzl",
+      "name": "Sidelines",
+      "duration_ms": 264372,
+      "explicit": false,
+      "album": {
+        "id": "7tCdWRuurBiq82DvVDCGgF",
+        "name": "Sidelines",
+        "release_date": "2022-04-15"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "3rJDsZjIaCfJQSqRUvl0BM",
+      "name": "Funeral",
+      "duration_ms": 232373,
+      "explicit": false,
+      "album": {
+        "id": "0qWcLfCZ8wtcoOdX14oGNI",
+        "name": "Stranger in the Alps",
+        "release_date": "2017-09-22"
+      },
+      "artists": [
+        {
+          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "name": "Phoebe Bridgers"
+        }
+      ]
+    },
+    {
+      "id": "2fuYa3Lx06QQJAm0MjztKr",
+      "name": "Let Down",
+      "duration_ms": 299560,
+      "explicit": false,
+      "album": {
+        "id": "6dVIqQ8qmQ5GBnJ9shOYGE",
+        "name": "OK Computer",
+        "release_date": "1997-05-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "0z1o5L7HJx562xZSATcIpY",
+      "name": "Exit Music (For A Film)",
+      "duration_ms": 267186,
+      "explicit": false,
+      "album": {
+        "id": "6dVIqQ8qmQ5GBnJ9shOYGE",
+        "name": "OK Computer",
+        "release_date": "1997-05-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "73CKjW3vsUXRpy3NnX4H7F",
+      "name": "Fake Plastic Trees",
+      "duration_ms": 290706,
+      "explicit": false,
+      "album": {
+        "id": "35UJLpClj5EDrhpNIi4DFg",
+        "name": "The Bends",
+        "release_date": "1995-03-13"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "5Qv2Nby1xTr9pQyjkrc94J",
+      "name": "All I Need",
+      "duration_ms": 228746,
+      "explicit": false,
+      "album": {
+        "id": "5vkqYmiPBYLaalcmjujWxK",
+        "name": "In Rainbows",
+        "release_date": "2007-12-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "10nyNJ6zNy2YVYLrcwLccB",
+      "name": "No Surprises",
+      "duration_ms": 229120,
+      "explicit": false,
+      "album": {
+        "id": "6dVIqQ8qmQ5GBnJ9shOYGE",
+        "name": "OK Computer",
+        "release_date": "1997-05-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "63OQupATfueTdZMWTxW03A",
+      "name": "Karma Police",
+      "duration_ms": 264066,
+      "explicit": false,
+      "album": {
+        "id": "6dVIqQ8qmQ5GBnJ9shOYGE",
+        "name": "OK Computer",
+        "release_date": "1997-05-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "0YJ9FWWHn9EfnN0lHwbzvV",
+      "name": "Jigsaw Falling Into Place",
+      "duration_ms": 248893,
+      "explicit": false,
+      "album": {
+        "id": "5vkqYmiPBYLaalcmjujWxK",
+        "name": "In Rainbows",
+        "release_date": "2007-12-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "4wajJ1o7jWIg62YqpkHC7S",
+      "name": "Weird Fishes / Arpeggi",
+      "duration_ms": 318186,
+      "explicit": false,
+      "album": {
+        "id": "5vkqYmiPBYLaalcmjujWxK",
+        "name": "In Rainbows",
+        "release_date": "2007-12-28"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "2a1iMaoWQ5MnvLFBDv4qkf",
+      "name": "High and Dry",
+      "duration_ms": 257480,
+      "explicit": false,
+      "album": {
+        "id": "35UJLpClj5EDrhpNIi4DFg",
+        "name": "The Bends",
+        "release_date": "1995-03-13"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "70LcF31zb1H0PyJoS1Sx1r",
+      "name": "Creep",
+      "duration_ms": 238640,
+      "explicit": true,
+      "album": {
+        "id": "3gBVdu4a1MMJVMy6vwPEb8",
+        "name": "Pablo Honey",
+        "release_date": "1993-02-22"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "1dyTcli07c77mtQK3ahUZR",
+      "name": "Just",
+      "duration_ms": 234800,
+      "explicit": false,
+      "album": {
+        "id": "35UJLpClj5EDrhpNIi4DFg",
+        "name": "The Bends",
+        "release_date": "1995-03-13"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "4SrRrB27n7fiRkQcPoKfpk",
+      "name": "Motion Picture Soundtrack",
+      "duration_ms": 200482,
+      "explicit": false,
+      "album": {
+        "id": "6GjwtEZcfenmOf6l18N7T7",
+        "name": "Kid A",
+        "release_date": "2000-10-02"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "6UO72VSXEONxdfLyABihs9",
+      "name": "Black Star",
+      "duration_ms": 247040,
+      "explicit": false,
+      "album": {
+        "id": "35UJLpClj5EDrhpNIi4DFg",
+        "name": "The Bends",
+        "release_date": "1995-03-13"
+      },
+      "artists": [
+        {
+          "id": "4Z8W4fKeB5YxbusRsdQVPb",
+          "name": "Radiohead"
+        }
+      ]
+    },
+    {
+      "id": "11MyiSGZSYSmhhqwGUTtAq",
+      "name": "Sad Girl",
+      "duration_ms": 317760,
+      "explicit": false,
+      "album": {
+        "id": "1ORxRsK3MrSLvh7VQTF01F",
+        "name": "Ultraviolence (Deluxe)",
+        "release_date": "2014-01-01"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "1NZs6n6hl8UuMaX0UC0YTz",
+      "name": "Brooklyn Baby",
+      "duration_ms": 351640,
+      "explicit": true,
+      "album": {
+        "id": "1ORxRsK3MrSLvh7VQTF01F",
+        "name": "Ultraviolence (Deluxe)",
+        "release_date": "2014-01-01"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "5Y6nVaayzitvsD5F7nr3DV",
+      "name": "West Coast",
+      "duration_ms": 256760,
+      "explicit": false,
+      "album": {
+        "id": "1ORxRsK3MrSLvh7VQTF01F",
+        "name": "Ultraviolence (Deluxe)",
+        "release_date": "2014-01-01"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "21qg0IBZf8R12qHd9A3AA4",
+      "name": "Salvatore",
+      "duration_ms": 281093,
+      "explicit": false,
+      "album": {
+        "id": "2DpEBrjCur1ythIZ10gJWw",
+        "name": "Honeymoon",
+        "release_date": "2015-09-18"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "6GGtHZgBycCgGBUhZo81xe",
+      "name": "Say Yes To Heaven",
+      "duration_ms": 209156,
+      "explicit": false,
+      "album": {
+        "id": "6jVg0POvGYH1Pt6lISl3ok",
+        "name": "Say Yes To Heaven",
+        "release_date": "2023-05-19"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "1y3r6RXiJZNBV1EI0NggpS",
+      "name": "Ultraviolence",
+      "duration_ms": 251480,
+      "explicit": false,
+      "album": {
+        "id": "1ORxRsK3MrSLvh7VQTF01F",
+        "name": "Ultraviolence (Deluxe)",
+        "release_date": "2014-01-01"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "7bPWdJgx8vek7S5i5yAtvG",
+      "name": "Chemtrails Over The Country Club",
+      "duration_ms": 271176,
+      "explicit": false,
+      "album": {
+        "id": "6QeosPQpJckkW0Obir5RT8",
+        "name": "Chemtrails Over The Country Club",
+        "release_date": "2021-03-19"
+      },
+      "artists": [
+        {
+          "id": "00FQb4jTyendYWaN8pK0wa",
+          "name": "Lana Del Rey"
+        }
+      ]
+    },
+    {
+      "id": "57j65yC2HggQfmYNc6rdOK",
+      "name": "bad idea!",
+      "duration_ms": 219638,
+      "explicit": true,
+      "album": {
+        "id": "4AEKKY9Sny3Uj6U3ELK4Sl",
+        "name": "bad idea!",
+        "release_date": "2019-09-03"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "6IPwKM3fUUzlElbvKw2sKl",
+      "name": "we fell in love in october",
+      "duration_ms": 184153,
+      "explicit": false,
+      "album": {
+        "id": "7vud0sY43VTv28MbWiglDa",
+        "name": "we fell in love in october / October Passed Me By",
+        "release_date": "2018-11-21"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "04OSnqlwlBJMvidYccraVz",
+      "name": "girls",
+      "duration_ms": 198400,
+      "explicit": false,
+      "album": {
+        "id": "0UvjTChu7cW8uJ6Cwp8173",
+        "name": "girls",
+        "release_date": "2018-06-08"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "0AjcdGri5vhJsmZnduCEqd",
+      "name": "October Passed Me By",
+      "duration_ms": 165746,
+      "explicit": false,
+      "album": {
+        "id": "6XtlrNlPUFHcpLS7ImjG3E",
+        "name": "October Passed Me By",
+        "release_date": "2022-10-14"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "5PjdC2gMATetx5xdnwGUu7",
+      "name": "i wanna be your girlfriend",
+      "duration_ms": 204990,
+      "explicit": true,
+      "album": {
+        "id": "14cEutEbb3i2vDp3ZopdJf",
+        "name": "i wanna be your girlfriend",
+        "release_date": "2018-03-02"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "0RJB6ldc79QC6jW5OR2Pv1",
+      "name": "blue",
+      "duration_ms": 250049,
+      "explicit": false,
+      "album": {
+        "id": "3kxuW16FADFPyKmeke0wlR",
+        "name": "blue",
+        "release_date": "2026-10-09"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "6rYgEHuyhO064Lgj48qlIe",
+      "name": "I'll Call You Mine",
+      "duration_ms": 201945,
+      "explicit": false,
+      "album": {
+        "id": "69p42ovQdwmYPLUsAQpeNn",
+        "name": "if i could make it go quiet",
+        "release_date": "2021-04-30"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "4r1AqGpB9YrXV2ivcrqfJY",
+      "name": ".",
+      "duration_ms": 166240,
+      "explicit": false,
+      "album": {
+        "id": "69p42ovQdwmYPLUsAQpeNn",
+        "name": "if i could make it go quiet",
+        "release_date": "2021-04-30"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "32XaqPVTVkkuOiOPQZ3SpA",
+      "name": "midnight love",
+      "duration_ms": 193928,
+      "explicit": false,
+      "album": {
+        "id": "69p42ovQdwmYPLUsAQpeNn",
+        "name": "if i could make it go quiet",
+        "release_date": "2021-04-30"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "5kAoEEASRwkLd2EjxfBfJ9",
+      "name": "missing person",
+      "duration_ms": 180890,
+      "explicit": false,
+      "album": {
+        "id": "5mutH6AczN5onZ1binwkvO",
+        "name": "BLUE",
+        "release_date": "2026-10-23"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "4goxmr5LoUfcJCOikYZKj0",
+      "name": "clean slate",
+      "duration_ms": 190216,
+      "explicit": true,
+      "album": {
+        "id": "5mutH6AczN5onZ1binwkvO",
+        "name": "BLUE",
+        "release_date": "2026-10-23"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "5vFuoZLvUmAzzIiLSEhk0K",
+      "name": "forget her",
+      "duration_ms": 143355,
+      "explicit": false,
+      "album": {
+        "id": "7vud0sY43VTv28MbWiglDa",
+        "name": "we fell in love in october / October Passed Me By",
+        "release_date": "2018-11-21"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "1HRTFytvp1Bs50ckTlL5qs",
+      "name": "bad idea!",
+      "duration_ms": 219638,
+      "explicit": true,
+      "album": {
+        "id": "2PjloAS981jof5y1KEhOPb",
+        "name": "chapter 2",
+        "release_date": "2019-09-06"
+      },
+      "artists": [
+        {
+          "id": "3uwAm6vQy7kWPS2bciKWx9",
+          "name": "girl in red"
+        }
+      ]
+    },
+    {
+      "id": "7brBeAX3RT0CMh3qbTBrIP",
+      "name": "Blouse",
+      "duration_ms": 195376,
+      "explicit": false,
+      "album": {
+        "id": "32ium7Cxb1Xwp2MLzH2459",
+        "name": "Sling",
+        "release_date": "2021-07-16"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "57VAuR1WgKFzcpO3ujQx9A",
+      "name": "Harbor",
+      "duration_ms": 264011,
+      "explicit": false,
+      "album": {
+        "id": "32ium7Cxb1Xwp2MLzH2459",
+        "name": "Sling",
+        "release_date": "2021-07-16"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "0HAqq2GcQKyi3s87GuN7jU",
+      "name": "Amoeba",
+      "duration_ms": 228922,
+      "explicit": false,
+      "album": {
+        "id": "32ium7Cxb1Xwp2MLzH2459",
+        "name": "Sling",
+        "release_date": "2021-07-16"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "63O4CpEtppRmeOZ89Fb8tn",
+      "name": "Just For Today",
+      "duration_ms": 217065,
+      "explicit": false,
+      "album": {
+        "id": "32ium7Cxb1Xwp2MLzH2459",
+        "name": "Sling",
+        "release_date": "2021-07-16"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "2P0qa2otcQdjrnypyueuJl",
+      "name": "Reaper",
+      "duration_ms": 159841,
+      "explicit": true,
+      "album": {
+        "id": "32ium7Cxb1Xwp2MLzH2459",
+        "name": "Sling",
+        "release_date": "2021-07-16"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "1wicceeNVtcnym2YjiOmyj",
+      "name": "Bags",
+      "duration_ms": 260519,
+      "explicit": false,
+      "album": {
+        "id": "0TIiUHKaFu347OToFlHjW2",
+        "name": "Immunity",
+        "release_date": "2019-08-02"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "3T5UHXDib3oiEArakaVQtM",
+      "name": "Softly",
+      "duration_ms": 185306,
+      "explicit": false,
+      "album": {
+        "id": "0TIiUHKaFu347OToFlHjW2",
+        "name": "Immunity",
+        "release_date": "2019-08-02"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "22ZtrdeNCLypnWuFP3MvcW",
+      "name": "Alewife",
+      "duration_ms": 213000,
+      "explicit": false,
+      "album": {
+        "id": "0TIiUHKaFu347OToFlHjW2",
+        "name": "Immunity",
+        "release_date": "2019-08-02"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "2qmmnbJ9JR3f7vofbyje5r",
+      "name": "Slow Dance",
+      "duration_ms": 234853,
+      "explicit": false,
+      "album": {
+        "id": "1KNUCVXgIxKUGiuEB8eG0i",
+        "name": "Charm",
+        "release_date": "2024-07-12"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    },
+    {
+      "id": "0mMlo76aVZHpuvoR6fjBSK",
+      "name": "Thank You",
+      "duration_ms": 205069,
+      "explicit": false,
+      "album": {
+        "id": "1KNUCVXgIxKUGiuEB8eG0i",
+        "name": "Charm",
+        "release_date": "2024-07-12"
+      },
+      "artists": [
+        {
+          "id": "3l0CmX0FuQjFxr8SK7Vqag",
+          "name": "Clairo"
+        }
+      ]
+    }
+  ]
+}

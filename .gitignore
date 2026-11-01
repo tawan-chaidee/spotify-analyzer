@@ -1,0 +1,33 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+!.env.mock
+!.env.development
+
+# JavaScript and TypeScript
+node_modules/
+dist/
+build/
+coverage/
+test-results/
+playwright-report/
+.next/
+.nuxt/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local output and logs
+*.log
+logs/
+
+# Local application state
+.spotify-tokens.json
+tests/fixtures/local/
+data/
+exports/
+.data/

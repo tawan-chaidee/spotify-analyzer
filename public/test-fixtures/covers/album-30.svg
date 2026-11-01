@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#f5cfd8"/>
+  <path d="M-160 640 L110 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M-50 640 L220 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M60 640 L330 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M170 640 L440 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M280 640 L550 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M390 640 L660 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M500 640 L770 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M610 640 L880 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <path d="M720 640 L990 0" stroke="#9c4864" stroke-width="42" opacity=".78"/>
+  <rect x="375" y="70" width="195" height="195" rx="96" fill="#8bc6c1" opacity=".9"/>
+  <rect x="24" y="24" width="592" height="592" rx="16" fill="none" stroke="#3a252e" stroke-width="6"/>
+  <text x="46" y="72" fill="#3a252e" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">SO SAD · ALBUM 30</text>
+  <text x="46" y="405" fill="#3a252e" font-family="Georgia, serif" font-size="54" font-weight="700"><tspan x="46" dy="0">SIDELINES</tspan></text>
+  <text x="48" y="590" fill="#3a252e" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">PHOEBE BRIDGERS</text>
+</svg>

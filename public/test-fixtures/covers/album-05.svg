@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#29252d"/>
+  <circle cx="465" cy="165" r="210" fill="#e26083" opacity=".82"/>
+  <circle cx="465" cy="165" r="125" fill="#29252d"/>
+  <circle cx="465" cy="165" r="58" fill="#8ca6d8"/>
+  <rect x="24" y="24" width="592" height="592" rx="16" fill="none" stroke="#f4e5c2" stroke-width="6"/>
+  <text x="46" y="72" fill="#f4e5c2" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">SO SAD · ALBUM 05</text>
+  <text x="46" y="405" fill="#f4e5c2" font-family="Georgia, serif" font-size="54" font-weight="700"><tspan x="46" dy="0">ULTRAVIOLENCE</tspan><tspan x="46" dy="64">(DELUXE)</tspan></text>
+  <text x="48" y="590" fill="#f4e5c2" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">LANA DEL REY</text>
+</svg>

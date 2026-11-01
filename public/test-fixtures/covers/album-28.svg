@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#c9d8c4"/>
+  <path d="M330 630 C340 405 240 365 390 215 C510 94 610 145 680 35 L680 680 Z" fill="#f48c8c" opacity=".83"/>
+  <ellipse cx="412" cy="260" rx="165" ry="78" fill="#4b7362" opacity=".9" transform="rotate(-22 412 260)"/>
+  <circle cx="548" cy="365" r="52" fill="#253129" opacity=".8"/>
+  <rect x="24" y="24" width="592" height="592" rx="16" fill="none" stroke="#253129" stroke-width="6"/>
+  <text x="46" y="72" fill="#253129" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">SO SAD · ALBUM 28</text>
+  <text x="46" y="405" fill="#253129" font-family="Georgia, serif" font-size="54" font-weight="700"><tspan x="46" dy="0">GIRLS</tspan></text>
+  <text x="48" y="590" fill="#253129" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">GIRL IN RED</text>
+</svg>

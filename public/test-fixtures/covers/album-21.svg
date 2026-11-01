@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#d8c8f0"/>
+  <circle cx="465" cy="165" r="210" fill="#ffd166" opacity=".82"/>
+  <circle cx="465" cy="165" r="125" fill="#d8c8f0"/>
+  <circle cx="465" cy="165" r="58" fill="#6b5ca5"/>
+  <rect x="24" y="24" width="592" height="592" rx="16" fill="none" stroke="#251e36" stroke-width="6"/>
+  <text x="46" y="72" fill="#251e36" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">SO SAD · ALBUM 21</text>
+  <text x="46" y="405" fill="#251e36" font-family="Georgia, serif" font-size="54" font-weight="700"><tspan x="46" dy="0">SLING</tspan></text>
+  <text x="48" y="590" fill="#251e36" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">CLAIRO</text>
+</svg>
