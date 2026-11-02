@@ -18,6 +18,8 @@ links that recipients can open without Spotify access.
 
 ## Features
 
+- Bring-your-own Spotify Client ID setup with no deployment required
+- Optional Owner Access for approved Spotify accounts
 - Spotify Authorization Code with PKCE and automatic token refresh
 - Top 50 tracks and artists for 4 weeks, 6 months, and 1 year
 - Six-month movement compared with the yearly track ranking
@@ -26,6 +28,55 @@ links that recipients can open without Spotify access.
 - No-login sharing through compressed URL fragments
 - A deterministic 50-item demo that requires no Spotify account
 - Static Cloudflare Workers deployment with no backend or database
+
+## Use your Spotify data
+
+You need a Spotify account. You only need to do this setup once.
+
+```text
+Create a Spotify app
+→ Add the redirect URI below
+→ Paste its Client ID into Spotify Top Explorer
+→ Connect Spotify
+```
+
+### 1. Create a Spotify app
+
+Open the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/create)
+and create an app. You can use:
+
+```text
+App name: Listening Snapshot
+Description: Explore and export my Spotify top tracks and artists.
+```
+
+Select **Web API**.
+
+Add this redirect URI exactly:
+
+```text
+https://spotify-analyzer.tawan-jhaidee.workers.dev/
+```
+
+### 2. Copy your Client ID
+
+Open the new Spotify app, select **Settings**, and copy its **Client ID**.
+
+The Client ID is public. Never paste a Client Secret.
+
+### 3. Connect
+
+Open [Spotify Top Explorer](https://spotify-analyzer.tawan-jhaidee.workers.dev/),
+paste the Client ID, and select **Connect Spotify**.
+
+Detailed implementation and UX decisions are documented in
+[docs/byo-spotify-client-id.md](docs/byo-spotify-client-id.md).
+
+### Owner Access
+
+Owner Access uses this deployment's preconfigured Spotify Client ID. It is
+hidden unless `VITE_SPOTIFY_CLIENT_ID` is configured and is limited to approved
+Spotify accounts.
 
 ## Try the demo
 
@@ -38,31 +89,32 @@ npm run dev:mock
 
 Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
-## Run with Spotify
+## Local development
 
-1. Create an app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
-2. Add this redirect URI exactly:
+Install dependencies and start Vite:
 
-   ```text
-   http://127.0.0.1:8000/callback
-   ```
+```bash
+npm ci
+npm run dev
+```
 
-3. Create `.env.local`:
+The bring-your-own setup works without an environment file. Add this local
+redirect URI to the Spotify app you use:
 
-   ```text
-   VITE_SPOTIFY_CLIENT_ID=<your-public-client-id>
-   VITE_SITE_URL=http://127.0.0.1:8000/
-   ```
+```text
+http://127.0.0.1:8000/callback
+```
 
-4. Start the app:
+Optionally, configure Owner Access with `.env.local`:
 
-   ```bash
-   npm run dev
-   ```
+```text
+VITE_SPOTIFY_CLIENT_ID=<your-public-client-id>
+VITE_SITE_URL=http://127.0.0.1:8000/
+```
 
 The Spotify Client ID is public. This project does not use a Client Secret.
-Mock mode is selected by `npm run dev:mock`; no local environment changes are
-needed.
+Select **Owner Access** on the connection screen to use it. Mock mode is
+selected by `npm run dev:mock`; no environment changes are needed.
 
 ## How it works
 
@@ -86,7 +138,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 29 passing unit/component tests and 8 fixture-backed
+The project currently has 38 passing unit/component tests and 11 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 
@@ -145,6 +197,6 @@ the required values skip deployment instead of failing the workflow.
 
 ## Privacy
 
-OAuth tokens stay in the visitor's browser. Share snapshots never include
-tokens or Spotify account identifiers, and personal fixtures remain excluded
-from Git.
+Client IDs and OAuth tokens stay in the visitor's browser. Share snapshots never
+include tokens or Spotify account identifiers, and personal fixtures remain
+excluded from Git.

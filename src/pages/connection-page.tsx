@@ -1,7 +1,10 @@
 import { ConnectionCard } from "../components/connection-card";
+import type { SelectedSpotifyApp } from "../models/auth";
 import { CONTENT } from "../services/content";
 
 interface ConnectionPageProps {
+  selectedApp: SelectedSpotifyApp | null;
+  ownerAvailable: boolean;
   remember: boolean;
   redirectUri: string;
   message: string;
@@ -9,6 +12,9 @@ interface ConnectionPageProps {
   busy: boolean;
   onRememberChange: (value: boolean) => void;
   onConnect: () => void;
+  onClientIdSubmit: (clientId: string) => void;
+  onOwnerAccess: () => void;
+  onChangeApp: () => void;
 }
 
 export function ConnectionPage(props: ConnectionPageProps) {

@@ -10,6 +10,8 @@ export const AUTH_TOKEN_STORAGE_KEY = TOKEN_KEY;
 const VERIFIER_KEY = "spotify-top-explorer-verifier";
 const STATE_KEY = "spotify-top-explorer-state";
 const PERSIST_KEY = "spotify-top-explorer-persist";
+const CALLBACK_CLIENT_ID_KEY =
+  "spotify-top-explorer-callback-client-id";
 const LOCAL_CALLBACK_PATH = "/callback";
 const EXPIRY_BUFFER_MS = 60_000;
 
@@ -83,33 +85,9 @@ export function redirectUri(): string {
   return redirectUriFor(window.location);
 }
 
-function legacyToken(raw: string): StoredSpotifyAuthWithPersistence | null {
-  try {
-    const parsed = JSON.parse(raw) as Record<string, unknown>;
-    if (
-      typeof parsed.access_token === "string" &&
-      typeof parsed.expires_at === "number"
-    ) {
-      return {
-        version: 1,
-        accessToken: parsed.access_token,
-        refreshToken:
-          typeof parsed.refresh_token === "string"
-            ? parsed.refresh_token
-            : "",
-        accessTokenExpiresAt: parsed.expires_at,
-        refreshTokenIssuedAt: 0,
-        persistent: true,
-      };
-    }
-  } catch {
-    return null;
-  }
-
-  return null;
-}
-
-export function readAuth(): StoredSpotifyAuthWithPersistence | null {
+export function readAuth(
+  clientId: string,
+): StoredSpotifyAuthWithPersistence | null {
   for (const [storage, persistent] of [
     [localStorage, true],
     [sessionStorage, false],
@@ -117,15 +95,11 @@ export function readAuth(): StoredSpotifyAuthWithPersistence | null {
     const raw = storage.getItem(TOKEN_KEY);
     if (!raw) continue;
 
-    const legacy = legacyToken(raw);
-    if (legacy) {
-      return { ...legacy, persistent };
-    }
-
     try {
       const parsed = JSON.parse(raw) as StoredSpotifyAuth;
       if (
-        parsed.version === 1 &&
+        parsed.version === 2 &&
+        parsed.clientId === clientId &&
         typeof parsed.accessToken === "string" &&
         typeof parsed.accessTokenExpiresAt === "number"
       ) {
@@ -142,11 +116,13 @@ export function readAuth(): StoredSpotifyAuthWithPersistence | null {
 }
 
 function saveAuth(
-  auth: Omit<StoredSpotifyAuth, "version">,
+  clientId: string,
+  auth: Omit<StoredSpotifyAuth, "version" | "clientId">,
   persistent: boolean,
 ): StoredSpotifyAuthWithPersistence {
   const value: StoredSpotifyAuth = {
-    version: 1,
+    version: 2,
+    clientId,
     ...auth,
   };
   localStorage.removeItem(TOKEN_KEY);
@@ -164,6 +140,7 @@ export function clearAuth(): void {
   sessionStorage.removeItem(VERIFIER_KEY);
   sessionStorage.removeItem(STATE_KEY);
   sessionStorage.removeItem(PERSIST_KEY);
+  sessionStorage.removeItem(CALLBACK_CLIENT_ID_KEY);
   refreshPromise = null;
 }
 
@@ -210,6 +187,7 @@ export function createAuthService({
       grantedRefreshToken || !previous ? now() : previous.refreshTokenIssuedAt;
 
     return saveAuth(
+      clientId,
       {
         accessToken,
         refreshToken,
@@ -242,7 +220,7 @@ export function createAuthService({
   }
 
   async function getAccessToken(forceRefresh = false): Promise<string> {
-    const current = readAuth();
+    const current = readAuth(clientId);
     if (!current) {
       throw new Error("Spotify authorization has expired.");
     }
@@ -261,13 +239,15 @@ export function createAuthService({
   }
 
   return {
-    readAuth,
+    readAuth: () => readAuth(clientId),
     clearAuth,
     getAccessToken,
 
     async beginLogin(remember: boolean): Promise<void> {
       if (!clientId) {
-        throw new Error("Missing VITE_SPOTIFY_CLIENT_ID.");
+        throw new Error(
+          "Choose a Spotify app before starting authorization.",
+        );
       }
 
       const callback = redirectUri();
@@ -283,6 +263,7 @@ export function createAuthService({
       sessionStorage.setItem(VERIFIER_KEY, verifier);
       sessionStorage.setItem(STATE_KEY, state);
       sessionStorage.setItem(PERSIST_KEY, remember ? "1" : "0");
+      sessionStorage.setItem(CALLBACK_CLIENT_ID_KEY, clientId);
 
       const params = new URLSearchParams({
         client_id: clientId,
@@ -306,29 +287,39 @@ export function createAuthService({
 
       const error = params.get("error");
       if (error) {
+        clearAuth();
         throw new Error(`Spotify authorization failed: ${error}`);
       }
       if (params.get("state") !== sessionStorage.getItem(STATE_KEY)) {
+        clearAuth();
         throw new Error("Spotify authorization state did not match.");
       }
 
       const verifier = sessionStorage.getItem(VERIFIER_KEY);
       const code = params.get("code");
-      if (!verifier || !code) {
+      const callbackClientId = sessionStorage.getItem(
+        CALLBACK_CLIENT_ID_KEY,
+      );
+      if (!verifier || !code || callbackClientId !== clientId) {
+        clearAuth();
         throw new Error("Spotify did not return a valid authorization code.");
       }
 
-      const token = await tokenRequest({
-        client_id: clientId,
-        grant_type: "authorization_code",
-        code,
-        redirect_uri: callback,
-        code_verifier: verifier,
-      });
-      tokenFromResponse(token);
-      sessionStorage.removeItem(VERIFIER_KEY);
-      sessionStorage.removeItem(STATE_KEY);
-      sessionStorage.removeItem(PERSIST_KEY);
+      try {
+        const token = await tokenRequest({
+          client_id: clientId,
+          grant_type: "authorization_code",
+          code,
+          redirect_uri: callback,
+          code_verifier: verifier,
+        });
+        tokenFromResponse(token);
+      } finally {
+        sessionStorage.removeItem(VERIFIER_KEY);
+        sessionStorage.removeItem(STATE_KEY);
+        sessionStorage.removeItem(PERSIST_KEY);
+        sessionStorage.removeItem(CALLBACK_CLIENT_ID_KEY);
+      }
     },
   };
 }

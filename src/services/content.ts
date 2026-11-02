@@ -14,16 +14,54 @@ export const CONTENT = {
     title: "Your listening taste, ranked.",
     description:
       "Compare your top artists and tracks across the last four weeks, six months, and year. Export every ranking as CSV or JSON.",
-    cardTitle: "Connect Spotify",
-    cardDescription:
-      "This app requests one read-only permission: access to your top artists and tracks.",
+    ownEyebrow: "One-time setup",
+    ownTitle: "Use Your Spotify App",
+    ownDescription:
+      "Create or choose your own Spotify Developer app. No downloading or deployment is required.",
+    createTitle: "Create or open your Spotify app",
+    createDescription:
+      "On the Spotify Developer Dashboard, create an app or open one you already own.",
+    createApp: "Create Spotify app",
+    createAppUrl: "https://developer.spotify.com/dashboard/create",
+    openDashboard: "Open dashboard",
+    openDashboardUrl: "https://developer.spotify.com/dashboard",
+    redirectTitle: "Add this redirect URI",
+    redirectDescription:
+      "Copy the full link into your Spotify app's Redirect URIs. Include the final slash.",
+    copy: "Copy",
+    copied: "Copied",
+    copyFailed: "Could not copy. Select the link and copy it manually.",
+    clientIdTitle: "Copy your Client ID",
+    clientIdDescription:
+      "Open your Spotify app, go to Settings, and copy the Client ID.",
+    clientIdLabel: "Spotify Client ID",
+    clientIdPlaceholder: "Paste the 32-character Client ID",
+    invalidClientId:
+      "That does not look like a Spotify Client ID. Check the value in your Spotify app settings.",
+    clientIdPrivacy:
+      "The Client ID is public. Never paste a Client Secret.",
     remember: "Keep me connected on this device. This stores Spotify tokens in this browser.",
     connect: "Connect Spotify",
     connecting: "Connecting…",
+    readyTitle: "Ready to connect",
+    readyDescription:
+      "This app requests one read-only permission: access to your top artists and tracks.",
+    ownAppLabel: "Your Spotify app",
+    ownerAppLabel: "Owner Spotify app",
+    clientIdEnding: "Client ID ending",
+    changeApp: "Change Spotify app",
+    ownerAccess: "Owner Access",
+    ownerDescription:
+      "Uses this deployment's Spotify app. Approved accounts only.",
     redirectLabel: "Redirect URI",
     redirectUnavailable: "Unavailable when opened as a local file",
-    initialMessage: "Connect your Spotify account to load your rankings.",
+    initialMessage: "Set up your Spotify app to load your rankings.",
+    readyMessage: "Your Spotify app is ready. Connect to load your rankings.",
     completing: "Completing Spotify authorization…",
+    ownerForbidden:
+      "This Spotify account is not approved for Owner Access. Use your own Spotify app instead.",
+    ownForbidden:
+      "Spotify rejected this app or account. Check that the account can use the Spotify app.",
   },
   dashboard: {
     ownerEyebrow: "Spotify top-list explorer",

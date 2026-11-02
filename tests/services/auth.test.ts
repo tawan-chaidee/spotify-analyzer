@@ -12,7 +12,8 @@ function storeExpiredAuth(): void {
   localStorage.setItem(
     AUTH_TOKEN_STORAGE_KEY,
     JSON.stringify({
-      version: 1,
+      version: 2,
+      clientId: "client-id",
       accessToken: "expired-access-token",
       refreshToken: "refresh-token",
       accessTokenExpiresAt: 1_000,
@@ -112,7 +113,9 @@ describe("Spotify token lifecycle", () => {
     );
     expect(body.get("grant_type")).toBe("refresh_token");
     expect(body.get("refresh_token")).toBe("refresh-token");
-    expect(readAuth()?.accessToken).toBe("refreshed-access-token");
+    expect(readAuth("client-id")?.accessToken).toBe(
+      "refreshed-access-token",
+    );
   });
 
   it("clears stored authentication when refresh is rejected", async () => {
@@ -134,7 +137,14 @@ describe("Spotify token lifecycle", () => {
     await expect(auth.getAccessToken()).rejects.toThrow(
       "Refresh token revoked.",
     );
-    expect(readAuth()).toBeNull();
+    expect(readAuth("client-id")).toBeNull();
+    expect(localStorage.getItem(AUTH_TOKEN_STORAGE_KEY)).toBeNull();
+  });
+
+  it("does not expose a token saved for another Spotify app", () => {
+    storeExpiredAuth();
+
+    expect(readAuth("different-client-id")).toBeNull();
     expect(localStorage.getItem(AUTH_TOKEN_STORAGE_KEY)).toBeNull();
   });
 });

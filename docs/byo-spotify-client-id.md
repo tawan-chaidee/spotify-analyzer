@@ -1,7 +1,7 @@
 # Bring Your Own Spotify App
 
-Status: Proposed  
-Branch: `feature/byo-spotify-client-id`  
+Status: Implemented on feature branch
+Branch: `feature/byo-spotify-client-id`
 Last updated: 2026-11-02
 
 ## Summary
@@ -294,8 +294,7 @@ Use browser storage only. Client IDs are public.
 Recommended keys:
 
 ```text
-spotify-top-explorer-client-id
-spotify-top-explorer-auth-source
+spotify-top-explorer-app-selection
 spotify-top-explorer-token
 spotify-top-explorer-verifier
 spotify-top-explorer-state
@@ -303,12 +302,17 @@ spotify-top-explorer-persist
 spotify-top-explorer-callback-client-id
 ```
 
-Suggested records:
+Stored selection:
 
 ```ts
 type SpotifyAppSource = "own" | "owner";
 
-interface StoredSpotifyIdentity {
+interface StoredSpotifyAppSelection {
+  source: SpotifyAppSource;
+  ownClientId?: string;
+}
+
+interface SelectedSpotifyApp {
   source: SpotifyAppSource;
   clientId: string;
 }
@@ -334,20 +338,21 @@ once during upgrade and require one reconnect.
 
 ## Identity resolution
 
-Use one centralized resolver:
+Use one small, framework-independent selection service in
+`src/services/spotify-app.ts`:
 
 ```ts
-function resolveSpotifyIdentity(options: {
-  savedSource: SpotifyAppSource | null;
-  savedClientId: string | null;
-  configuredClientId: string;
-}): StoredSpotifyIdentity | null;
+readSpotifyApp(ownerClientId: string): SelectedSpotifyApp | null;
+saveOwnSpotifyApp(clientId: string): SelectedSpotifyApp;
+saveOwnerSpotifyApp(ownerClientId: string): SelectedSpotifyApp;
+clearSpotifyApp(): void;
 ```
 
 Rules:
 
-1. An explicit saved custom identity wins.
-2. An explicit owner identity wins when the configured Client ID exists.
+1. An explicitly saved custom app wins.
+2. An explicitly saved Owner Access choice wins when the configured Client ID
+   exists.
 3. On a fresh browser, return `null` so the default custom-app wizard appears.
 4. Do not automatically select Owner Access merely because a build Client ID
    exists.
@@ -427,14 +432,14 @@ names to users.
 
 ## Component and service changes
 
-Likely files:
+Implemented files:
 
 ```text
 src/app.tsx
 src/pages/connection-page.tsx
 src/components/connection-card.tsx
-src/components/client-id-setup.tsx          new
-src/services/client-identity.ts             new
+src/components/client-id-setup.tsx
+src/services/spotify-app.ts
 src/services/auth.ts
 src/services/content.ts
 src/models/auth.ts
@@ -442,6 +447,10 @@ src/api/spotify/client.ts
 ```
 
 Keep dashboard, ranking, export, and sharing components unchanged.
+
+App-level orchestration remains in `App`. A separate session hook or state
+machine is intentionally deferred until the flow becomes complex enough to
+justify it.
 
 ## Test plan
 
@@ -547,17 +556,17 @@ Include direct links:
 - Warn users that Owner Access is limited to approved accounts.
 - Keep raw credentials and private local environment files out of Git.
 
-## Rollout plan
+## Implementation status
 
-1. Implement identity storage and resolution.
-2. Update the auth service and callback validation.
-3. Build the default Client ID setup screen.
-4. Add Owner Access as a secondary path.
-5. Add `403` recovery and change-app controls.
-6. Update tests and visual baselines.
-7. Rewrite the README user flow.
-8. Deploy a preview and test with your own Spotify app.
-9. Merge to `main` only after the hosted-client path is verified.
+- [x] Implement Spotify app selection storage and resolution.
+- [x] Update token records and callback validation for Client ID isolation.
+- [x] Build the default Client ID setup screen.
+- [x] Add Owner Access as a secondary path.
+- [x] Add `403` recovery and change-app controls.
+- [x] Update unit, component, and browser tests.
+- [x] Rewrite the README user flow.
+- [ ] Deploy a preview and verify with a real custom Spotify app.
+- [ ] Merge to `main` after the preview verification.
 
 ## Acceptance criteria
 

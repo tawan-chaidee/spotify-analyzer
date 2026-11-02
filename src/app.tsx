@@ -1,12 +1,18 @@
 import {
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-import { createSpotifyClient, type SpotifyClient } from "./api/spotify/client";
+import {
+  createSpotifyClient,
+  SpotifyApiError,
+  type SpotifyClient,
+} from "./api/spotify/client";
 import { AppHeader } from "./components/app-header";
 import { createMockSpotifyClient } from "./mocks/spotify-client";
 import type { DashboardMode } from "./models/app";
+import type { SelectedSpotifyApp } from "./models/auth";
 import type { DashboardSelection } from "./models/dashboard";
 import type {
   ListeningData,
@@ -31,8 +37,17 @@ import {
   hasShareHash,
   openShareData,
 } from "./services/sharing/share";
+import {
+  clearSpotifyApp,
+  readSpotifyApp,
+  saveOwnSpotifyApp,
+  saveOwnerSpotifyApp,
+} from "./services/spotify-app";
 
 const DATA_SOURCE = __DATA_SOURCE__;
+const OWNER_CLIENT_ID = (
+  import.meta.env.VITE_SPOTIFY_CLIENT_ID || ""
+).trim();
 
 const EMPTY_DATA: ListeningData = {
   tracks: { short_term: [], medium_term: [], long_term: [] },
@@ -56,17 +71,31 @@ export function App() {
   const [isError, setIsError] = useState(false);
   const [busy, setBusy] = useState(false);
   const [shareStatus, setShareStatus] = useState("");
+  const [spotifyApp, setSpotifyApp] =
+    useState<SelectedSpotifyApp | null>(() =>
+      DATA_SOURCE === "mock"
+        ? null
+        : readSpotifyApp(OWNER_CLIENT_ID),
+    );
   const initialized = useRef(false);
 
-  const auth = createAuthService({
-    clientId: import.meta.env.VITE_SPOTIFY_CLIENT_ID || "",
-  });
+  const auth = useMemo(
+    () =>
+      createAuthService({
+        clientId: spotifyApp?.clientId || "",
+      }),
+    [spotifyApp?.clientId],
+  );
   const spotify: SpotifyClient =
-    DATA_SOURCE === "mock"
-      ? createMockSpotifyClient()
-      : createSpotifyClient({
-          getAccessToken: auth.getAccessToken,
-        });
+    useMemo(
+      () =>
+        DATA_SOURCE === "mock"
+          ? createMockSpotifyClient()
+          : createSpotifyClient({
+              getAccessToken: auth.getAccessToken,
+            }),
+      [auth],
+    );
 
   function updateSelection(
     change: Partial<DashboardSelection>,
@@ -86,7 +115,13 @@ export function App() {
     } catch (error) {
       setIsError(true);
       setMessage(
-        error instanceof Error ? error.message : "Unable to load rankings.",
+        error instanceof SpotifyApiError && error.status === 403
+          ? spotifyApp?.source === "owner"
+            ? CONTENT.connection.ownerForbidden
+            : CONTENT.connection.ownForbidden
+          : error instanceof Error
+            ? error.message
+            : "Unable to load rankings.",
       );
       setPage("connection");
     } finally {
@@ -128,6 +163,13 @@ export function App() {
 
       const params = new URLSearchParams(window.location.search);
       if (params.has("code") || params.has("error")) {
+        if (!spotifyApp) {
+          clearAuth();
+          setIsError(true);
+          setMessage(CONTENT.connection.initialMessage);
+          window.history.replaceState({}, "", appPath());
+          return;
+        }
         setBusy(true);
         try {
           setMessage(CONTENT.connection.completing);
@@ -150,7 +192,11 @@ export function App() {
       if (auth.readAuth()) {
         await loadDashboard("private");
       } else {
-        setMessage(CONTENT.connection.initialMessage);
+        setMessage(
+          spotifyApp
+            ? CONTENT.connection.readyMessage
+            : CONTENT.connection.initialMessage,
+        );
       }
     }
 
@@ -170,6 +216,11 @@ export function App() {
   }, [mode, page]);
 
   async function connect() {
+    if (!spotifyApp) {
+      setIsError(true);
+      setMessage(CONTENT.connection.initialMessage);
+      return;
+    }
     setBusy(true);
     setMessage("");
     setIsError(false);
@@ -181,6 +232,52 @@ export function App() {
         error instanceof Error
           ? error.message
           : "Unable to start Spotify authorization.",
+      );
+      setBusy(false);
+    }
+  }
+
+  async function connectWithOwnApp(clientId: string) {
+    setBusy(true);
+    setMessage("");
+    setIsError(false);
+    try {
+      if (spotifyApp?.clientId !== clientId) clearAuth();
+      const selection = saveOwnSpotifyApp(clientId);
+      setSpotifyApp(selection);
+      const ownAuth = createAuthService({
+        clientId: selection.clientId,
+      });
+      await ownAuth.beginLogin(remember);
+    } catch (error) {
+      setIsError(true);
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to use this Spotify app.",
+      );
+      setBusy(false);
+    }
+  }
+
+  async function connectWithOwnerApp() {
+    setBusy(true);
+    setMessage("");
+    setIsError(false);
+    try {
+      if (spotifyApp?.clientId !== OWNER_CLIENT_ID) clearAuth();
+      const selection = saveOwnerSpotifyApp(OWNER_CLIENT_ID);
+      setSpotifyApp(selection);
+      const ownerAuth = createAuthService({
+        clientId: selection.clientId,
+      });
+      await ownerAuth.beginLogin(remember);
+    } catch (error) {
+      setIsError(true);
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Owner Access is unavailable.",
       );
       setBusy(false);
     }
@@ -205,6 +302,22 @@ export function App() {
     setData(EMPTY_DATA);
     setPage("connection");
     setMode(DATA_SOURCE === "mock" ? "mock" : "private");
+    setMessage(
+      spotifyApp
+        ? CONTENT.connection.readyMessage
+        : CONTENT.connection.initialMessage,
+    );
+  }
+
+  function changeSpotifyApp() {
+    clearAuth();
+    clearSpotifyApp();
+    setSpotifyApp(null);
+    setData(EMPTY_DATA);
+    setPage("connection");
+    setMode(DATA_SOURCE === "mock" ? "mock" : "private");
+    setMessage(CONTENT.connection.initialMessage);
+    setIsError(false);
   }
 
   function ownTaste() {
@@ -232,6 +345,8 @@ export function App() {
 
       {page === "connection" ? (
         <ConnectionPage
+          selectedApp={spotifyApp}
+          ownerAvailable={Boolean(OWNER_CLIENT_ID)}
           remember={remember}
           redirectUri={callback}
           message={message}
@@ -239,6 +354,9 @@ export function App() {
           busy={busy}
           onRememberChange={setRemember}
           onConnect={connect}
+          onClientIdSubmit={connectWithOwnApp}
+          onOwnerAccess={connectWithOwnerApp}
+          onChangeApp={changeSpotifyApp}
         />
       ) : (
         <DashboardPage
