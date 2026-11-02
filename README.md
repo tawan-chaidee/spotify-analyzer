@@ -120,21 +120,28 @@ Automated tests never contact Spotify.
 npm run build
 ```
 
-Cloudflare Pages settings:
+The build is deployed automatically after a push to `main` by
+`.github/workflows/deploy.yml`. The workflow can also be started manually from
+the GitHub Actions page.
+
+Repository secrets:
 
 ```text
-Build command: npm run build
-Output directory: dist
-Node version: 22.16.0
+CLOUDFLARE_API_TOKEN
+CLOUDFLARE_ACCOUNT_ID
 ```
 
-Production variables:
+Repository variables:
 
 ```text
-VITE_DATA_SOURCE=live
+CLOUDFLARE_PROJECT_NAME=spotify-analyzer
 VITE_SPOTIFY_CLIENT_ID=<public-client-id>
 VITE_SITE_URL=https://your-production-domain/
 ```
+
+The Cloudflare API token needs `Account > Cloudflare Pages > Edit` permission.
+The target Pages project must already exist and use Direct Upload. Forks
+without these values skip deployment instead of failing the workflow.
 
 ## Privacy
 
