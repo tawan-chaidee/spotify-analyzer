@@ -21,6 +21,10 @@ dev:demo             fixture data + no authentication
 dev:mock-auth        prefilled fixture auth through BYO/Owner + fixture data
 ```
 
+Mock authentication starts on the normal connection screen and enters the
+dashboard only after Connect or Owner Access. Remember me defaults off so a
+fresh tab returns to onboarding.
+
 ## Problem
 
 The current build uses one public Client ID configured through

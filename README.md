@@ -103,7 +103,9 @@ npm run dev:mock-auth
 Choose either connection path and provide a valid-format test Client ID. The
 visitor Client ID is prefilled, and Owner Access has its own fake Client ID.
 The app creates a synthetic browser-only session and opens the fixture
-dashboard. No Spotify authorization or API request is made.
+dashboard. No Spotify authorization or API request is made. Remember me starts
+unchecked so a new tab returns to onboarding, while reloading the connected tab
+keeps the test session.
 
 ## Local development
 

@@ -76,7 +76,7 @@ export function App() {
   const [mode, setMode] = useState<DashboardMode>(
     DATA_SOURCE === "mock" ? "mock" : "private",
   );
-  const [remember, setRemember] = useState(true);
+  const [remember, setRemember] = useState(APP_MODE !== "mock-auth");
   const [message, setMessage] = useState<string>(
     CONTENT.connection.initialMessage,
   );
