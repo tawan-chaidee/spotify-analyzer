@@ -48,8 +48,11 @@ import {
 const APP_MODE = __APP_MODE__;
 const AUTH_SOURCE = __AUTH_SOURCE__;
 const DATA_SOURCE = __DATA_SOURCE__;
+const MOCK_OWN_CLIENT_ID = "00000000000000000000000000000001";
+const MOCK_OWNER_CLIENT_ID = "00000000000000000000000000000002";
 const OWNER_CLIENT_ID = (
-  import.meta.env.VITE_SPOTIFY_CLIENT_ID || ""
+  import.meta.env.VITE_SPOTIFY_CLIENT_ID ||
+  (APP_MODE === "mock-auth" ? MOCK_OWNER_CLIENT_ID : "")
 ).trim();
 
 const EMPTY_DATA: ListeningData = {
@@ -358,6 +361,9 @@ export function App() {
         <ConnectionPage
           selectedApp={spotifyApp}
           ownerAvailable={Boolean(OWNER_CLIENT_ID)}
+          initialClientId={
+            APP_MODE === "mock-auth" ? MOCK_OWN_CLIENT_ID : undefined
+          }
           remember={remember}
           redirectUri={callback}
           message={message}

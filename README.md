@@ -101,8 +101,9 @@ npm run dev:mock-auth
 ```
 
 Choose either connection path and provide a valid-format test Client ID. The
-app creates a synthetic browser-only session and opens the fixture dashboard.
-No Spotify authorization or API request is made.
+visitor Client ID is prefilled, and Owner Access has its own fake Client ID.
+The app creates a synthetic browser-only session and opens the fixture
+dashboard. No Spotify authorization or API request is made.
 
 ## Local development
 
@@ -153,7 +154,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 39 passing unit/component tests and 12 fixture-backed
+The project currently has 40 passing unit/component tests and 12 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 

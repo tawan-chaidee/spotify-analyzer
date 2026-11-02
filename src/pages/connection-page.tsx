@@ -5,6 +5,7 @@ import { CONTENT } from "../services/content";
 interface ConnectionPageProps {
   selectedApp: SelectedSpotifyApp | null;
   ownerAvailable: boolean;
+  initialClientId?: string;
   remember: boolean;
   redirectUri: string;
   message: string;

@@ -18,7 +18,7 @@ Runtime profiles are explicit:
 ```text
 dev                  live data + real Spotify authentication
 dev:demo             fixture data + no authentication
-dev:mock-auth        fixture data + mocked authentication through BYO/Owner
+dev:mock-auth        prefilled fixture auth through BYO/Owner + fixture data
 ```
 
 ## Problem

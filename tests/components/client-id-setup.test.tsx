@@ -54,4 +54,23 @@ describe("ClientIdSetup", () => {
 
     expect(onConnect).toHaveBeenCalledWith(VALID_CLIENT_ID);
   });
+
+  it("can prefill a development Client ID", () => {
+    render(
+      <ClientIdSetup
+        redirectUri="http://127.0.0.1:5175/callback"
+        remember
+        busy={false}
+        ownerAvailable
+        initialClientId={VALID_CLIENT_ID}
+        onRememberChange={vi.fn()}
+        onConnect={vi.fn()}
+        onOwnerAccess={vi.fn()}
+      />,
+    );
+
+    expect(
+      screen.getByLabelText<HTMLInputElement>("Spotify Client ID").value,
+    ).toBe(VALID_CLIENT_ID);
+  });
 });

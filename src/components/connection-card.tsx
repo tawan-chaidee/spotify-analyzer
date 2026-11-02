@@ -8,6 +8,7 @@ import { ClientIdSetup } from "./client-id-setup";
 interface ConnectionCardProps {
   selectedApp: SelectedSpotifyApp | null;
   ownerAvailable: boolean;
+  initialClientId?: string;
   remember: boolean;
   redirectUri: string;
   message: string;
@@ -23,6 +24,7 @@ interface ConnectionCardProps {
 export function ConnectionCard({
   selectedApp,
   ownerAvailable,
+  initialClientId,
   remember,
   redirectUri,
   message,
@@ -104,6 +106,7 @@ export function ConnectionCard({
           remember={remember}
           busy={busy}
           ownerAvailable={ownerAvailable}
+          initialClientId={initialClientId}
           onRememberChange={onRememberChange}
           onConnect={onClientIdSubmit}
           onOwnerAccess={onOwnerAccess}

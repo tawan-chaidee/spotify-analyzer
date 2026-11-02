@@ -15,6 +15,7 @@ interface ClientIdSetupProps {
   remember: boolean;
   busy: boolean;
   ownerAvailable: boolean;
+  initialClientId?: string;
   onRememberChange: (value: boolean) => void;
   onConnect: (clientId: string) => void;
   onOwnerAccess: () => void;
@@ -25,11 +26,12 @@ export function ClientIdSetup({
   remember,
   busy,
   ownerAvailable,
+  initialClientId = "",
   onRememberChange,
   onConnect,
   onOwnerAccess,
 }: ClientIdSetupProps) {
-  const [clientId, setClientId] = useState("");
+  const [clientId, setClientId] = useState(initialClientId);
   const [inputError, setInputError] = useState("");
   const [copyStatus, setCopyStatus] = useState("");
 
