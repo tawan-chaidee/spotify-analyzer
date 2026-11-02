@@ -13,7 +13,8 @@ links that recipients can open without Spotify access.
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-> Cloudflare Pages deployment and a live demo link will be added after release.
+> Live at
+> [spotify-analyzer.tawan-jhaidee.workers.dev](https://spotify-analyzer.tawan-jhaidee.workers.dev/).
 
 ## Features
 
@@ -24,7 +25,7 @@ links that recipients can open without Spotify access.
 - Current-ranking and complete CSV/JSON exports
 - No-login sharing through compressed URL fragments
 - A deterministic 50-item demo that requires no Spotify account
-- Static Cloudflare Pages deployment with no backend or database
+- Static Cloudflare Workers deployment with no backend or database
 
 ## Try the demo
 
@@ -121,8 +122,8 @@ npm run build
 ```
 
 The build is deployed automatically after a push to `main` by
-`.github/workflows/deploy.yml`. The workflow can also be started manually from
-the GitHub Actions page.
+`.github/workflows/deploy.yml` using Wrangler. The workflow can also be started
+manually from the GitHub Actions page.
 
 Repository secrets:
 
@@ -134,14 +135,13 @@ CLOUDFLARE_ACCOUNT_ID
 Repository variables:
 
 ```text
-CLOUDFLARE_PROJECT_NAME=spotify-analyzer
 VITE_SPOTIFY_CLIENT_ID=<public-client-id>
 VITE_SITE_URL=https://your-production-domain/
 ```
 
-The Cloudflare API token needs `Account > Cloudflare Pages > Edit` permission.
-The target Pages project must already exist and use Direct Upload. Forks
-without these values skip deployment instead of failing the workflow.
+The Cloudflare API token needs `Account > Workers Scripts > Edit` permission.
+Worker name and static-asset settings live in `wrangler.jsonc`. Forks without
+the required values skip deployment instead of failing the workflow.
 
 ## Privacy
 

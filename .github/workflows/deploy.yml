@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   deployments: write
 
 concurrency:
-  group: cloudflare-pages-production
+  group: cloudflare-worker-production
   cancel-in-progress: false
 
 jobs:
@@ -68,5 +68,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME || 'spotify-analyzer' }}
+          command: deploy
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
