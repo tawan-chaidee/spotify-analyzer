@@ -138,9 +138,17 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 38 passing unit/component tests and 11 fixture-backed
+The project currently has 38 passing unit/component tests and 12 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
+
+`npm run dev:mock` opens the dashboard fixture directly and intentionally skips
+Spotify authentication. To exercise both setup modes with mocked OAuth and APIs,
+run:
+
+```bash
+npx playwright test e2e/oauth.spec.ts
+```
 
 ### Visual regression baselines
 
