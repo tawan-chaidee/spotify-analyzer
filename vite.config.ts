@@ -6,8 +6,17 @@ import { defineConfig, loadEnv } from "vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".");
+  const appMode =
+    mode === "mock-auth"
+      ? "mock-auth"
+      : mode === "demo" || mode === "mock"
+        ? "demo"
+        : "live";
   const dataSource =
-    mode === "mock" || env.VITE_DATA_SOURCE === "mock" ? "mock" : "live";
+    appMode === "live" && env.VITE_DATA_SOURCE !== "mock"
+      ? "live"
+      : "mock";
+  const authSource = appMode === "mock-auth" ? "mock" : "real";
   const siteUrl = normalizeSiteUrl(env.VITE_SITE_URL);
   let outputDirectory = "";
 
@@ -89,6 +98,8 @@ export default defineConfig(({ mode }) => {
       strictPort: true,
     },
     define: {
+      __APP_MODE__: JSON.stringify(appMode),
+      __AUTH_SOURCE__: JSON.stringify(authSource),
       __DATA_SOURCE__: JSON.stringify(
         dataSource,
       ),

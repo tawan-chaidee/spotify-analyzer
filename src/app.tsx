@@ -25,6 +25,7 @@ import {
   appPath,
   clearAuth,
   createAuthService,
+  createMockAuthService,
   redirectUri,
 } from "./services/auth";
 import { CONTENT } from "./services/content";
@@ -44,6 +45,8 @@ import {
   saveOwnerSpotifyApp,
 } from "./services/spotify-app";
 
+const APP_MODE = __APP_MODE__;
+const AUTH_SOURCE = __AUTH_SOURCE__;
 const DATA_SOURCE = __DATA_SOURCE__;
 const OWNER_CLIENT_ID = (
   import.meta.env.VITE_SPOTIFY_CLIENT_ID || ""
@@ -53,6 +56,12 @@ const EMPTY_DATA: ListeningData = {
   tracks: { short_term: [], medium_term: [], long_term: [] },
   artists: { short_term: [], medium_term: [], long_term: [] },
 };
+
+function createSpotifyAuth(clientId: string) {
+  return AUTH_SOURCE === "mock"
+    ? createMockAuthService({ clientId })
+    : createAuthService({ clientId });
+}
 
 export function App() {
   const [data, setData] = useState<ListeningData>(EMPTY_DATA);
@@ -73,17 +82,14 @@ export function App() {
   const [shareStatus, setShareStatus] = useState("");
   const [spotifyApp, setSpotifyApp] =
     useState<SelectedSpotifyApp | null>(() =>
-      DATA_SOURCE === "mock"
+      APP_MODE === "demo"
         ? null
         : readSpotifyApp(OWNER_CLIENT_ID),
     );
   const initialized = useRef(false);
 
   const auth = useMemo(
-    () =>
-      createAuthService({
-        clientId: spotifyApp?.clientId || "",
-      }),
+    () => createSpotifyAuth(spotifyApp?.clientId || ""),
     [spotifyApp?.clientId],
   );
   const spotify: SpotifyClient =
@@ -156,7 +162,7 @@ export function App() {
         return;
       }
 
-      if (DATA_SOURCE === "mock") {
+      if (APP_MODE === "demo") {
         await loadDashboard("mock");
         return;
       }
@@ -225,7 +231,10 @@ export function App() {
     setMessage("");
     setIsError(false);
     try {
-      await auth.beginLogin(remember);
+      const result = await auth.beginLogin(remember);
+      if (result === "authenticated") {
+        await loadDashboard("private");
+      }
     } catch (error) {
       setIsError(true);
       setMessage(
@@ -245,10 +254,11 @@ export function App() {
       if (spotifyApp?.clientId !== clientId) clearAuth();
       const selection = saveOwnSpotifyApp(clientId);
       setSpotifyApp(selection);
-      const ownAuth = createAuthService({
-        clientId: selection.clientId,
-      });
-      await ownAuth.beginLogin(remember);
+      const ownAuth = createSpotifyAuth(selection.clientId);
+      const result = await ownAuth.beginLogin(remember);
+      if (result === "authenticated") {
+        await loadDashboard("private");
+      }
     } catch (error) {
       setIsError(true);
       setMessage(
@@ -268,10 +278,11 @@ export function App() {
       if (spotifyApp?.clientId !== OWNER_CLIENT_ID) clearAuth();
       const selection = saveOwnerSpotifyApp(OWNER_CLIENT_ID);
       setSpotifyApp(selection);
-      const ownerAuth = createAuthService({
-        clientId: selection.clientId,
-      });
-      await ownerAuth.beginLogin(remember);
+      const ownerAuth = createSpotifyAuth(selection.clientId);
+      const result = await ownerAuth.beginLogin(remember);
+      if (result === "authenticated") {
+        await loadDashboard("private");
+      }
     } catch (error) {
       setIsError(true);
       setMessage(

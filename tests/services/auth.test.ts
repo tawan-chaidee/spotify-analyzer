@@ -4,6 +4,7 @@ import {
   AUTH_TOKEN_STORAGE_KEY,
   clearAuth,
   createAuthService,
+  createMockAuthService,
   readAuth,
   redirectUriFor,
 } from "../../src/services/auth";
@@ -73,6 +74,28 @@ describe("Spotify redirect URI", () => {
         pathname: "/index.html",
       }),
     ).toBe("");
+  });
+});
+
+describe("mock Spotify authentication", () => {
+  beforeEach(() => {
+    clearAuth();
+  });
+
+  it("creates a client-scoped session without contacting Spotify", async () => {
+    const auth = createMockAuthService({
+      clientId: "client-id",
+      now: () => 10_000,
+    });
+
+    await expect(auth.beginLogin(false)).resolves.toBe("authenticated");
+    await expect(auth.getAccessToken()).resolves.toBe(
+      "mock-access-token",
+    );
+    expect(readAuth("client-id")?.accessToken).toBe(
+      "mock-access-token",
+    );
+    expect(readAuth("another-client-id")).toBeNull();
   });
 });
 

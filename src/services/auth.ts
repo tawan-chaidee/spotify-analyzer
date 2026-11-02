@@ -24,6 +24,16 @@ interface AuthDependencies {
   now?: () => number;
 }
 
+export type LoginStart = "redirecting" | "authenticated";
+
+export interface AuthService {
+  readAuth(): StoredSpotifyAuthWithPersistence | null;
+  clearAuth(): void;
+  getAccessToken(forceRefresh?: boolean): Promise<string>;
+  beginLogin(remember: boolean): Promise<LoginStart>;
+  completeLogin(params: URLSearchParams): Promise<void>;
+}
+
 function randomString(length: number): string {
   const alphabet =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -149,7 +159,7 @@ export function createAuthService({
   fetchImpl = fetch,
   navigate = (url) => window.location.assign(url),
   now = Date.now,
-}: AuthDependencies) {
+}: AuthDependencies): AuthService {
   async function tokenRequest(
     body: Record<string, string>,
   ): Promise<Record<string, unknown>> {
@@ -243,7 +253,7 @@ export function createAuthService({
     clearAuth,
     getAccessToken,
 
-    async beginLogin(remember: boolean): Promise<void> {
+    async beginLogin(remember: boolean): Promise<LoginStart> {
       if (!clientId) {
         throw new Error(
           "Choose a Spotify app before starting authorization.",
@@ -275,6 +285,7 @@ export function createAuthService({
         code_challenge: challenge,
       });
       navigate(`${AUTHORIZE_URL}?${params}`);
+      return "redirecting";
     },
 
     async completeLogin(params: URLSearchParams): Promise<void> {
@@ -324,4 +335,43 @@ export function createAuthService({
   };
 }
 
-export type AuthService = ReturnType<typeof createAuthService>;
+export function createMockAuthService({
+  clientId,
+  now = Date.now,
+}: Pick<AuthDependencies, "clientId" | "now">): AuthService {
+  return {
+    readAuth: () => readAuth(clientId),
+    clearAuth,
+
+    async getAccessToken(): Promise<string> {
+      const current = readAuth(clientId);
+      if (!current) {
+        throw new Error("Mock Spotify authorization has expired.");
+      }
+      return current.accessToken;
+    },
+
+    async beginLogin(remember: boolean): Promise<LoginStart> {
+      if (!clientId) {
+        throw new Error(
+          "Choose a Spotify app before starting mock authorization.",
+        );
+      }
+      saveAuth(
+        clientId,
+        {
+          accessToken: "mock-access-token",
+          refreshToken: "mock-refresh-token",
+          accessTokenExpiresAt: now() + 60 * 60 * 1000,
+          refreshTokenIssuedAt: now(),
+        },
+        remember,
+      );
+      return "authenticated";
+    },
+
+    async completeLogin(): Promise<void> {
+      return;
+    },
+  };
+}

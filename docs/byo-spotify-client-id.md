@@ -13,6 +13,14 @@ deploy, or share the owner's limited Spotify allowlist.
 The dashboard, exports, and shared snapshots remain unchanged. Only the source
 of the Spotify Client ID changes.
 
+Runtime profiles are explicit:
+
+```text
+dev                  live data + real Spotify authentication
+dev:demo             fixture data + no authentication
+dev:mock-auth        fixture data + mocked authentication through BYO/Owner
+```
+
 ## Problem
 
 The current build uses one public Client ID configured through
@@ -565,6 +573,7 @@ Include direct links:
 - [x] Add `403` recovery and change-app controls.
 - [x] Update unit, component, and browser tests.
 - [x] Rewrite the README user flow.
+- [x] Add `dev:demo` and `dev:mock-auth` runtime profiles.
 - [ ] Deploy a preview and verify with a real custom Spotify app.
 - [ ] Merge to `main` after the preview verification.
 

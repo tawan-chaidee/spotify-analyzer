@@ -84,10 +84,25 @@ Run the fixture-backed demo without Spotify credentials:
 
 ```bash
 npm ci
-npm run dev:mock
+npm run dev:demo
 ```
 
 Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
+`npm run dev:mock` remains as a backward-compatible alias for the same
+dashboard-only demo.
+
+## Mock authentication
+
+To exercise the real BYO and Owner Access screens without contacting Spotify:
+
+```bash
+npm run dev:mock-auth
+```
+
+Choose either connection path and provide a valid-format test Client ID. The
+app creates a synthetic browser-only session and opens the fixture dashboard.
+No Spotify authorization or API request is made.
 
 ## Local development
 
@@ -138,12 +153,13 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 38 passing unit/component tests and 12 fixture-backed
+The project currently has 39 passing unit/component tests and 12 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 
-`npm run dev:mock` opens the dashboard fixture directly and intentionally skips
-Spotify authentication. To exercise both setup modes with mocked OAuth and APIs,
+`npm run dev:demo` opens the dashboard fixture directly and intentionally skips
+Spotify authentication. `npm run dev:mock-auth` displays both authentication
+paths. To exercise the real callback flow with mocked OAuth and API responses,
 run:
 
 ```bash
