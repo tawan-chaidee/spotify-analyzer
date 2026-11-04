@@ -1,7 +1,7 @@
 # Bring Your Own Spotify App
 
-Status: Implemented on feature branch
-Branch: `feature/byo-spotify-client-id`
+Status: Implemented on Svelte migration branch
+Branch: `migration/svelte`
 Last updated: 2026-11-02
 
 ## Summary
@@ -447,10 +447,12 @@ names to users.
 Implemented files:
 
 ```text
-src/app.tsx
-src/pages/connection-page.tsx
-src/components/connection-card.tsx
-src/components/client-id-setup.tsx
+src/App.svelte
+src/routes/ConnectionPage.svelte
+src/components/ConnectionCard.svelte
+src/components/ClientIdSetup.svelte
+src/features/spotify/session.svelte.ts
+src/features/dashboard/dashboard.svelte.ts
 src/services/spotify-app.ts
 src/services/auth.ts
 src/services/content.ts
@@ -458,11 +460,9 @@ src/models/auth.ts
 src/api/spotify/client.ts
 ```
 
-Keep dashboard, ranking, export, and sharing components unchanged.
-
-App-level orchestration remains in `App`. A separate session hook or state
-machine is intentionally deferred until the flow becomes complex enough to
-justify it.
+The authentication and dashboard state are isolated in Svelte controller
+classes. Spotify API, ranking, export, sharing, and domain models remain
+framework-independent.
 
 ## Test plan
 

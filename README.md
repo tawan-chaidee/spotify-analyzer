@@ -3,12 +3,12 @@
 Turn your Spotify top tracks and artists into rankings you can compare,
 export, and share.
 
-Spotify Top Explorer is a static listening-insights app built with React and
+Spotify Top Explorer is a static listening-insights app built with Svelte and
 TypeScript. It loads all three available Spotify time ranges, shows movement
 against the yearly ranking, exports CSV or JSON, and creates read-only share
 links that recipients can open without Spotify access.
 
-[![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/)
+[![Svelte](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
@@ -131,8 +131,8 @@ VITE_SITE_URL=http://127.0.0.1:8000/
 ```
 
 The Spotify Client ID is public. This project does not use a Client Secret.
-Select **Owner Access** on the connection screen to use it. Mock mode is
-selected by `npm run dev:mock`; no environment changes are needed.
+Select **Owner Access** on the connection screen to use it. Use
+`npm run dev:demo` for fixture data without authentication.
 
 ## How it works
 
@@ -144,9 +144,12 @@ Spotify OAuth
   → exports or compressed share links
 ```
 
-Live and mock data implement the same `SpotifyClient` boundary. React handles
+Live and mock data implement the same `SpotifyClient` boundary. Svelte handles
 presentation; authentication, API access, ranking calculations, exports, and
 sharing remain framework-independent services.
+
+Framework and state-boundary details are documented in
+[docs/svelte-migration.md](docs/svelte-migration.md).
 
 ## Tests
 
@@ -156,7 +159,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 40 passing unit/component tests and 12 fixture-backed
+The project currently has 41 passing unit/component tests and 12 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 

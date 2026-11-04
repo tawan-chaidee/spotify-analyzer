@@ -10,11 +10,11 @@ export const CONTENT = {
     logo: "ST",
   },
   connection: {
-    eyebrow: "Spotify top-list explorer",
+    sectionLabel: "Spotify top-list explorer",
     title: "Your listening taste, ranked.",
     description:
       "Compare your top artists and tracks across the last four weeks, six months, and year. Export every ranking as CSV or JSON.",
-    ownEyebrow: "One-time setup",
+    ownSectionLabel: "One-time setup",
     ownTitle: "Use Your Spotify App",
     ownDescription:
       "Create or choose your own Spotify Developer app. No downloading or deployment is required.",
@@ -64,10 +64,10 @@ export const CONTENT = {
       "Spotify rejected this app or account. Check that the account can use the Spotify app.",
   },
   dashboard: {
-    ownerEyebrow: "Spotify top-list explorer",
+    ownerSectionLabel: "Spotify top-list explorer",
     ownerTitle: "Your listening taste.",
     ownerNote: "Based on calculated rankings, up to 50 items per range.",
-    sharedEyebrow: "Shared with you",
+    sharedSectionLabel: "Shared with you",
     sharedTitle: "Your friend’s taste.",
     sharedNote:
       "Explore the tracks and artists your friend has been listening to lately. No Spotify login needed.",
