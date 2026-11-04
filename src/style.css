@@ -3,15 +3,15 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
-  --color-main: #0b0d0c;
-  --color-secondary: #151816;
-  --color-highlight: #1ed760;
-  --color-on-highlight: #061008;
-  --color-foreground: #f5f7f5;
-  --color-muted: #9ba39d;
-  --color-line: rgba(255, 255, 255, 0.1);
-  --color-danger: #ff8f88;
-  --color-info: #8dc8ff;
+  --color-main: #070908;
+  --color-secondary: #171b18;
+  --color-highlight: #26e467;
+  --color-on-highlight: #041108;
+  --color-foreground: #ffffff;
+  --color-muted: #b6beb8;
+  --color-line: rgba(255, 255, 255, 0.16);
+  --color-danger: #ff9e97;
+  --color-info: #9bd3ff;
 
   --radius-card: 1.125rem;
   --radius-control: 0.75rem;
@@ -26,8 +26,8 @@
   body {
     @apply min-h-screen bg-main text-foreground antialiased;
     background-image:
-      radial-gradient(circle at 15% -10%, rgba(30, 215, 96, 0.18), transparent 30rem),
-      radial-gradient(circle at 90% 0%, rgba(104, 190, 255, 0.09), transparent 28rem);
+      radial-gradient(circle at 15% -10%, rgba(38, 228, 103, 0.14), transparent 30rem),
+      radial-gradient(circle at 90% 0%, rgba(155, 211, 255, 0.1), transparent 28rem);
     font-family:
       Inter,
       ui-sans-serif,

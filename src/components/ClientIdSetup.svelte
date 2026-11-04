@@ -177,7 +177,7 @@
     placeholder={CONTENT.connection.clientIdPlaceholder}
     aria-invalid={Boolean(inputError)}
     aria-describedby={inputError ? "spotify-client-id-error" : undefined}
-    class="min-h-11 w-full rounded-control border border-line bg-main/40 px-3 font-mono text-sm text-foreground outline-none placeholder:text-muted/60 focus:border-highlight"
+    class="min-h-11 w-full rounded-control border border-line bg-main/40 px-3 font-mono text-sm text-foreground outline-none placeholder:text-muted/75 focus:border-highlight"
   />
   {#if inputError}
     <p
