@@ -5,7 +5,7 @@ import {
 import type { DashboardSelection } from "../../models/dashboard";
 import {
   type ListeningData,
-  type ListeningType,
+  type RankingType,
   type TimeRange,
 } from "../../models/listening";
 import { createDashboardModel } from "../../services/dashboard";
@@ -35,7 +35,7 @@ export class DashboardController {
 
   model = $derived(createDashboardModel(this.data, this.selection));
 
-  setType(type: ListeningType): void {
+  setType(type: RankingType): void {
     this.selection = { ...this.selection, type };
   }
 

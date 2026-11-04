@@ -19,7 +19,14 @@ test("loads the private dashboard and switches rankings", async ({
   ).toBeVisible();
 
   await page.getByText("4 weeks", { exact: true }).click();
-  await expect(page.getByText(/Showing all 50/)).toBeVisible();
+  await expect(page.getByText(/Showing all 7/)).toBeVisible();
+
+  await page.getByText("Albums", { exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Top albums" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "How albums are ranked" }),
+  ).toBeVisible();
+  await expect(page.getByText("score = Σ (N − track rank + 1)")).toBeVisible();
 });
 
 test("downloads a fixture-backed CSV", async ({ page }) => {
@@ -43,6 +50,26 @@ test("uses the fixture on a mobile viewport", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.getByText("Your listening taste.")).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+});
+
+test("explains inferred album rankings on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedAuth(page);
+  await mockSpotify(page);
+  await page.goto("/");
+
+  await page.getByText("Albums", { exact: true }).click();
+
+  await expect(page.getByRole("heading", { name: "Top albums" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "How albums are ranked" }),
+  ).toBeVisible();
+  await expect(page.getByText(/Deluxe editions remain separate/)).toBeVisible();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,

@@ -5,6 +5,7 @@
     rangeLabel,
     rankingTitle,
   } from "../services/content";
+  import AlbumRankingMethod from "./AlbumRankingMethod.svelte";
   import Panel from "./Panel.svelte";
   import RankingRow from "./RankingRow.svelte";
 
@@ -25,6 +26,9 @@
   {subtitle}
   dataComponent="ranking-list"
 >
+  {#if model.type === "albums"}
+    <AlbumRankingMethod />
+  {/if}
   <ol class="m-0 grid list-none gap-2 p-0">
     {#if model.rows.length === 0}
       <li role="status" class="px-2 py-6 text-center text-muted">

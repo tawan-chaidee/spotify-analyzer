@@ -1,5 +1,5 @@
 import type {
-  ListeningType,
+  RankingType,
   TimeRange,
   Trend,
 } from "../models/listening";
@@ -84,6 +84,7 @@ export const CONTENT = {
     rangeLabel: "Time range",
     tracks: "Tracks",
     artists: "Artists",
+    albums: "Albums",
   },
   range: {
     short_term: {
@@ -103,7 +104,8 @@ export const CONTENT = {
     title: {
       tracks: "Top tracks",
       artists: "Top artists",
-    } satisfies Record<ListeningType, string>,
+      albums: "Top albums",
+    } satisfies Record<RankingType, string>,
     showingPrefix: "Showing all",
     movement: "Movement vs 1 year",
     empty: "No ranking data is available for this selection.",
@@ -112,6 +114,17 @@ export const CONTENT = {
     trackKicker: "#1 track",
     albumKicker: "Top album",
     artistMeta: "Spotify artist",
+    albumMethod: {
+      title: "How albums are ranked",
+      badge: "Inferred",
+      description:
+        "Spotify does not provide a personal top-albums endpoint. Albums are inferred by grouping the tracks already present in your current top list.",
+      formula: "score = Σ (N − track rank + 1)",
+      coverage:
+        "Only albums represented by at least one track in the selected top list are included. Deluxe editions remain separate.",
+      movement:
+        "Movement compares this inferential 6-month album ranking with the same calculation over your 1-year top tracks.",
+    },
   },
   trend: {
     label: {
@@ -139,7 +152,8 @@ export const CONTENT = {
     sharedInAllRanges: {
       tracks: "Tracks in all three ranges",
       artists: "Artists in all three ranges",
-    } satisfies Record<ListeningType, string>,
+      albums: "Albums in all three ranges",
+    } satisfies Record<RankingType, string>,
     currentItems: "Current ranked items",
     releaseYearsPrefix: "Release years in current top",
     noReleaseYears: "No release-date data available.",
@@ -154,7 +168,7 @@ export const CONTENT = {
   },
 } as const;
 
-export function rankingTitle(type: ListeningType): string {
+export function rankingTitle(type: RankingType): string {
   return CONTENT.ranking.title[type];
 }
 

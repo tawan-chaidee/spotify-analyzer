@@ -4,6 +4,7 @@
     createSpotifyClient,
     type SpotifyClient,
   } from "./api/spotify/client";
+  import AmbientCurrent from "./components/AmbientCurrent.svelte";
   import AppHeader from "./components/AppHeader.svelte";
   import { DashboardController } from "./features/dashboard/dashboard.svelte";
   import { SpotifySession } from "./features/spotify/session.svelte";
@@ -179,44 +180,47 @@
   }
 </script>
 
-<div
-  class="mx-auto w-[min(1180px,calc(100%-32px))] py-7 pb-14 max-[560px]:w-[calc(100%-22px)] max-[560px]:pt-4"
->
-  <AppHeader
-    {mode}
-    status={shareStatus}
-    isMock={DATA_SOURCE === "mock"}
-    onshare={page === "dashboard" ? share : undefined}
-    ondisconnect={mode === "private" && page === "dashboard"
-      ? disconnect
-      : undefined}
-    onowntaste={mode === "shared" ? ownTaste : undefined}
-  />
-
-  {#if page === "connection"}
-    <ConnectionPage
-      selectedApp={session.selectedApp}
-      ownerAvailable={session.ownerAvailable}
-      initialClientId={session.initialClientId}
-      remember={session.remember}
-      redirectUri={callback}
-      message={session.message}
-      isError={session.isError}
-      busy={session.busy}
-      onrememberchange={(value) => (session.remember = value)}
-      onconnect={connect}
-      onclientidsubmit={connectWithOwnApp}
-      onowneraccess={connectWithOwnerApp}
-      onchangeapp={changeSpotifyApp}
-    />
-  {:else}
-    <DashboardPage
-      model={dashboard.model}
-      data={dashboard.data}
+<div class="relative isolate min-h-screen overflow-x-clip">
+  <AmbientCurrent />
+  <div
+    class="relative z-10 mx-auto w-[min(1180px,calc(100%-32px))] py-7 pb-14 max-[560px]:w-[calc(100%-22px)] max-[560px]:pt-4"
+  >
+    <AppHeader
       {mode}
-      busy={dashboard.loading}
-      ontypechange={(type) => dashboard.setType(type)}
-      onrangechange={(range) => dashboard.setRange(range)}
+      status={shareStatus}
+      isMock={DATA_SOURCE === "mock"}
+      onshare={page === "dashboard" ? share : undefined}
+      ondisconnect={mode === "private" && page === "dashboard"
+        ? disconnect
+        : undefined}
+      onowntaste={mode === "shared" ? ownTaste : undefined}
     />
-  {/if}
+
+    {#if page === "connection"}
+      <ConnectionPage
+        selectedApp={session.selectedApp}
+        ownerAvailable={session.ownerAvailable}
+        initialClientId={session.initialClientId}
+        remember={session.remember}
+        redirectUri={callback}
+        message={session.message}
+        isError={session.isError}
+        busy={session.busy}
+        onrememberchange={(value) => (session.remember = value)}
+        onconnect={connect}
+        onclientidsubmit={connectWithOwnApp}
+        onowneraccess={connectWithOwnerApp}
+        onchangeapp={changeSpotifyApp}
+      />
+    {:else}
+      <DashboardPage
+        model={dashboard.model}
+        data={dashboard.data}
+        {mode}
+        busy={dashboard.loading}
+        ontypechange={(type) => dashboard.setType(type)}
+        onrangechange={(range) => dashboard.setRange(range)}
+      />
+    {/if}
+  </div>
 </div>

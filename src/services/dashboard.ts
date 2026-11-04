@@ -12,6 +12,7 @@ import type {
   Trend,
 } from "../models/listening";
 import { TIME_RANGES } from "../models/listening";
+import { rankAlbums } from "./albums";
 import { CONTENT } from "./content";
 import { formatDuration } from "../utils/format";
 
@@ -20,47 +21,62 @@ export function createDashboardModel(
   selection: DashboardSelection,
 ): DashboardModel {
   const tracks = data.tracks[selection.range];
-  const showTrend =
-    selection.type === "tracks" && selection.range === "medium_term";
+  const showTrend = selection.range === "medium_term";
+  const itemsFor = (range: DashboardSelection["range"]) => {
+    if (selection.type === "tracks") return data.tracks[range];
+    if (selection.type === "artists") return data.artists[range];
+    return rankAlbums(data.tracks[range]);
+  };
+  const currentItems = itemsFor(selection.range);
   const yearlyRanks = new Map(
-    data.tracks.long_term.map((track, index) => [track.id, index + 1]),
+    itemsFor("long_term").map((item, index) => [item.id, index + 1]),
   );
 
-  const rows: RankingRow[] =
-    selection.type === "tracks"
-      ? data.tracks[selection.range].map((track, index) => ({
-          id: track.id,
-          rank: index + 1,
-          title: track.title,
-          subtitle: `${track.artistNames.join(", ")} · ${track.album.title}`,
-          imageUrl: track.album.imageUrl,
-          spotifyUrl: track.spotifyUrl,
-          trend: showTrend
-            ? createTrend(yearlyRanks.get(track.id), index + 1)
-            : undefined,
-        }))
-      : data.artists[selection.range].map((artist, index) => ({
-          id: artist.id,
-          rank: index + 1,
-          title: artist.name,
-          subtitle: CONTENT.ranking.artistMeta,
-          imageUrl: artist.imageUrl,
-          spotifyUrl: artist.spotifyUrl,
-        }));
+  let rows: RankingRow[];
+  if (selection.type === "tracks") {
+    rows = data.tracks[selection.range].map((track, index) => ({
+      id: track.id,
+      rank: index + 1,
+      title: track.title,
+      subtitle: `${track.artistNames.join(", ")} · ${track.album.title}`,
+      imageUrl: track.album.imageUrl,
+      spotifyUrl: track.spotifyUrl,
+      trend: showTrend
+        ? createTrend(yearlyRanks.get(track.id), index + 1)
+        : undefined,
+    }));
+  } else if (selection.type === "artists") {
+    rows = data.artists[selection.range].map((artist, index) => ({
+      id: artist.id,
+      rank: index + 1,
+      title: artist.name,
+      subtitle: CONTENT.ranking.artistMeta,
+      imageUrl: artist.imageUrl,
+      spotifyUrl: artist.spotifyUrl,
+      trend: showTrend
+        ? createTrend(yearlyRanks.get(artist.id), index + 1)
+        : undefined,
+    }));
+  } else {
+    rows = rankAlbums(tracks).map((album) => ({
+      ...album,
+      trend: showTrend
+        ? createTrend(yearlyRanks.get(album.id), album.rank)
+        : undefined,
+    }));
+  }
 
-  const selectedByRange =
-    selection.type === "tracks" ? data.tracks : data.artists;
   const mediumIds = new Set(
-    selectedByRange.medium_term.map((item) => item.id),
+    itemsFor("medium_term").map((item) => item.id),
   );
   const longIds = new Set(
-    selectedByRange.long_term.map((item) => item.id),
+    itemsFor("long_term").map((item) => item.id),
   );
-  const sharedItemCount = selectedByRange.short_term.filter(
+  const sharedItemCount = itemsFor("short_term").filter(
     (item) => mediumIds.has(item.id) && longIds.has(item.id),
   ).length;
 
-  const currentItemCount = selectedByRange[selection.range].length;
+  const currentItemCount = currentItems.length;
 
   return {
     selection,
@@ -122,44 +138,13 @@ function createSpotlights(tracks: Track[]): SpotlightCard[] {
     });
   }
 
-  const albums = new Map<
-    string,
-    {
-      title: string;
-      imageUrl: string;
-      spotifyUrl: string;
-      artists: string;
-      count: number;
-      bestRank: number;
-    }
-  >();
-  tracks.forEach((track, index) => {
-    const key =
-      track.album.id ||
-      `${track.album.title}|${track.artistNames.join(",")}`;
-    const existing = albums.get(key) || {
-      title: track.album.title,
-      imageUrl: track.album.imageUrl,
-      spotifyUrl: track.album.spotifyUrl,
-      artists: track.artistNames.join(", "),
-      count: 0,
-      bestRank: index + 1,
-    };
-    existing.count += 1;
-    existing.bestRank = Math.min(existing.bestRank, index + 1);
-    albums.set(key, existing);
-  });
-
-  const topAlbum = [...albums.values()].sort(
-    (left, right) =>
-      right.count - left.count || left.bestRank - right.bestRank,
-  )[0];
+  const topAlbum = rankAlbums(tracks)[0];
   if (topAlbum) {
     cards.push({
       kind: "album",
       title: topAlbum.title,
-      subtitle: `${topAlbum.artists} · ${topAlbum.count} ranked ${
-        topAlbum.count === 1 ? "track" : "tracks"
+      subtitle: `${topAlbum.artistNames} · ${topAlbum.trackCount} ranked ${
+        topAlbum.trackCount === 1 ? "track" : "tracks"
       }`,
       imageUrl: topAlbum.imageUrl,
       spotifyUrl: topAlbum.spotifyUrl,

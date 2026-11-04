@@ -3,7 +3,7 @@
   import type { DashboardModel } from "../models/dashboard";
   import type {
     ListeningData,
-    ListeningType,
+    RankingType,
     TimeRange,
   } from "../models/listening";
   import DashboardHeader from "../components/DashboardHeader.svelte";
@@ -19,7 +19,7 @@
     data: ListeningData;
     mode: DashboardMode;
     busy: boolean;
-    ontypechange: (type: ListeningType) => void;
+    ontypechange: (type: RankingType) => void;
     onrangechange: (range: TimeRange) => void;
   };
 
@@ -67,6 +67,7 @@
         {data}
         type={model.selection.type}
         range={model.selection.range}
+        currentCount={model.exports.currentCount}
         totalCount={model.exports.totalCount}
       />
     </aside>

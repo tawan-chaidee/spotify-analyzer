@@ -159,8 +159,30 @@ const rangeKeys = {
   long_term: longKeys,
 };
 
+const topArtists = approvedArtists.slice(0, 7);
+const artistRangeIds = {
+  short_term: [
+    topArtists[1].id,
+    topArtists[0].id,
+    topArtists[6].id,
+    topArtists[2].id,
+    topArtists[5].id,
+    topArtists[4].id,
+    topArtists[3].id,
+  ],
+  medium_term: topArtists.map((artist) => artist.id),
+  long_term: [
+    topArtists[2].id,
+    topArtists[1].id,
+    topArtists[0].id,
+    topArtists[3].id,
+    topArtists[5].id,
+    topArtists[4].id,
+  ],
+};
+
 const fixture = {
-  fixture_version: 3,
+  fixture_version: 4,
   tracks: {},
   artists: {},
 };
@@ -170,17 +192,20 @@ for (const range of ranges) {
     items: rangeKeys[range].map((trackId) => trackRecord(trackById.get(trackId))),
   };
 
-  const artistItems = [];
-  for (let index = 0; index < 50; index += 1) {
-    artistItems.push(fixtureArtist(approvedArtists[index % approvedArtists.length].id));
-  }
+  // Artist rankings contain unique artists. Repeating a short catalog would make
+  // every medium-term artist look like a large riser against its final duplicate
+  // in the yearly ranking.
+  const artistItems = artistRangeIds[range].map(fixtureArtist);
   fixture.artists[range] = { items: artistItems };
 
   if (fixture.tracks[range].items.length !== 50) {
     throw new Error(`${range} must contain exactly 50 tracks`);
   }
-  if (fixture.artists[range].items.length !== 50) {
-    throw new Error(`${range} must contain exactly 50 artists`);
+  if (
+    new Set(fixture.artists[range].items.map((artist) => artist.id)).size !==
+    fixture.artists[range].items.length
+  ) {
+    throw new Error(`${range} artist rankings must contain unique artists`);
   }
 }
 
