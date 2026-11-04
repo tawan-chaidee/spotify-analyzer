@@ -13,6 +13,17 @@ import type {
 
 const API_URL = "https://api.spotify.com/v1";
 
+export class SpotifyApiError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly retryAfter?: string,
+  ) {
+    super(message);
+    this.name = "SpotifyApiError";
+  }
+}
+
 export interface SpotifyClient {
   getTopTracks(range: TimeRange, limit: number): Promise<Track[]>;
   getTopArtists(range: TimeRange, limit: number): Promise<Artist[]>;
@@ -74,15 +85,18 @@ export function createSpotifyClient({
 async function parseResponse<T>(response: Response): Promise<T> {
   if (response.status === 429) {
     const retryAfter = response.headers.get("Retry-After") || "a moment";
-    throw new Error(
+    throw new SpotifyApiError(
       `Spotify rate limit reached. Try again in ${retryAfter} seconds.`,
+      response.status,
+      retryAfter,
     );
   }
 
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(
+    throw new SpotifyApiError(
       data.error?.message || `Spotify request failed (${response.status}).`,
+      response.status,
     );
   }
   return data as T;

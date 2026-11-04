@@ -26,7 +26,7 @@ export default defineConfig({
     env: {
       ...process.env,
       VITE_DATA_SOURCE: "live",
-      VITE_SPOTIFY_CLIENT_ID: "playwright-client-id",
+      VITE_SPOTIFY_CLIENT_ID: "0123456789abcdef0123456789abcdef",
     },
   },
 });

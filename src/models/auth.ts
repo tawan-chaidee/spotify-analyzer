@@ -1,5 +1,13 @@
+export type SpotifyAppSource = "own" | "owner";
+
+export interface SelectedSpotifyApp {
+  source: SpotifyAppSource;
+  clientId: string;
+}
+
 export interface StoredSpotifyAuth {
-  version: 1;
+  version: 2;
+  clientId: string;
   accessToken: string;
   refreshToken: string;
   accessTokenExpiresAt: number;

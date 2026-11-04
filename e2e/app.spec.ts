@@ -49,3 +49,37 @@ test("uses the fixture on a mobile viewport", async ({ page }) => {
     ),
   ).toBe(true);
 });
+
+test("explains when Owner Access is not allowlisted", async ({ page }) => {
+  await seedAuth(page);
+  await page.route("https://api.spotify.com/v1/me/top/**", async (route) => {
+    await route.fulfill({
+      status: 403,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Forbidden" } }),
+    });
+  });
+  await page.goto("/");
+
+  await expect(
+    page.getByText(/not approved for Owner Access/i),
+  ).toBeVisible();
+});
+
+test("changing Spotify apps clears the old connection", async ({ page }) => {
+  await seedAuth(page);
+  await mockSpotify(page);
+  await page.goto("/");
+
+  await page.getByRole("button", { name: "Disconnect" }).click();
+  await page.getByRole("button", { name: "Change Spotify app" }).click();
+
+  await expect(
+    page.getByRole("heading", { name: "Use Your Spotify App" }),
+  ).toBeVisible();
+  expect(
+    await page.evaluate(() =>
+      localStorage.getItem("spotify-top-explorer-token"),
+    ),
+  ).toBeNull();
+});

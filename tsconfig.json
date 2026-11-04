@@ -11,14 +11,16 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "isolatedModules": true
   },
   "include": [
     "src",
     "tests",
+    "src/**/*.svelte",
+    "svelte.config.js",
     "vite.config.ts",
     "vitest.config.ts",
     "playwright.config.ts"

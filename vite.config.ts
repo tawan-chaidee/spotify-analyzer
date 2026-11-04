@@ -1,19 +1,28 @@
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { defineConfig, loadEnv } from "vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".");
+  const appMode =
+    mode === "mock-auth"
+      ? "mock-auth"
+      : mode === "demo" || mode === "mock"
+        ? "demo"
+        : "live";
   const dataSource =
-    mode === "mock" || env.VITE_DATA_SOURCE === "mock" ? "mock" : "live";
+    appMode === "live" && env.VITE_DATA_SOURCE !== "mock"
+      ? "live"
+      : "mock";
+  const authSource = appMode === "mock-auth" ? "mock" : "real";
   const siteUrl = normalizeSiteUrl(env.VITE_SITE_URL);
   let outputDirectory = "";
 
   return {
     plugins: [
-      react(),
+      svelte(),
       tailwindcss(),
       {
         name: "exclude-mock-assets-from-live-build",
@@ -89,6 +98,8 @@ export default defineConfig(({ mode }) => {
       strictPort: true,
     },
     define: {
+      __APP_MODE__: JSON.stringify(appMode),
+      __AUTH_SOURCE__: JSON.stringify(authSource),
       __DATA_SOURCE__: JSON.stringify(
         dataSource,
       ),
