@@ -3,8 +3,14 @@ import type {
   Track,
 } from "../../models/listening";
 import type {
+  PlaylistSummary,
+  PlaylistTrack,
+} from "../../models/playlist";
+import type {
   SpotifyAlbumDto,
   SpotifyArtistDto,
+  SpotifyPlaylistDto,
+  SpotifyPlaylistTrackItemDto,
   SpotifyTrackDto,
 } from "./types";
 
@@ -53,5 +59,41 @@ export function mapSpotifyArtist(artist: SpotifyArtistDto): Artist {
       "artist",
       artist.id,
     ),
+  };
+}
+
+export function mapSpotifyPlaylist(
+  playlist: SpotifyPlaylistDto,
+  currentUserId: string,
+): PlaylistSummary {
+  const ownerId = playlist.owner?.id || "";
+
+  return {
+    id: playlist.id,
+    name: playlist.name,
+    description: playlist.description || "",
+    ownerId,
+    ownerName: playlist.owner?.display_name || "Spotify user",
+    trackCount:
+      Number(playlist.items?.total ?? playlist.tracks?.total) || 0,
+    imageUrl: playlist.images?.[0]?.url || "",
+    spotifyUrl: playlist.external_urls?.spotify
+      ? playlist.external_urls.spotify
+      : `https://open.spotify.com/playlist/${playlist.id}`,
+    isOwned: Boolean(currentUserId && ownerId === currentUserId),
+    isPublic: playlist.public === true,
+    isCollaborative: Boolean(playlist.collaborative),
+  };
+}
+
+export function mapSpotifyPlaylistTrack(
+  item: SpotifyPlaylistTrackItemDto,
+): PlaylistTrack | null {
+  const track = item.item || item.track;
+  if (!track?.id) return null;
+
+  return {
+    ...mapSpotifyTrack(track),
+    addedAt: item.added_at || "",
   };
 }

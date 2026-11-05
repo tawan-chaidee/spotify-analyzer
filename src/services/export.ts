@@ -1,9 +1,10 @@
 import type {
   ListeningData,
-  ListeningType,
+  RankingType,
   TimeRange,
 } from "../models/listening";
 import { TIME_RANGES } from "../models/listening";
+import { rankAlbums } from "./albums";
 import { rangeLabel } from "./content";
 
 export interface ExportFile {
@@ -12,12 +13,12 @@ export interface ExportFile {
   type: string;
 }
 
-function csvCell(value: unknown): string {
+export function csvCell(value: unknown): string {
   const text = String(value ?? "");
   return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 }
 
-function csv(rows: unknown[][]): string {
+export function csv(rows: unknown[][]): string {
   return `\ufeff${rows
     .map((row) => row.map(csvCell).join(","))
     .join("\n")}\n`;
@@ -25,14 +26,24 @@ function csv(rows: unknown[][]): string {
 
 export function createCurrentCsv(
   data: ListeningData,
-  type: ListeningType,
+  type: RankingType,
   range: TimeRange,
 ): ExportFile {
-  const rows: unknown[][] = [
+  const headers =
     type === "tracks"
       ? ["ranking", "track_name", "artist_name", "time_range"]
-      : ["ranking", "artist_name", "time_range"],
-  ];
+      : type === "artists"
+        ? ["ranking", "artist_name", "time_range"]
+        : [
+            "ranking",
+            "album_name",
+            "artist_name",
+            "ranked_tracks",
+            "best_track_rank",
+            "score",
+            "time_range",
+          ];
+  const rows: unknown[][] = [headers];
 
   if (type === "tracks") {
     data.tracks[range].forEach((item, index) => {
@@ -43,9 +54,21 @@ export function createCurrentCsv(
         rangeLabel(range),
       ]);
     });
-  } else {
+  } else if (type === "artists") {
     data.artists[range].forEach((item, index) => {
       rows.push([index + 1, item.name, rangeLabel(range)]);
+    });
+  } else {
+    rankAlbums(data.tracks[range]).forEach((album) => {
+      rows.push([
+        album.rank,
+        album.title,
+        album.artistNames,
+        album.trackCount,
+        album.bestTrackRank,
+        album.score,
+        rangeLabel(range),
+      ]);
     });
   }
 
@@ -58,9 +81,30 @@ export function createCurrentCsv(
 
 export function createCurrentJson(
   data: ListeningData,
-  type: ListeningType,
+  type: RankingType,
   range: TimeRange,
 ): ExportFile {
+  const items =
+    type === "tracks"
+      ? data.tracks[range].map((item, index) => ({
+          ranking: index + 1,
+          track_name: item.title,
+          artist_name: item.artistNames.join(", "),
+        }))
+      : type === "artists"
+        ? data.artists[range].map((item, index) => ({
+            ranking: index + 1,
+            artist_name: item.name,
+          }))
+        : rankAlbums(data.tracks[range]).map((album) => ({
+            ranking: album.rank,
+            album_name: album.title,
+            artist_name: album.artistNames,
+            ranked_tracks: album.trackCount,
+            best_track_rank: album.bestTrackRank,
+            score: album.score,
+          }));
+
   return {
     filename: `top-${type}-${range}.json`,
     content: JSON.stringify(
@@ -69,17 +113,7 @@ export function createCurrentJson(
         exported_at: new Date().toISOString(),
         ranking_type: type,
         time_range: rangeLabel(range),
-        items:
-          type === "tracks"
-            ? data.tracks[range].map((item, index) => ({
-                ranking: index + 1,
-                track_name: item.title,
-                artist_name: item.artistNames.join(", "),
-              }))
-            : data.artists[range].map((item, index) => ({
-                ranking: index + 1,
-                artist_name: item.name,
-              })),
+        items,
       },
       null,
       2,

@@ -1,10 +1,14 @@
 <script lang="ts">
   import type {
     ListeningData,
-    ListeningType,
+    RankingType,
     TimeRange,
   } from "../models/listening";
-  import { CONTENT, rangeLabel } from "../services/content";
+  import {
+    CONTENT,
+    rangeLabel,
+    rankingTitle,
+  } from "../services/content";
   import {
     createCompleteCsv,
     createCompleteJson,
@@ -18,18 +22,20 @@
 
   type Props = {
     data: ListeningData;
-    type: ListeningType;
+    type: RankingType;
     range: TimeRange;
+    currentCount: number;
     totalCount: number;
   };
 
-  let { data, type, range, totalCount }: Props = $props();
-  const currentCount = $derived(data[type][range].length);
-  const currentLabel = $derived(
-    type === "tracks"
-      ? CONTENT.ranking.title.tracks
-      : CONTENT.ranking.title.artists,
-  );
+  let {
+    data,
+    type,
+    range,
+    currentCount,
+    totalCount,
+  }: Props = $props();
+  const currentLabel = $derived(rankingTitle(type));
 
   function run(factory: () => ExportFile) {
     downloadExport(factory());

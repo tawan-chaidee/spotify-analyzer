@@ -17,14 +17,14 @@ export function buttonClass(options: {
   } = options;
   const variantClass =
     variant === "primary"
-      ? "bg-highlight text-on-highlight hover:brightness-105"
+      ? "bg-foreground text-main hover:scale-[1.02] hover:bg-white"
       : variant === "ghost"
-        ? "bg-transparent text-muted hover:bg-foreground/5 hover:text-foreground"
-        : "border border-line bg-secondary text-foreground hover:border-highlight/60";
+        ? "bg-transparent text-muted hover:bg-foreground/[0.06] hover:text-foreground"
+        : "border border-line bg-secondary text-foreground hover:border-foreground/30 hover:bg-[#242424]";
 
   return cn(
-    "inline-flex min-h-11 items-center justify-center rounded-control",
-    "text-sm font-extrabold transition-colors",
+    "inline-flex min-h-11 items-center justify-center rounded-pill",
+    "text-sm font-extrabold transition duration-150",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight",
     "disabled:cursor-not-allowed disabled:opacity-50",
     block && "w-full",
@@ -38,10 +38,10 @@ export type CardTone = "default" | "highlight" | "interactive";
 export type CardPadding = "none" | "sm" | "md" | "lg";
 
 const cardToneClasses: Record<CardTone, string> = {
-  default: "bg-secondary/90",
-  highlight: "bg-linear-to-br from-highlight/10 to-transparent",
+  default: "bg-secondary",
+  highlight: "bg-linear-to-br from-highlight/14 to-secondary",
   interactive:
-    "bg-linear-to-br from-highlight/10 to-transparent transition-transform hover:-translate-y-0.5",
+    "bg-linear-to-br from-highlight/10 to-secondary transition-transform hover:-translate-y-0.5 hover:bg-[#202020]",
 };
 
 const cardPaddingClasses: Record<CardPadding, string> = {
@@ -57,7 +57,7 @@ export function cardClass(options: {
   className?: string;
 }): string {
   return cn(
-    "rounded-card border border-line",
+    "rounded-card border border-foreground/[0.04]",
     cardToneClasses[options.tone ?? "default"],
     cardPaddingClasses[options.padding ?? "none"],
     options.className,

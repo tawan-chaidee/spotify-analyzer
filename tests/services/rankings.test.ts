@@ -31,6 +31,9 @@ describe("ranking orchestration", () => {
     const spotify: SpotifyClient = {
       getTopTracks: vi.fn(async (range) => [track(`track-${range}`)]),
       getTopArtists: vi.fn(async (range) => [artist(`artist-${range}`)]),
+      getCurrentUserId: vi.fn(async () => "user"),
+      getPlaylists: vi.fn(async () => []),
+      getPlaylistTracks: vi.fn(async () => []),
     };
 
     const data = await loadAllRankings(spotify);

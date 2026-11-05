@@ -95,6 +95,17 @@ export class SpotifySession {
     return this.start(this.auth);
   }
 
+  async reconnectSelected(): Promise<boolean> {
+    if (!this.selectedApp) {
+      this.message = CONTENT.connection.initialMessage;
+      this.isError = true;
+      return false;
+    }
+
+    clearAuth();
+    return this.start(this.auth);
+  }
+
   async connectWithOwnApp(clientId: string): Promise<boolean> {
     try {
       if (this.selectedApp?.clientId !== clientId) clearAuth();

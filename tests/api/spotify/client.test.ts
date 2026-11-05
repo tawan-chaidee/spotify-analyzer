@@ -82,4 +82,85 @@ describe("Spotify client", () => {
       "Spotify rate limit reached. Try again in 12 seconds.",
     );
   });
+
+  it("loads the normalized playlist library", async () => {
+    const fetchImpl = vi.fn<typeof fetch>().mockImplementation(
+      async (input) => {
+        const url = String(input);
+        if (url.endsWith("/v1/me")) {
+          return new Response(
+            JSON.stringify({ id: "user-1", display_name: "Tawan" }),
+            { status: 200 },
+          );
+        }
+        return new Response(
+          JSON.stringify({
+            items: [
+              {
+                id: "playlist-1",
+                name: "Favorites",
+                owner: { id: "user-1", display_name: "Tawan" },
+                items: { total: 8 },
+                public: false,
+              },
+            ],
+            next: null,
+          }),
+          { status: 200 },
+        );
+      },
+    );
+    const client = createSpotifyClient({
+      getAccessToken: vi.fn().mockResolvedValue("access-token"),
+      fetchImpl,
+    });
+
+    const playlists = await client.getPlaylists();
+
+    expect(playlists[0]).toMatchObject({
+      id: "playlist-1",
+      trackCount: 8,
+      isOwned: true,
+    });
+    expect(fetchImpl).toHaveBeenCalledTimes(2);
+  });
+
+  it("loads every page of playlist tracks", async () => {
+    const pageItem = {
+      added_at: "2026-01-01T00:00:00Z",
+      track: {
+        id: "track-1",
+        name: "Song",
+        artists: [{ id: "artist-1", name: "Artist" }],
+        album: { id: "album-1", name: "Album" },
+      },
+    };
+    const fullPage = Array.from({ length: 50 }, (_, index) => ({
+      ...pageItem,
+      track: { ...pageItem.track, id: `track-${index}` },
+    }));
+    const fetchImpl = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({ items: fullPage, next: "next-page" }),
+          { status: 200 },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({ items: [pageItem], next: null }), {
+          status: 200,
+        }),
+      );
+    const client = createSpotifyClient({
+      getAccessToken: vi.fn().mockResolvedValue("access-token"),
+      fetchImpl,
+    });
+
+    const tracks = await client.getPlaylistTracks("playlist-1");
+
+    expect(tracks).toHaveLength(51);
+    expect(fetchImpl.mock.calls[0][0]).toContain("/playlist-1/items");
+    expect(fetchImpl.mock.calls[1][0]).toContain("offset=50");
+  });
 });

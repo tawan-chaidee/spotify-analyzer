@@ -6,6 +6,7 @@ export const TIME_RANGES = [
 
 export type TimeRange = (typeof TIME_RANGES)[number];
 export type ListeningType = "tracks" | "artists";
+export type RankingType = ListeningType | "albums";
 
 export interface Album {
   id: string;
@@ -52,7 +53,7 @@ export interface RankingRow {
 }
 
 export interface RankingListModel {
-  type: ListeningType;
+  type: RankingType;
   range: TimeRange;
   showTrend: boolean;
   rows: RankingRow[];

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {
-    ListeningType,
+    RankingType,
     TimeRange,
   } from "../models/listening";
   import { CONTENT } from "../services/content";
@@ -11,9 +11,9 @@
   import Selector from "./Selector.svelte";
 
   type Props = {
-    type: ListeningType;
+    type: RankingType;
     range: TimeRange;
-    ontypechange: (type: ListeningType) => void;
+    ontypechange: (type: RankingType) => void;
     onrangechange: (range: TimeRange) => void;
   };
 
@@ -25,7 +25,7 @@
     label={CONTENT.controls.contentLabel}
     value={type}
     options={contentTypeOptions}
-    onchange={(value) => ontypechange(value as ListeningType)}
+    onchange={(value) => ontypechange(value as RankingType)}
   />
   <Selector
     label={CONTENT.controls.rangeLabel}

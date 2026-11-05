@@ -1,12 +1,12 @@
 # Spotify Top Explorer
 
-Turn your Spotify top tracks and artists into rankings you can compare,
-export, and share.
+Explore your Spotify listening history and playlist library in one dashboard.
 
 Spotify Top Explorer is a static listening-insights app built with Svelte and
-TypeScript. It loads all three available Spotify time ranges, shows movement
-against the yearly ranking, exports CSV or JSON, and creates read-only share
-links that recipients can open without Spotify access.
+TypeScript. It loads all three available Spotify time ranges, infers album
+rankings from top tracks, browses the user's playlist library, exports CSV or
+JSON, and creates read-only share links that recipients can open without
+Spotify access.
 
 [![Svelte](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -22,7 +22,11 @@ links that recipients can open without Spotify access.
 - Optional Owner Access for approved Spotify accounts
 - Spotify Authorization Code with PKCE and automatic token refresh
 - Top 50 tracks and artists for 4 weeks, 6 months, and 1 year
-- Six-month movement compared with the yearly track ranking
+- Artist and inferred album movement compared with the yearly ranking
+- Searchable owned and followed playlist library
+- Playlist metadata exports for the full library
+- Track inspection and track-level CSV/JSON exports for owned or collaborative
+  playlists
 - Top-track, top-album, listening-stat, overlap, and release-year insights
 - Current-ranking and complete CSV/JSON exports
 - No-login sharing through compressed URL fragments
@@ -47,7 +51,7 @@ and create an app. You can use:
 
 ```text
 App name: Listening Snapshot
-Description: Explore and export my Spotify top tracks and artists.
+Description: Explore and export my Spotify listening history and playlists.
 ```
 
 Select **Web API**.
@@ -140,7 +144,7 @@ Select **Owner Access** on the connection screen to use it. Use
 Spotify OAuth
   → Spotify Web API
   → normalized TypeScript models
-  → rankings and dashboard insights
+  → listening charts and playlist library
   → exports or compressed share links
 ```
 
@@ -159,7 +163,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 41 passing unit/component tests and 12 fixture-backed
+The project currently has 48 passing unit/component tests and 15 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 
@@ -227,6 +231,7 @@ the required values skip deployment instead of failing the workflow.
 
 ## Privacy
 
-Client IDs and OAuth tokens stay in the visitor's browser. Share snapshots never
-include tokens or Spotify account identifiers, and personal fixtures remain
-excluded from Git.
+Client IDs and OAuth tokens stay in the visitor's browser. Playlist data is
+available only in the authenticated library mode and is not included in shared
+taste snapshots. Share snapshots never include tokens or Spotify account
+identifiers, and personal fixtures remain excluded from Git.

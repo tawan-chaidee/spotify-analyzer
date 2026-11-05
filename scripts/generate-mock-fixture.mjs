@@ -159,10 +159,86 @@ const rangeKeys = {
   long_term: longKeys,
 };
 
+const topArtists = approvedArtists.slice(0, 7);
+const artistRangeIds = {
+  short_term: [
+    topArtists[1].id,
+    topArtists[0].id,
+    topArtists[6].id,
+    topArtists[2].id,
+    topArtists[5].id,
+    topArtists[4].id,
+    topArtists[3].id,
+  ],
+  medium_term: topArtists.map((artist) => artist.id),
+  long_term: [
+    topArtists[2].id,
+    topArtists[1].id,
+    topArtists[0].id,
+    topArtists[3].id,
+    topArtists[5].id,
+    topArtists[4].id,
+  ],
+};
+
+const mockUserId = "fixture-user";
+const mockFriendId = "fixture-friend";
+const playlistSpecs = [
+  {
+    id: "fixture-playlist-current",
+    name: "Current Rotation",
+    description: "The songs getting the most replay right now.",
+    owner: { id: mockUserId, display_name: "You" },
+    trackIds: mediumKeys.slice(0, 12),
+    public: false,
+    collaborative: false,
+  },
+  {
+    id: "fixture-playlist-night",
+    name: "Late Night Drive",
+    description: "A slower, atmospheric mix for the road after dark.",
+    owner: { id: mockFriendId, display_name: "Friend account" },
+    trackIds: mediumKeys.slice(12, 25),
+    public: true,
+    collaborative: false,
+  },
+  {
+    id: "fixture-playlist-shared",
+    name: "Shared Favorites",
+    description: "A collaborative playlist for overlapping favorites.",
+    owner: { id: mockFriendId, display_name: "Friend account" },
+    trackIds: longKeys.slice(0, 14),
+    public: true,
+    collaborative: true,
+  },
+];
+
+const playlistItems = playlistSpecs.map((playlist) => {
+  const leadTrack = trackRecord(trackById.get(playlist.trackIds[0]));
+  return {
+    id: playlist.id,
+    name: playlist.name,
+    description: playlist.description,
+    images: leadTrack.album.images,
+    owner: playlist.owner,
+    items: { total: playlist.trackIds.length },
+    public: playlist.public,
+    collaborative: playlist.collaborative,
+    external_urls: {
+      spotify: `https://open.spotify.com/playlist/${playlist.id}`,
+    },
+    track_ids: playlist.trackIds,
+  };
+});
+
 const fixture = {
-  fixture_version: 3,
+  fixture_version: 5,
   tracks: {},
   artists: {},
+  playlists: {
+    current_user_id: mockUserId,
+    items: playlistItems,
+  },
 };
 
 for (const range of ranges) {
@@ -170,17 +246,20 @@ for (const range of ranges) {
     items: rangeKeys[range].map((trackId) => trackRecord(trackById.get(trackId))),
   };
 
-  const artistItems = [];
-  for (let index = 0; index < 50; index += 1) {
-    artistItems.push(fixtureArtist(approvedArtists[index % approvedArtists.length].id));
-  }
+  // Artist rankings contain unique artists. Repeating a short catalog would make
+  // every medium-term artist look like a large riser against its final duplicate
+  // in the yearly ranking.
+  const artistItems = artistRangeIds[range].map(fixtureArtist);
   fixture.artists[range] = { items: artistItems };
 
   if (fixture.tracks[range].items.length !== 50) {
     throw new Error(`${range} must contain exactly 50 tracks`);
   }
-  if (fixture.artists[range].items.length !== 50) {
-    throw new Error(`${range} must contain exactly 50 artists`);
+  if (
+    new Set(fixture.artists[range].items.map((artist) => artist.id)).size !==
+    fixture.artists[range].items.length
+  ) {
+    throw new Error(`${range} artist rankings must contain unique artists`);
   }
 }
 

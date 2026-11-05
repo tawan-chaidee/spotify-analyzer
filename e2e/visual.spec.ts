@@ -21,7 +21,9 @@ for (const screenshot of screenshots) {
     await mockSpotify(page);
     await page.goto("/");
 
-    await expect(page.getByText("Your listening taste.")).toBeVisible();
+    await expect(
+      page.getByText("Your listening, in one place."),
+    ).toBeVisible();
     await expect(
       page.locator('[data-component="ranking-list"] li'),
     ).toHaveCount(50);

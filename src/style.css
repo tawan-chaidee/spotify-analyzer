@@ -3,18 +3,18 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
-  --color-main: #070908;
-  --color-secondary: #171b18;
-  --color-highlight: #26e467;
-  --color-on-highlight: #041108;
+  --color-main: #000000;
+  --color-secondary: #181818;
+  --color-highlight: #1ed760;
+  --color-on-highlight: #000000;
   --color-foreground: #ffffff;
-  --color-muted: #b6beb8;
-  --color-line: rgba(255, 255, 255, 0.16);
+  --color-muted: #b3b3b3;
+  --color-line: rgba(255, 255, 255, 0.1);
   --color-danger: #ff9e97;
-  --color-info: #9bd3ff;
+  --color-info: #79d9ff;
 
-  --radius-card: 1.125rem;
-  --radius-control: 0.75rem;
+  --radius-card: 0.5rem;
+  --radius-control: 0.375rem;
   --radius-pill: 999px;
 }
 
@@ -25,9 +25,7 @@
 
   body {
     @apply min-h-screen bg-main text-foreground antialiased;
-    background-image:
-      radial-gradient(circle at 15% -10%, rgba(38, 228, 103, 0.14), transparent 30rem),
-      radial-gradient(circle at 90% 0%, rgba(155, 211, 255, 0.1), transparent 28rem);
+    background: var(--color-main);
     font-family:
       Inter,
       ui-sans-serif,
@@ -36,6 +34,11 @@
       BlinkMacSystemFont,
       "Segoe UI",
       sans-serif;
+  }
+
+  ::selection {
+    color: var(--color-on-highlight);
+    background: var(--color-highlight);
   }
 
   button,

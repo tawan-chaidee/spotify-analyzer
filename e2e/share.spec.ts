@@ -21,6 +21,9 @@ test("creates and opens a no-login share link", async ({
   await sharedPage.goto(shareUrl);
   await expect(sharedPage.getByText("Your friend’s taste.")).toBeVisible();
   await expect(sharedPage.getByText("See your own taste")).toBeVisible();
+  await expect(
+    sharedPage.getByRole("button", { name: "Playlists" }),
+  ).toHaveCount(0);
 });
 
 test("rejects malformed share links", async ({ page }) => {

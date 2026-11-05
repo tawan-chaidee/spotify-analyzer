@@ -3,6 +3,7 @@ import { CONTENT } from "../services/content";
 export const contentTypeOptions = [
   { value: "tracks", label: CONTENT.controls.tracks },
   { value: "artists", label: CONTENT.controls.artists },
+  { value: "albums", label: CONTENT.controls.albums },
 ] as const;
 
 export const timeRangeOptions = [

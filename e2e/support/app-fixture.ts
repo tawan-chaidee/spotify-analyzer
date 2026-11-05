@@ -13,6 +13,15 @@ interface FixturePage<T> {
 interface Fixture {
   tracks: Record<string, FixturePage<unknown>>;
   artists: Record<string, FixturePage<unknown>>;
+  playlists: {
+    current_user_id: string;
+    items: Array<
+      Record<string, unknown> & {
+        id: string;
+        track_ids: string[];
+      }
+    >;
+  };
 }
 
 let fixture: Fixture | null = null;
@@ -85,4 +94,64 @@ export async function mockSpotify(page: Page): Promise<void> {
       ),
     });
   });
+
+  await page.route("https://api.spotify.com/v1/me", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        id: data.playlists.current_user_id,
+        display_name: "Fixture user",
+      }),
+    });
+  });
+
+  await page.route(
+    "https://api.spotify.com/v1/me/playlists**",
+    async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          items: data.playlists.items,
+          next: null,
+        }),
+      });
+    },
+  );
+
+  await page.route(
+    "https://api.spotify.com/v1/playlists/**",
+    async (route) => {
+      const url = new URL(route.request().url());
+      const match = url.pathname.match(
+        /^\/v1\/playlists\/([^/]+)\/items$/,
+      );
+      const playlist = data.playlists.items.find(
+        (item) => item.id === decodeURIComponent(match?.[1] || ""),
+      );
+      const tracks = new Map(
+        Object.values(data.tracks)
+          .flatMap((page) => page.items)
+          .map((track) => [
+            (track as { id: string }).id,
+            track,
+          ]),
+      );
+
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          items: (playlist?.track_ids || []).map(
+            (trackId, index) => ({
+              added_at: `2026-01-${String(index + 1).padStart(2, "0")}T00:00:00Z`,
+              track: tracks.get(trackId) || null,
+            }),
+          ),
+          next: null,
+        }),
+      });
+    },
+  );
 }

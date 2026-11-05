@@ -4,6 +4,7 @@
     createSpotifyClient,
     type SpotifyClient,
   } from "./api/spotify/client";
+  import AmbientCurrent from "./components/AmbientCurrent.svelte";
   import AppHeader from "./components/AppHeader.svelte";
   import { DashboardController } from "./features/dashboard/dashboard.svelte";
   import { SpotifySession } from "./features/spotify/session.svelte";
@@ -26,6 +27,7 @@
   const DATA_SOURCE = __DATA_SOURCE__;
   const MOCK_OWN_CLIENT_ID = "00000000000000000000000000000001";
   const MOCK_OWNER_CLIENT_ID = "00000000000000000000000000000002";
+  const PLAYLIST_RESUME_KEY = "spotify-top-explorer-resume-playlists";
   const OWNER_CLIENT_ID = (
     import.meta.env.VITE_SPOTIFY_CLIENT_ID ||
     (APP_MODE === "mock-auth" ? MOCK_OWNER_CLIENT_ID : "")
@@ -54,6 +56,11 @@
         }),
   );
   const callback = $derived(redirectUri());
+  const selectedPlaylistTracks = $derived(
+    dashboard.selectedPlaylistId
+      ? dashboard.playlistTracks[dashboard.selectedPlaylistId] || []
+      : [],
+  );
 
   $effect(() => {
     document.title =
@@ -107,11 +114,17 @@
     if (params.has("code") || params.has("error")) {
       const authenticated = await session.completeCallback(params);
       if (!authenticated) {
+        sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
         window.history.replaceState({}, "", appPath());
         return;
       }
       window.history.replaceState({}, "", appPath());
       await loadDashboard("private");
+      if (page === "dashboard") {
+        restorePlaylistView();
+      } else {
+        sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
+      }
       return;
     }
 
@@ -146,6 +159,20 @@
     }
   }
 
+  async function reconnectForPlaylists() {
+    sessionStorage.setItem(PLAYLIST_RESUME_KEY, "1");
+    if (await session.reconnectSelected()) {
+      sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
+      dashboard.setView("playlists");
+    }
+  }
+
+  function restorePlaylistView() {
+    if (sessionStorage.getItem(PLAYLIST_RESUME_KEY) !== "1") return;
+    sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
+    dashboard.setView("playlists");
+  }
+
   async function share() {
     shareStatus = CONTENT.dashboard.sharing;
     try {
@@ -160,6 +187,7 @@
   }
 
   function disconnect() {
+    sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
     session.disconnect();
     dashboard.reset();
     page = "connection";
@@ -179,44 +207,61 @@
   }
 </script>
 
-<div
-  class="mx-auto w-[min(1180px,calc(100%-32px))] py-7 pb-14 max-[560px]:w-[calc(100%-22px)] max-[560px]:pt-4"
->
-  <AppHeader
-    {mode}
-    status={shareStatus}
-    isMock={DATA_SOURCE === "mock"}
-    onshare={page === "dashboard" ? share : undefined}
-    ondisconnect={mode === "private" && page === "dashboard"
-      ? disconnect
-      : undefined}
-    onowntaste={mode === "shared" ? ownTaste : undefined}
-  />
-
-  {#if page === "connection"}
-    <ConnectionPage
-      selectedApp={session.selectedApp}
-      ownerAvailable={session.ownerAvailable}
-      initialClientId={session.initialClientId}
-      remember={session.remember}
-      redirectUri={callback}
-      message={session.message}
-      isError={session.isError}
-      busy={session.busy}
-      onrememberchange={(value) => (session.remember = value)}
-      onconnect={connect}
-      onclientidsubmit={connectWithOwnApp}
-      onowneraccess={connectWithOwnerApp}
-      onchangeapp={changeSpotifyApp}
-    />
-  {:else}
-    <DashboardPage
-      model={dashboard.model}
-      data={dashboard.data}
+<div class="relative isolate min-h-screen overflow-x-clip">
+  <AmbientCurrent />
+  <div
+    class="relative z-10 mx-auto w-[min(1180px,calc(100%-32px))] py-7 pb-14 max-[560px]:w-[calc(100%-22px)] max-[560px]:pt-4"
+  >
+    <AppHeader
       {mode}
-      busy={dashboard.loading}
-      ontypechange={(type) => dashboard.setType(type)}
-      onrangechange={(range) => dashboard.setRange(range)}
+      status={shareStatus}
+      isMock={DATA_SOURCE === "mock"}
+      onshare={page === "dashboard" ? share : undefined}
+      ondisconnect={mode === "private" && page === "dashboard"
+        ? disconnect
+        : undefined}
+      onowntaste={mode === "shared" ? ownTaste : undefined}
     />
-  {/if}
+
+    {#if page === "connection"}
+      <ConnectionPage
+        selectedApp={session.selectedApp}
+        ownerAvailable={session.ownerAvailable}
+        initialClientId={session.initialClientId}
+        remember={session.remember}
+        redirectUri={callback}
+        message={session.message}
+        isError={session.isError}
+        busy={session.busy}
+        onrememberchange={(value) => (session.remember = value)}
+        onconnect={connect}
+        onclientidsubmit={connectWithOwnApp}
+        onowneraccess={connectWithOwnerApp}
+        onchangeapp={changeSpotifyApp}
+      />
+    {:else}
+      <DashboardPage
+        model={dashboard.model}
+        data={dashboard.data}
+        {mode}
+        busy={dashboard.loading}
+        view={dashboard.view}
+        playlists={dashboard.playlists}
+        selectedPlaylistId={dashboard.selectedPlaylistId}
+        playlistTracks={selectedPlaylistTracks}
+        playlistsLoading={dashboard.playlistsLoading}
+        playlistTracksLoading={dashboard.playlistTracksLoading}
+        playlistsError={dashboard.playlistsError}
+        playlistTracksError={dashboard.playlistTracksError}
+        playlistsNeedPermission={dashboard.playlistsNeedPermission}
+        ontypechange={(type) => dashboard.setType(type)}
+        onrangechange={(range) => dashboard.setRange(range)}
+        onviewchange={(view) => dashboard.setView(view)}
+        onplaylistselect={(playlistId) =>
+          dashboard.selectPlaylist(playlistId)}
+        onplaylistretry={() => dashboard.loadPlaylists()}
+        onplaylistreconnect={reconnectForPlaylists}
+      />
+    {/if}
+  </div>
 </div>

@@ -1,5 +1,5 @@
 {
-  "fixture_version": 3,
+  "fixture_version": 5,
   "tracks": {
     "short_term": {
       "items": [
@@ -8419,22 +8419,6 @@
       "items": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
             "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
           },
           "id": "7gW0r5CkdEUMm42w9XpyZO",
@@ -8451,67 +8435,19 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
+            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
           },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
           "images": [
             {
               "height": 640,
-              "url": "test-fixtures/art-3.svg",
+              "url": "test-fixtures/art-1.svg",
               "width": 640
             }
           ],
-          "name": "Phoebe Bridgers",
+          "name": "Mitski",
           "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
+          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
         },
         {
           "external_urls": {
@@ -8531,38 +8467,6 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
             "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
           },
           "id": "1r1uxoy19fzMxunt3ONAkG",
@@ -8576,38 +8480,6 @@
           "name": "Phoebe Bridgers",
           "type": "artist",
           "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
         },
         {
           "external_urls": {
@@ -8627,86 +8499,6 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
             "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
           },
           "id": "00FQb4jTyendYWaN8pK0wa",
@@ -8723,86 +8515,6 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
             "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
           },
           "id": "4Z8W4fKeB5YxbusRsdQVPb",
@@ -8816,406 +8528,6 @@
           "name": "Radiohead",
           "type": "artist",
           "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
         }
       ]
     },
@@ -9332,694 +8644,6 @@
           "name": "Clairo",
           "type": "artist",
           "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
         }
       ]
     },
@@ -10027,19 +8651,19 @@
       "items": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
+            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
           },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
+          "id": "1r1uxoy19fzMxunt3ONAkG",
           "images": [
             {
               "height": 640,
-              "url": "test-fixtures/art-1.svg",
+              "url": "test-fixtures/art-3.svg",
               "width": 640
             }
           ],
-          "name": "Mitski",
+          "name": "Phoebe Bridgers",
           "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
+          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
         },
         {
           "external_urls": {
@@ -10059,19 +8683,19 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
+            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
           },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
+          "id": "2uYWxilOVlUdk4oV9DvwqK",
           "images": [
             {
               "height": 640,
-              "url": "test-fixtures/art-3.svg",
+              "url": "test-fixtures/art-1.svg",
               "width": 640
             }
           ],
-          "name": "Phoebe Bridgers",
+          "name": "Mitski",
           "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
+          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
         },
         {
           "external_urls": {
@@ -10091,22 +8715,6 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
             "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
           },
           "id": "3uwAm6vQy7kWPS2bciKWx9",
@@ -10123,86 +8731,6 @@
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
             "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
           },
           "id": "00FQb4jTyendYWaN8pK0wa",
@@ -10216,616 +8744,160 @@
           "name": "Lana Del Rey",
           "type": "artist",
           "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7gW0r5CkdEUMm42w9XpyZO"
-          },
-          "id": "7gW0r5CkdEUMm42w9XpyZO",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-2.svg",
-              "width": 640
-            }
-          ],
-          "name": "Laufey",
-          "type": "artist",
-          "uri": "spotify:artist:7gW0r5CkdEUMm42w9XpyZO"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1r1uxoy19fzMxunt3ONAkG"
-          },
-          "id": "1r1uxoy19fzMxunt3ONAkG",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-3.svg",
-              "width": 640
-            }
-          ],
-          "name": "Phoebe Bridgers",
-          "type": "artist",
-          "uri": "spotify:artist:1r1uxoy19fzMxunt3ONAkG"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb"
-          },
-          "id": "4Z8W4fKeB5YxbusRsdQVPb",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-4.svg",
-              "width": 640
-            }
-          ],
-          "name": "Radiohead",
-          "type": "artist",
-          "uri": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa"
-          },
-          "id": "00FQb4jTyendYWaN8pK0wa",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-5.svg",
-              "width": 640
-            }
-          ],
-          "name": "Lana Del Rey",
-          "type": "artist",
-          "uri": "spotify:artist:00FQb4jTyendYWaN8pK0wa"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3uwAm6vQy7kWPS2bciKWx9"
-          },
-          "id": "3uwAm6vQy7kWPS2bciKWx9",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-6.svg",
-              "width": 640
-            }
-          ],
-          "name": "girl in red",
-          "type": "artist",
-          "uri": "spotify:artist:3uwAm6vQy7kWPS2bciKWx9"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag"
-          },
-          "id": "3l0CmX0FuQjFxr8SK7Vqag",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-7.svg",
-              "width": 640
-            }
-          ],
-          "name": "Clairo",
-          "type": "artist",
-          "uri": "spotify:artist:3l0CmX0FuQjFxr8SK7Vqag"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2uYWxilOVlUdk4oV9DvwqK"
-          },
-          "id": "2uYWxilOVlUdk4oV9DvwqK",
-          "images": [
-            {
-              "height": 640,
-              "url": "test-fixtures/art-1.svg",
-              "width": 640
-            }
-          ],
-          "name": "Mitski",
-          "type": "artist",
-          "uri": "spotify:artist:2uYWxilOVlUdk4oV9DvwqK"
         }
       ]
     }
+  },
+  "playlists": {
+    "current_user_id": "fixture-user",
+    "items": [
+      {
+        "id": "fixture-playlist-current",
+        "name": "Current Rotation",
+        "description": "The songs getting the most replay right now.",
+        "images": [
+          {
+            "height": 640,
+            "url": "test-fixtures/covers/album-01.svg",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "test-fixtures/covers/album-01.svg",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "test-fixtures/covers/album-01.svg",
+            "width": 64
+          }
+        ],
+        "owner": {
+          "id": "fixture-user",
+          "display_name": "You"
+        },
+        "items": {
+          "total": 12
+        },
+        "public": false,
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/fixture-playlist-current"
+        },
+        "track_ids": [
+          "2Co0IjcLTSHMtodwD4gzfg",
+          "08PdFBcXzpkn1cWNgmKqhn",
+          "04mAOoQNsXmDJlyupJwmkO",
+          "0YJ9FWWHn9EfnN0lHwbzvV",
+          "11MyiSGZSYSmhhqwGUTtAq",
+          "04OSnqlwlBJMvidYccraVz",
+          "0HAqq2GcQKyi3s87GuN7jU",
+          "2P5yIMu2DNeMXTyOANKS6k",
+          "0UqHzMvRQnaOXEPKgFVhxN",
+          "0pJW1Xw3aY4Eh6k5iuBkfI",
+          "0z1o5L7HJx562xZSATcIpY",
+          "1NZs6n6hl8UuMaX0UC0YTz"
+        ]
+      },
+      {
+        "id": "fixture-playlist-night",
+        "name": "Late Night Drive",
+        "description": "A slower, atmospheric mix for the road after dark.",
+        "images": [
+          {
+            "height": 640,
+            "url": "test-fixtures/covers/album-12.svg",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "test-fixtures/covers/album-12.svg",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "test-fixtures/covers/album-12.svg",
+            "width": 64
+          }
+        ],
+        "owner": {
+          "id": "fixture-friend",
+          "display_name": "Friend account"
+        },
+        "items": {
+          "total": 13
+        },
+        "public": true,
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/fixture-playlist-night"
+        },
+        "track_ids": [
+          "0AjcdGri5vhJsmZnduCEqd",
+          "0mMlo76aVZHpuvoR6fjBSK",
+          "3jjsRKEsF42ccXf8kWR3nu",
+          "1Ukxccao1BlWrPhYkcXbwZ",
+          "21uFPefbgeR3QLVJWATlrr",
+          "10nyNJ6zNy2YVYLrcwLccB",
+          "1y3r6RXiJZNBV1EI0NggpS",
+          "0RJB6ldc79QC6jW5OR2Pv1",
+          "1wicceeNVtcnym2YjiOmyj",
+          "3NE5nGm06kB8QQbQqJaOke",
+          "2SEeyc2KS9DIjiJPCYtfgJ",
+          "2hAQCoAswuQ643VhIuRC2p",
+          "1dyTcli07c77mtQK3ahUZR"
+        ]
+      },
+      {
+        "id": "fixture-playlist-shared",
+        "name": "Shared Favorites",
+        "description": "A collaborative playlist for overlapping favorites.",
+        "images": [
+          {
+            "height": 640,
+            "url": "test-fixtures/covers/album-02.svg",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "test-fixtures/covers/album-02.svg",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "test-fixtures/covers/album-02.svg",
+            "width": 64
+          }
+        ],
+        "owner": {
+          "id": "fixture-friend",
+          "display_name": "Friend account"
+        },
+        "items": {
+          "total": 14
+        },
+        "public": true,
+        "collaborative": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/fixture-playlist-shared"
+        },
+        "track_ids": [
+          "08PdFBcXzpkn1cWNgmKqhn",
+          "2Co0IjcLTSHMtodwD4gzfg",
+          "4nwjvcUjV7cexhwA40Bh5i",
+          "11MyiSGZSYSmhhqwGUTtAq",
+          "0YJ9FWWHn9EfnN0lHwbzvV",
+          "0HAqq2GcQKyi3s87GuN7jU",
+          "04OSnqlwlBJMvidYccraVz",
+          "0UqHzMvRQnaOXEPKgFVhxN",
+          "2P5yIMu2DNeMXTyOANKS6k",
+          "0z1o5L7HJx562xZSATcIpY",
+          "0pJW1Xw3aY4Eh6k5iuBkfI",
+          "0AjcdGri5vhJsmZnduCEqd",
+          "1NZs6n6hl8UuMaX0UC0YTz",
+          "3jjsRKEsF42ccXf8kWR3nu"
+        ]
+      }
+    ]
   }
 }

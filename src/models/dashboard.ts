@@ -1,11 +1,11 @@
 import type {
-  ListeningType,
+  RankingType,
   RankingRow,
   TimeRange,
 } from "./listening";
 
 export interface DashboardSelection {
-  type: ListeningType;
+  type: RankingType;
   range: TimeRange;
 }
 
@@ -45,7 +45,7 @@ export interface DashboardModel {
   spotlights: SpotlightCard[];
   stats: StatCard[];
   ranking: {
-    type: ListeningType;
+    type: RankingType;
     range: TimeRange;
     showTrend: boolean;
     rows: RankingRow[];

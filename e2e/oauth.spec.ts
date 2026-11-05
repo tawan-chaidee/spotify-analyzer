@@ -26,7 +26,9 @@ test("uses the visitor Client ID for Spotify authorization", async ({
 
   const url = new URL(page.url());
   expect(url.searchParams.get("client_id")).toBe(VISITOR_CLIENT_ID);
-  expect(url.searchParams.get("scope")).toBe("user-top-read");
+  expect(url.searchParams.get("scope")).toBe(
+    "user-top-read playlist-read-private playlist-read-collaborative user-read-private",
+  );
   expect(url.searchParams.get("redirect_uri")).toBe(
     "http://127.0.0.1:5174/callback",
   );
@@ -94,7 +96,9 @@ test("completes the visitor app flow with mocked Spotify APIs", async ({
 
   await page.goto(`/?code=fixture-code&state=${state}`);
 
-  await expect(page.getByText("Your listening taste.")).toBeVisible();
+  await expect(
+    page.getByText("Your listening, in one place."),
+  ).toBeVisible();
   expect(tokenRequestClientId).toBe(clientId);
   expect(
     await page.evaluate(
