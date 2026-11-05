@@ -32,3 +32,44 @@ export interface SpotifyTrackDto {
 export interface SpotifyTopItemsResponse<T> {
   items: T[];
 }
+
+export interface SpotifyUserDto {
+  id: string;
+  display_name?: string | null;
+}
+
+export interface SpotifyPlaylistDto {
+  id: string;
+  name: string;
+  description?: string | null;
+  images?: SpotifyImageDto[];
+  owner?: {
+    id?: string;
+    display_name?: string | null;
+  };
+  tracks?: {
+    total?: number;
+  };
+  items?: {
+    total?: number;
+  };
+  public?: boolean | null;
+  collaborative?: boolean;
+  external_urls?: { spotify?: string };
+}
+
+export interface SpotifyPlaylistsResponse {
+  items: SpotifyPlaylistDto[];
+  next?: string | null;
+}
+
+export interface SpotifyPlaylistTrackItemDto {
+  added_at?: string;
+  item?: SpotifyTrackDto | null;
+  track?: SpotifyTrackDto | null;
+}
+
+export interface SpotifyPlaylistTracksResponse {
+  items: SpotifyPlaylistTrackItemDto[];
+  next?: string | null;
+}

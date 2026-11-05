@@ -1,5 +1,5 @@
 {
-  "fixture_version": 4,
+  "fixture_version": 5,
   "tracks": {
     "short_term": {
       "items": [
@@ -8747,5 +8747,157 @@
         }
       ]
     }
+  },
+  "playlists": {
+    "current_user_id": "fixture-user",
+    "items": [
+      {
+        "id": "fixture-playlist-current",
+        "name": "Current Rotation",
+        "description": "The songs getting the most replay right now.",
+        "images": [
+          {
+            "height": 640,
+            "url": "test-fixtures/covers/album-01.svg",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "test-fixtures/covers/album-01.svg",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "test-fixtures/covers/album-01.svg",
+            "width": 64
+          }
+        ],
+        "owner": {
+          "id": "fixture-user",
+          "display_name": "You"
+        },
+        "items": {
+          "total": 12
+        },
+        "public": false,
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/fixture-playlist-current"
+        },
+        "track_ids": [
+          "2Co0IjcLTSHMtodwD4gzfg",
+          "08PdFBcXzpkn1cWNgmKqhn",
+          "04mAOoQNsXmDJlyupJwmkO",
+          "0YJ9FWWHn9EfnN0lHwbzvV",
+          "11MyiSGZSYSmhhqwGUTtAq",
+          "04OSnqlwlBJMvidYccraVz",
+          "0HAqq2GcQKyi3s87GuN7jU",
+          "2P5yIMu2DNeMXTyOANKS6k",
+          "0UqHzMvRQnaOXEPKgFVhxN",
+          "0pJW1Xw3aY4Eh6k5iuBkfI",
+          "0z1o5L7HJx562xZSATcIpY",
+          "1NZs6n6hl8UuMaX0UC0YTz"
+        ]
+      },
+      {
+        "id": "fixture-playlist-night",
+        "name": "Late Night Drive",
+        "description": "A slower, atmospheric mix for the road after dark.",
+        "images": [
+          {
+            "height": 640,
+            "url": "test-fixtures/covers/album-12.svg",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "test-fixtures/covers/album-12.svg",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "test-fixtures/covers/album-12.svg",
+            "width": 64
+          }
+        ],
+        "owner": {
+          "id": "fixture-friend",
+          "display_name": "Friend account"
+        },
+        "items": {
+          "total": 13
+        },
+        "public": true,
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/fixture-playlist-night"
+        },
+        "track_ids": [
+          "0AjcdGri5vhJsmZnduCEqd",
+          "0mMlo76aVZHpuvoR6fjBSK",
+          "3jjsRKEsF42ccXf8kWR3nu",
+          "1Ukxccao1BlWrPhYkcXbwZ",
+          "21uFPefbgeR3QLVJWATlrr",
+          "10nyNJ6zNy2YVYLrcwLccB",
+          "1y3r6RXiJZNBV1EI0NggpS",
+          "0RJB6ldc79QC6jW5OR2Pv1",
+          "1wicceeNVtcnym2YjiOmyj",
+          "3NE5nGm06kB8QQbQqJaOke",
+          "2SEeyc2KS9DIjiJPCYtfgJ",
+          "2hAQCoAswuQ643VhIuRC2p",
+          "1dyTcli07c77mtQK3ahUZR"
+        ]
+      },
+      {
+        "id": "fixture-playlist-shared",
+        "name": "Shared Favorites",
+        "description": "A collaborative playlist for overlapping favorites.",
+        "images": [
+          {
+            "height": 640,
+            "url": "test-fixtures/covers/album-02.svg",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "test-fixtures/covers/album-02.svg",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "test-fixtures/covers/album-02.svg",
+            "width": 64
+          }
+        ],
+        "owner": {
+          "id": "fixture-friend",
+          "display_name": "Friend account"
+        },
+        "items": {
+          "total": 14
+        },
+        "public": true,
+        "collaborative": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/fixture-playlist-shared"
+        },
+        "track_ids": [
+          "08PdFBcXzpkn1cWNgmKqhn",
+          "2Co0IjcLTSHMtodwD4gzfg",
+          "4nwjvcUjV7cexhwA40Bh5i",
+          "11MyiSGZSYSmhhqwGUTtAq",
+          "0YJ9FWWHn9EfnN0lHwbzvV",
+          "0HAqq2GcQKyi3s87GuN7jU",
+          "04OSnqlwlBJMvidYccraVz",
+          "0UqHzMvRQnaOXEPKgFVhxN",
+          "2P5yIMu2DNeMXTyOANKS6k",
+          "0z1o5L7HJx562xZSATcIpY",
+          "0pJW1Xw3aY4Eh6k5iuBkfI",
+          "0AjcdGri5vhJsmZnduCEqd",
+          "1NZs6n6hl8UuMaX0UC0YTz",
+          "3jjsRKEsF42ccXf8kWR3nu"
+        ]
+      }
+    ]
   }
 }

@@ -181,10 +181,64 @@ const artistRangeIds = {
   ],
 };
 
+const mockUserId = "fixture-user";
+const mockFriendId = "fixture-friend";
+const playlistSpecs = [
+  {
+    id: "fixture-playlist-current",
+    name: "Current Rotation",
+    description: "The songs getting the most replay right now.",
+    owner: { id: mockUserId, display_name: "You" },
+    trackIds: mediumKeys.slice(0, 12),
+    public: false,
+    collaborative: false,
+  },
+  {
+    id: "fixture-playlist-night",
+    name: "Late Night Drive",
+    description: "A slower, atmospheric mix for the road after dark.",
+    owner: { id: mockFriendId, display_name: "Friend account" },
+    trackIds: mediumKeys.slice(12, 25),
+    public: true,
+    collaborative: false,
+  },
+  {
+    id: "fixture-playlist-shared",
+    name: "Shared Favorites",
+    description: "A collaborative playlist for overlapping favorites.",
+    owner: { id: mockFriendId, display_name: "Friend account" },
+    trackIds: longKeys.slice(0, 14),
+    public: true,
+    collaborative: true,
+  },
+];
+
+const playlistItems = playlistSpecs.map((playlist) => {
+  const leadTrack = trackRecord(trackById.get(playlist.trackIds[0]));
+  return {
+    id: playlist.id,
+    name: playlist.name,
+    description: playlist.description,
+    images: leadTrack.album.images,
+    owner: playlist.owner,
+    items: { total: playlist.trackIds.length },
+    public: playlist.public,
+    collaborative: playlist.collaborative,
+    external_urls: {
+      spotify: `https://open.spotify.com/playlist/${playlist.id}`,
+    },
+    track_ids: playlist.trackIds,
+  };
+});
+
 const fixture = {
-  fixture_version: 4,
+  fixture_version: 5,
   tracks: {},
   artists: {},
+  playlists: {
+    current_user_id: mockUserId,
+    items: playlistItems,
+  },
 };
 
 for (const range of ranges) {

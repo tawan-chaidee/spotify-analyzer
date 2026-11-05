@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0 — 2026-11-05
+
+### Added
+
+- A dedicated Playlist library mode alongside the listening dashboard.
+- Search, ownership filters, and sorting for owned and followed playlists.
+- Lazy playlist track loading with CSV and JSON exports.
+- Clear reauthorization handling when existing Spotify sessions do not yet have
+  playlist permissions.
+
 ## 0.2.0 — 2026-11-05
 
 ### Added

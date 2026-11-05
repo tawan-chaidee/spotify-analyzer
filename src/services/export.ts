@@ -13,12 +13,12 @@ export interface ExportFile {
   type: string;
 }
 
-function csvCell(value: unknown): string {
+export function csvCell(value: unknown): string {
   const text = String(value ?? "");
   return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 }
 
-function csv(rows: unknown[][]): string {
+export function csv(rows: unknown[][]): string {
   return `\ufeff${rows
     .map((row) => row.map(csvCell).join(","))
     .join("\n")}\n`;

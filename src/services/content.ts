@@ -45,7 +45,7 @@ export const CONTENT = {
     connecting: "Connecting…",
     readyTitle: "Ready to connect",
     readyDescription:
-      "This app requests one read-only permission: access to your top artists and tracks.",
+      "This app requests read-only access to your top artists, tracks, and playlists.",
     ownAppLabel: "Your Spotify app",
     ownerAppLabel: "Owner Spotify app",
     clientIdEnding: "Client ID ending",
@@ -64,9 +64,10 @@ export const CONTENT = {
       "Spotify rejected this app or account. Check that the account can use the Spotify app.",
   },
   dashboard: {
-    ownerSectionLabel: "Spotify top-list explorer",
-    ownerTitle: "Your listening taste.",
-    ownerNote: "Based on calculated rankings, up to 50 items per range.",
+    ownerSectionLabel: "Spotify dashboard",
+    ownerTitle: "Your listening, in one place.",
+    ownerNote:
+      "Explore your top-list charts and browse the playlists in your library.",
     sharedSectionLabel: "Shared with you",
     sharedTitle: "Your friend’s taste.",
     sharedNote:
@@ -78,6 +79,11 @@ export const CONTENT = {
     shareReady: "Share link ready",
     disconnect: "Disconnect",
     ownTaste: "See your own taste",
+  },
+  views: {
+    label: "Dashboard view",
+    listening: "Listening",
+    playlists: "Playlists",
   },
   controls: {
     contentLabel: "Content type",
@@ -165,6 +171,64 @@ export const CONTENT = {
     complete: "Complete data",
     formatCsv: "CSV",
     formatJson: "JSON",
+  },
+  playlists: {
+    title: "Your playlist library",
+    listTitle: "Playlists",
+    subtitle:
+      "Search your owned and followed playlists, inspect their tracks, and export the data.",
+    searchLabel: "Search playlists",
+    searchPlaceholder: "Search by name or owner",
+    filterLabel: "Playlist access",
+    filter: {
+      all: "All",
+      owned: "Owned",
+      followed: "Followed",
+    },
+    sortLabel: "Sort playlists",
+    sort: {
+      spotify: "Spotify order",
+      name: "Name",
+      tracks: "Most tracks",
+    },
+    loading: "Loading your playlists…",
+    loadingTracks: "Loading playlist tracks…",
+    empty: "No playlists match these filters.",
+    selectTitle: "Select a playlist",
+    selectDescription:
+      "Choose a playlist to inspect its tracks and export it.",
+    ownerPrefix: "By",
+    trackCount: "tracks",
+    public: "Public",
+    private: "Private",
+    collaborative: "Collaborative",
+    openSpotify: "Open in Spotify",
+    detailTitle: "Playlist details",
+    tracksTitle: "Playlist tracks",
+    exportTitle: "Export",
+    exportScopeLabel: "Export scope",
+    exportScope: {
+      playlist: "Selected playlist",
+      library: "Playlist library",
+    },
+    libraryExport: "Playlist library",
+    libraryExportDescription:
+      "Download the playlist names, ownership, visibility, and track counts.",
+    playlistExport: "Export selected playlist",
+    playlistExportDescription:
+      "Download the complete selected playlist in its original track order.",
+    playlistExportEmpty:
+      "Select a playlist first, or switch the export scope to the playlist library.",
+    firstTracksHint:
+      "The screen shows the first 100 tracks; exports include the complete playlist.",
+    error: "Unable to load your playlists.",
+    permission:
+      "Reconnect Spotify to approve playlist access. Your existing listening data will stay available.",
+    reconnect: "Reconnect for playlists",
+    retry: "Try again",
+    tracksError: "Unable to load this playlist's tracks.",
+    followedTracksUnavailable:
+      "Spotify only exposes track items for playlists you own or collaborate on. You can still export this playlist's metadata.",
   },
 } as const;
 

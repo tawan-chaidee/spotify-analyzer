@@ -14,6 +14,12 @@ const CALLBACK_CLIENT_ID_KEY =
   "spotify-top-explorer-callback-client-id";
 const LOCAL_CALLBACK_PATH = "/callback";
 const EXPIRY_BUFFER_MS = 60_000;
+const SPOTIFY_SCOPES = [
+  "user-top-read",
+  "playlist-read-private",
+  "playlist-read-collaborative",
+  "user-read-private",
+].join(" ");
 
 let refreshPromise: Promise<StoredSpotifyAuthWithPersistence> | null = null;
 
@@ -279,7 +285,7 @@ export function createAuthService({
         client_id: clientId,
         response_type: "code",
         redirect_uri: callback,
-        scope: "user-top-read",
+        scope: SPOTIFY_SCOPES,
         state,
         code_challenge_method: "S256",
         code_challenge: challenge,
