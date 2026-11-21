@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 — 2026-11-21
+
+### Added
+
+- A startup loading state that resolves saved authentication before showing
+  either the connection page or dashboard.
+- CSV and JSON export actions now copy their contents to the clipboard while
+  retaining the file download.
+
 ## 0.3.0 — 2026-11-05
 
 ### Added

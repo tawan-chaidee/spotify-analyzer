@@ -85,6 +85,13 @@ export const CONTENT = {
     listening: "Listening",
     playlists: "Playlists",
   },
+  startup: {
+    label: "Spotify dashboard",
+    title: "Loading your listening dashboard.",
+    description:
+      "Checking your Spotify session and preparing your rankings. This should only take a moment.",
+    error: "The dashboard could not finish loading. Please try again.",
+  },
   controls: {
     contentLabel: "Content type",
     rangeLabel: "Time range",
@@ -167,6 +174,11 @@ export const CONTENT = {
   exports: {
     title: "Export",
     subtitle: "Choose a scope and file format.",
+    actionHint: "Each export downloads the file and copies its contents.",
+    preparing: "Preparing…",
+    copiedAndDownloaded: "File downloaded and copied.",
+    downloadedClipboardUnavailable:
+      "File downloaded. Clipboard access was unavailable.",
     current: "Full current ranking",
     complete: "Complete data",
     formatCsv: "CSV",

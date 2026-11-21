@@ -32,18 +32,91 @@ test("loads the private dashboard and switches rankings", async ({
   await expect(page.getByText("score = Σ (N − track rank + 1)")).toBeVisible();
 });
 
-test("downloads a fixture-backed CSV", async ({ page }) => {
+test("shows the startup loader until authenticated data is ready", async ({
+  page,
+}) => {
+  await seedAuth(page);
+  await mockSpotify(page);
+  await page.route(
+    "https://api.spotify.com/v1/me/top/**",
+    async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 350));
+      await route.fallback();
+    },
+  );
+  await page.goto("/");
+
+  await expect(
+    page.getByRole("heading", {
+      name: "Loading your listening dashboard.",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Use Your Spotify App" }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByText("Your listening, in one place."),
+  ).toBeVisible();
+});
+
+test("downloads and copies a fixture-backed CSV", async ({
+  context,
+  page,
+}) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"], {
+    origin: "http://127.0.0.1:5174",
+  });
   await seedAuth(page);
   await mockSpotify(page);
   await page.goto("/");
 
   const downloadPromise = page.waitForEvent("download");
   await page
-    .getByRole("button", { name: "CSV: Full current ranking" })
+    .getByRole("button", {
+      name: "Download and copy CSV: Full current ranking",
+    })
     .click();
   const download = await downloadPromise;
   const path = await download.path();
   expect(path).not.toBeNull();
+  await expect(page.getByText("File downloaded and copied.")).toBeVisible();
+  const clipboard = await page.evaluate(() =>
+    navigator.clipboard.readText(),
+  );
+  expect(clipboard).toContain("ranking,track_name,artist_name,time_range");
+  expect(clipboard.startsWith("\uFEFF")).toBe(false);
+});
+
+test("still downloads when clipboard access is unavailable", async ({
+  page,
+}) => {
+  await seedAuth(page);
+  await mockSpotify(page);
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: {
+        writeText: async () => {
+          throw new Error("Clipboard denied");
+        },
+      },
+    });
+    Document.prototype.execCommand = () => false;
+  });
+  await page.goto("/");
+
+  const downloadPromise = page.waitForEvent("download");
+  await page
+    .getByRole("button", {
+      name: "Download and copy CSV: Full current ranking",
+    })
+    .click();
+  await expect(
+    page.getByText(
+      "File downloaded. Clipboard access was unavailable.",
+    ),
+  ).toBeVisible();
+  expect(await downloadPromise).toBeTruthy();
 });
 
 test("uses the fixture on a mobile viewport", async ({ page }) => {
@@ -82,7 +155,10 @@ test("explains inferred album rankings on mobile", async ({ page }) => {
   ).toBe(true);
 });
 
-test("browses and exports playlist mode", async ({ page }) => {
+test("browses and exports playlist mode", async ({ context, page }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"], {
+    origin: "http://127.0.0.1:5174",
+  });
   await seedAuth(page);
   await mockSpotify(page);
   await page.goto("/");
@@ -100,7 +176,9 @@ test("browses and exports playlist mode", async ({ page }) => {
 
   const downloadPromise = page.waitForEvent("download");
   await page
-    .getByRole("button", { name: "JSON: Export selected playlist" })
+    .getByRole("button", {
+      name: "Download and copy JSON: Export selected playlist",
+    })
     .click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe("Current Rotation.json");
@@ -110,6 +188,10 @@ test("browses and exports playlist mode", async ({ page }) => {
     await readFile(path || "", "utf8"),
   ) as { items: unknown[] };
   expect(payload.items).toHaveLength(12);
+  const playlistClipboard = await page.evaluate(() =>
+    navigator.clipboard.readText(),
+  );
+  expect(JSON.parse(playlistClipboard).items).toHaveLength(12);
 
   await page
     .getByRole("button", { name: "Playlist library", exact: true })
@@ -117,7 +199,7 @@ test("browses and exports playlist mode", async ({ page }) => {
   const libraryDownloadPromise = page.waitForEvent("download");
   await page
     .getByRole("button", {
-      name: "JSON: Playlist library",
+      name: "Download and copy JSON: Playlist library",
       exact: true,
     })
     .click();

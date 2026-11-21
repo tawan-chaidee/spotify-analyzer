@@ -7,7 +7,7 @@
   } from "../models/playlist";
   import { CONTENT } from "../services/content";
   import {
-    downloadExport,
+    downloadAndCopyExport,
     type ExportFile,
   } from "../services/export";
   import {
@@ -19,9 +19,11 @@
   import { cn } from "../utils/cn";
   import { formatDuration } from "../utils/format";
   import { safeSpotifyUrl } from "../utils/url";
+  import type { FeedbackKind } from "../ui/styles";
   import Artwork from "./Artwork.svelte";
   import Button from "./Button.svelte";
   import Card from "./Card.svelte";
+  import InlineFeedback from "./InlineFeedback.svelte";
   import Panel from "./Panel.svelte";
   import Selector from "./Selector.svelte";
 
@@ -57,6 +59,9 @@
   let filter = $state<PlaylistFilter>("all");
   let sort = $state<PlaylistSort>("spotify");
   let exportScope = $state<"playlist" | "library">("playlist");
+  let exportAction = $state("");
+  let exportStatus = $state("");
+  let exportKind = $state<FeedbackKind>("success");
 
   const selected = $derived(
     playlists.find((playlist) => playlist.id === selectedPlaylistId),
@@ -89,8 +94,24 @@
     selected ? safeSpotifyUrl(selected.spotifyUrl) : null,
   );
 
-  function run(file: ExportFile) {
-    downloadExport(file);
+  async function run(file: ExportFile, action: string) {
+    exportAction = action;
+    exportKind = "info";
+    exportStatus = CONTENT.exports.preparing;
+    try {
+      const result = await downloadAndCopyExport(file);
+      exportKind = result === "copied" ? "success" : "warning";
+      exportStatus =
+        result === "copied"
+          ? CONTENT.exports.copiedAndDownloaded
+          : CONTENT.exports.downloadedClipboardUnavailable;
+    } catch (error) {
+      exportKind = "error";
+      exportStatus =
+        error instanceof Error ? error.message : "Unable to export this file.";
+    } finally {
+      exportAction = "";
+    }
   }
 </script>
 
@@ -345,7 +366,10 @@
         {/if}
       </Panel>
 
-      <Panel title={CONTENT.playlists.exportTitle}>
+      <Panel
+        title={CONTENT.playlists.exportTitle}
+        subtitle={CONTENT.exports.actionHint}
+      >
         <div class="mb-4">
           <Selector
             label={CONTENT.playlists.exportScopeLabel}
@@ -360,8 +384,10 @@
                 label: CONTENT.playlists.exportScope.library,
               },
             ]}
-            onchange={(value) =>
-              (exportScope = value as "playlist" | "library")}
+            onchange={(value) => {
+              exportScope = value as "playlist" | "library";
+              exportStatus = "";
+            }}
           />
         </div>
 
@@ -373,18 +399,24 @@
             <Button
               variant="secondary"
               size="compact"
-              disabled={playlists.length === 0}
-              ariaLabel={`${CONTENT.exports.formatCsv}: ${CONTENT.playlists.libraryExport}`}
-              onclick={() => run(createPlaylistLibraryCsv(playlists))}
+              disabled={playlists.length === 0 || Boolean(exportAction)}
+              loading={exportAction === "library-csv"}
+              loadingLabel={CONTENT.exports.preparing}
+              ariaLabel={`Download and copy ${CONTENT.exports.formatCsv}: ${CONTENT.playlists.libraryExport}`}
+              onclick={() =>
+                void run(createPlaylistLibraryCsv(playlists), "library-csv")}
             >
               CSV
             </Button>
             <Button
               variant="secondary"
               size="compact"
-              disabled={playlists.length === 0}
-              ariaLabel={`${CONTENT.exports.formatJson}: ${CONTENT.playlists.libraryExport}`}
-              onclick={() => run(createPlaylistLibraryJson(playlists))}
+              disabled={playlists.length === 0 || Boolean(exportAction)}
+              loading={exportAction === "library-json"}
+              loadingLabel={CONTENT.exports.preparing}
+              ariaLabel={`Download and copy ${CONTENT.exports.formatJson}: ${CONTENT.playlists.libraryExport}`}
+              onclick={() =>
+                void run(createPlaylistLibraryJson(playlists), "library-json")}
             >
               JSON
             </Button>
@@ -397,20 +429,28 @@
             <Button
               variant="secondary"
               size="compact"
-              disabled={tracksLoading || tracks.length === 0}
-              ariaLabel={`${CONTENT.exports.formatCsv}: ${CONTENT.playlists.playlistExport}`}
+              disabled={
+                tracksLoading || tracks.length === 0 || Boolean(exportAction)
+              }
+              loading={exportAction === "playlist-csv"}
+              loadingLabel={CONTENT.exports.preparing}
+              ariaLabel={`Download and copy ${CONTENT.exports.formatCsv}: ${CONTENT.playlists.playlistExport}`}
               onclick={() =>
-                run(createPlaylistTracksCsv(selected, tracks))}
+                void run(createPlaylistTracksCsv(selected, tracks), "playlist-csv")}
             >
               CSV
             </Button>
             <Button
               variant="secondary"
               size="compact"
-              disabled={tracksLoading || tracks.length === 0}
-              ariaLabel={`${CONTENT.exports.formatJson}: ${CONTENT.playlists.playlistExport}`}
+              disabled={
+                tracksLoading || tracks.length === 0 || Boolean(exportAction)
+              }
+              loading={exportAction === "playlist-json"}
+              loadingLabel={CONTENT.exports.preparing}
+              ariaLabel={`Download and copy ${CONTENT.exports.formatJson}: ${CONTENT.playlists.playlistExport}`}
               onclick={() =>
-                run(createPlaylistTracksJson(selected, tracks))}
+                void run(createPlaylistTracksJson(selected, tracks), "playlist-json")}
             >
               JSON
             </Button>
@@ -420,6 +460,11 @@
             {CONTENT.playlists.playlistExportEmpty}
           </p>
         {/if}
+        <InlineFeedback
+          kind={exportKind}
+          message={exportStatus}
+          class="mt-3"
+        />
       </Panel>
     </aside>
   </div>

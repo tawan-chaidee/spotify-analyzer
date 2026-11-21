@@ -29,6 +29,7 @@ Spotify access.
   playlists
 - Top-track, top-album, listening-stat, overlap, and release-year insights
 - Current-ranking and complete CSV/JSON exports
+- Export actions download the selected file and copy its contents
 - No-login sharing through compressed URL fragments
 - A deterministic 50-item demo that requires no Spotify account
 - Static Cloudflare Workers deployment with no backend or database
@@ -163,7 +164,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 48 passing unit/component tests and 15 fixture-backed
+The project currently has 48 passing unit/component tests and 17 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 

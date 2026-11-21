@@ -14,10 +14,12 @@
     createCompleteJson,
     createCurrentCsv,
     createCurrentJson,
-    downloadExport,
+    downloadAndCopyExport,
     type ExportFile,
   } from "../services/export";
+  import type { FeedbackKind } from "../ui/styles";
   import Button from "./Button.svelte";
+  import InlineFeedback from "./InlineFeedback.svelte";
   import Panel from "./Panel.svelte";
 
   type Props = {
@@ -36,13 +38,35 @@
     totalCount,
   }: Props = $props();
   const currentLabel = $derived(rankingTitle(type));
+  let activeAction = $state("");
+  let actionStatus = $state("");
+  let actionKind = $state<FeedbackKind>("success");
 
-  function run(factory: () => ExportFile) {
-    downloadExport(factory());
+  async function run(factory: () => ExportFile, action: string) {
+    activeAction = action;
+    actionKind = "info";
+    actionStatus = CONTENT.exports.preparing;
+    try {
+      const result = await downloadAndCopyExport(factory());
+      actionKind = result === "copied" ? "success" : "warning";
+      actionStatus =
+        result === "copied"
+          ? CONTENT.exports.copiedAndDownloaded
+          : CONTENT.exports.downloadedClipboardUnavailable;
+    } catch (error) {
+      actionKind = "error";
+      actionStatus =
+        error instanceof Error ? error.message : "Unable to export this file.";
+    } finally {
+      activeAction = "";
+    }
   }
 </script>
 
-<Panel title={CONTENT.exports.title} subtitle={CONTENT.exports.subtitle}>
+<Panel
+  title={CONTENT.exports.title}
+  subtitle={`${CONTENT.exports.subtitle} ${CONTENT.exports.actionHint}`}
+>
   <div class="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2">
     <span></span>
     <span
@@ -66,9 +90,15 @@
       <Button
         variant="secondary"
         size="compact"
-        ariaLabel={`${CONTENT.exports.formatCsv}: ${CONTENT.exports.current}`}
+        ariaLabel={`Download and copy ${CONTENT.exports.formatCsv}: ${CONTENT.exports.current}`}
+        loading={activeAction === "current-csv"}
+        loadingLabel={CONTENT.exports.preparing}
         class="w-full px-2"
-        onclick={() => run(() => createCurrentCsv(data, type, range))}
+        onclick={() =>
+          void run(
+            () => createCurrentCsv(data, type, range),
+            "current-csv",
+          )}
       >
         {CONTENT.exports.formatCsv}
       </Button>
@@ -77,9 +107,15 @@
       <Button
         variant="secondary"
         size="compact"
-        ariaLabel={`${CONTENT.exports.formatJson}: ${CONTENT.exports.current}`}
+        ariaLabel={`Download and copy ${CONTENT.exports.formatJson}: ${CONTENT.exports.current}`}
+        loading={activeAction === "current-json"}
+        loadingLabel={CONTENT.exports.preparing}
         class="w-full px-2"
-        onclick={() => run(() => createCurrentJson(data, type, range))}
+        onclick={() =>
+          void run(
+            () => createCurrentJson(data, type, range),
+            "current-json",
+          )}
       >
         {CONTENT.exports.formatJson}
       </Button>
@@ -95,9 +131,12 @@
       <Button
         variant="secondary"
         size="compact"
-        ariaLabel={`${CONTENT.exports.formatCsv}: ${CONTENT.exports.complete}`}
+        ariaLabel={`Download and copy ${CONTENT.exports.formatCsv}: ${CONTENT.exports.complete}`}
+        loading={activeAction === "complete-csv"}
+        loadingLabel={CONTENT.exports.preparing}
         class="w-full px-2"
-        onclick={() => run(() => createCompleteCsv(data))}
+        onclick={() =>
+          void run(() => createCompleteCsv(data), "complete-csv")}
       >
         {CONTENT.exports.formatCsv}
       </Button>
@@ -106,12 +145,20 @@
       <Button
         variant="secondary"
         size="compact"
-        ariaLabel={`${CONTENT.exports.formatJson}: ${CONTENT.exports.complete}`}
+        ariaLabel={`Download and copy ${CONTENT.exports.formatJson}: ${CONTENT.exports.complete}`}
+        loading={activeAction === "complete-json"}
+        loadingLabel={CONTENT.exports.preparing}
         class="w-full px-2"
-        onclick={() => run(() => createCompleteJson(data))}
+        onclick={() =>
+          void run(() => createCompleteJson(data), "complete-json")}
       >
         {CONTENT.exports.formatJson}
       </Button>
     </span>
   </div>
+  <InlineFeedback
+    kind={actionKind}
+    message={actionStatus}
+    class="mt-3"
+  />
 </Panel>

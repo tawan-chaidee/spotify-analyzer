@@ -5,6 +5,7 @@ import type {
 } from "../models/listening";
 import { TIME_RANGES } from "../models/listening";
 import { rankAlbums } from "./albums";
+import { copyText } from "./clipboard";
 import { rangeLabel } from "./content";
 
 export interface ExportFile {
@@ -201,4 +202,19 @@ export function downloadExport(file: ExportFile): void {
   anchor.download = file.filename;
   anchor.click();
   URL.revokeObjectURL(url);
+}
+
+export async function downloadAndCopyExport(
+  file: ExportFile,
+): Promise<"copied" | "downloaded"> {
+  let copied = false;
+  try {
+    await copyText(file.content.replace(/^\uFEFF/, ""));
+    copied = true;
+  } catch {
+    // Downloading remains available when clipboard access is denied.
+  }
+
+  downloadExport(file);
+  return copied ? "copied" : "downloaded";
 }

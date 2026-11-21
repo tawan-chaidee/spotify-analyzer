@@ -12,15 +12,16 @@
   import type { DashboardMode } from "./models/app";
   import ConnectionPage from "./routes/ConnectionPage.svelte";
   import DashboardPage from "./routes/DashboardPage.svelte";
+  import LoadingPage from "./routes/LoadingPage.svelte";
   import { appPath, redirectUri } from "./services/auth";
   import { CONTENT } from "./services/content";
   import {
     clearShareHash,
-    copyText,
     createShareUrl,
     hasShareHash,
     openShareData,
   } from "./services/sharing/share";
+  import { copyText } from "./services/clipboard";
 
   const APP_MODE = __APP_MODE__;
   const AUTH_SOURCE = __AUTH_SOURCE__;
@@ -41,7 +42,7 @@
   });
   const dashboard = new DashboardController();
 
-  let page = $state<"connection" | "dashboard">("connection");
+  let page = $state<"booting" | "connection" | "dashboard">("booting");
   let mode = $state<DashboardMode>(
     DATA_SOURCE === "mock" ? "mock" : "private",
   );
@@ -97,6 +98,7 @@
         mode = "shared";
         page = "dashboard";
       } catch (error) {
+        page = "connection";
         session.isError = true;
         session.message = `Unable to open shared view: ${
           error instanceof Error ? error.message : "Invalid share link."
@@ -116,6 +118,7 @@
       if (!authenticated) {
         sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
         window.history.replaceState({}, "", appPath());
+        page = "connection";
         return;
       }
       window.history.replaceState({}, "", appPath());
@@ -132,13 +135,21 @@
       await loadDashboard("private");
     } else {
       session.message = session.readyOrInitialMessage();
+      page = "connection";
     }
   }
 
   onMount(() => {
     if (initialized) return;
     initialized = true;
-    void initialize();
+    void initialize().catch((error: unknown) => {
+      page = "connection";
+      session.isError = true;
+      session.message =
+        error instanceof Error
+          ? error.message
+          : CONTENT.startup.error;
+    });
   });
 
   async function connect() {
@@ -223,7 +234,9 @@
       onowntaste={mode === "shared" ? ownTaste : undefined}
     />
 
-    {#if page === "connection"}
+    {#if page === "booting"}
+      <LoadingPage />
+    {:else if page === "connection"}
       <ConnectionPage
         selectedApp={session.selectedApp}
         ownerAvailable={session.ownerAvailable}

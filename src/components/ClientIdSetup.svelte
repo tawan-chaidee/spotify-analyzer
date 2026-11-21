@@ -4,7 +4,7 @@
     isValidSpotifyClientId,
     normalizeSpotifyClientId,
   } from "../services/spotify-app";
-  import { copyText } from "../services/sharing/share";
+  import { copyText } from "../services/clipboard";
   import { smallLabelClass } from "../ui/styles";
   import Button from "./Button.svelte";
   import CheckboxField from "./CheckboxField.svelte";
