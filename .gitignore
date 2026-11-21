@@ -27,6 +27,6 @@ logs/
 # Local application state
 .spotify-tokens.json
 tests/fixtures/local/
-data/
-exports/
-.data/
+/data/
+/exports/
+/.data/
