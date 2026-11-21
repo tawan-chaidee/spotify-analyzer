@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { mockSpotify, seedAuth } from "./support/app-fixture";
 
-test("renders the connection page without loading dashboard code", async ({
+test("renders and then idly prefetches the connection route", async ({
   page,
 }) => {
   const dashboardRequests: string[] = [];
@@ -28,6 +28,9 @@ test("renders the connection page without loading dashboard code", async ({
     }),
   ).toHaveCount(0);
   expect(dashboardRequests).toEqual([]);
+  await expect
+    .poll(() => dashboardRequests.length, { timeout: 4_000 })
+    .toBeGreaterThan(0);
 });
 
 test("loads the private dashboard and switches rankings", async ({

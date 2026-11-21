@@ -1,6 +1,6 @@
 # Deployment
 
-Last verified: 2026-11-21 · Application version: 0.5.1
+Last verified: 2026-11-21 · Application version: 0.5.2
 
 ## Deployment model
 

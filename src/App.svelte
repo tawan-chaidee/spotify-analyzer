@@ -1,10 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { SpotifyClient } from "./api/spotify/client";
-  import type { DashboardController } from "./features/dashboard/dashboard.svelte";
+  import {
+    createDashboardRuntimeLoader,
+    type DashboardRuntime,
+  } from "./features/dashboard/runtime";
   import { SpotifySession } from "./features/spotify/session.svelte";
   import type { DashboardMode } from "./models/dashboard";
   import AuthPage from "./pages/auth/AuthPage.svelte";
+  import DashboardRoute from "./pages/dashboard/DashboardRoute.svelte";
   import LoadingPage from "./pages/LoadingPage.svelte";
   import { appPath, redirectUri } from "./services/auth";
   import { copyText } from "./services/clipboard";
@@ -25,35 +28,26 @@
     (APP_MODE === "mock-auth" ? MOCK_OWNER_CLIENT_ID : "")
   ).trim();
 
+  type AppPage = "booting" | "connection" | "dashboard";
+
   const session = new SpotifySession({
     appMode: APP_MODE,
     authSource: AUTH_SOURCE,
     ownerClientId: OWNER_CLIENT_ID,
     mockOwnClientId: MOCK_OWN_CLIENT_ID,
   });
-  type AppPage = "booting" | "connection" | "dashboard";
-  type DashboardPageComponent =
-    typeof import("./pages/dashboard/DashboardPage.svelte").default;
+  const loadDashboardRuntime = createDashboardRuntimeLoader({
+    dataSource: DATA_SOURCE,
+    getAccessToken: session.auth.getAccessToken,
+  });
 
   let page = $state<AppPage>(initialPage());
-  let DashboardPage = $state<DashboardPageComponent | null>(null);
-  let dashboard = $state.raw<DashboardController | null>(null);
-  let dashboardRuntimePromise:
-    | Promise<{
-        controller: DashboardController;
-        client: SpotifyClient;
-      }>
-    | null = null;
+  let dashboardRuntime = $state.raw<DashboardRuntime | null>(null);
   let mode = $state<DashboardMode>(
     DATA_SOURCE === "mock" ? "mock" : "private",
   );
   let shareStatus = $state("");
   const callback = $derived(redirectUri());
-  const selectedPlaylistTracks = $derived(
-    dashboard?.selectedPlaylistId
-      ? dashboard.playlistTracks[dashboard.selectedPlaylistId] || []
-      : [],
-  );
 
   function initialPage(): AppPage {
     if (hasShareHash() || APP_MODE === "demo") return "booting";
@@ -74,58 +68,90 @@
         : CONTENT.app.name;
   });
 
-  function dashboardRuntime() {
-    dashboardRuntimePromise ??= (async () => {
-      try {
-        const [controllerModule, pageModule, clientModule] =
-          await Promise.all([
-            import("./features/dashboard/dashboard.svelte"),
-            import("./pages/dashboard/DashboardPage.svelte"),
-            DATA_SOURCE === "mock"
-              ? import("./mocks/spotify-client")
-              : import("./api/spotify/client"),
-          ]);
+  $effect(() => {
+    if (page !== "connection") return;
 
-        const controller = new controllerModule.DashboardController();
-        const client =
-          "createMockSpotifyClient" in clientModule
-            ? clientModule.createMockSpotifyClient()
-            : clientModule.createSpotifyClient({
-                getAccessToken: session.auth.getAccessToken,
-              });
-        dashboard = controller;
-        DashboardPage = pageModule.default;
-        return { controller, client };
-      } catch (error) {
-        dashboardRuntimePromise = null;
-        throw error;
+    const connection = (
+      navigator as Navigator & {
+        connection?: {
+          saveData?: boolean;
+          effectiveType?: string;
+        };
       }
-    })();
+    ).connection;
+    if (
+      connection &&
+      (connection.saveData ||
+        connection.effectiveType === "slow-2g" ||
+        connection.effectiveType === "2g")
+    ) {
+      return;
+    }
 
-    return dashboardRuntimePromise;
+    const prefetch = () => {
+      if (page === "connection") {
+        void prepareDashboardRuntime().catch(() => {});
+      }
+    };
+    let idleHandle: number | undefined;
+    const timer = window.setTimeout(() => {
+      idleHandle = window.requestIdleCallback(prefetch, {
+        timeout: 1_500,
+      });
+    }, 1_200);
+
+    document.addEventListener("pointerdown", prefetch, {
+      capture: true,
+      once: true,
+    });
+    document.addEventListener("focusin", prefetch, {
+      capture: true,
+      once: true,
+    });
+
+    return () => {
+      window.clearTimeout(timer);
+      if (idleHandle !== undefined) {
+        window.cancelIdleCallback(idleHandle);
+      }
+      document.removeEventListener("pointerdown", prefetch, true);
+      document.removeEventListener("focusin", prefetch, true);
+    };
+  });
+
+  async function prepareDashboardRuntime(): Promise<DashboardRuntime> {
+    if (dashboardRuntime) return dashboardRuntime;
+    dashboardRuntime = await loadDashboardRuntime();
+    return dashboardRuntime;
   }
 
   async function loadDashboard(nextMode: "private" | "mock") {
     session.message = "";
     session.isError = false;
     try {
-      const runtime = await dashboardRuntime();
+      const runtime = await prepareDashboardRuntime();
       const loaded = await runtime.controller.load(
         runtime.client,
         session.forbiddenMessage(),
       );
       session.finish();
-      if (loaded) {
-        mode = nextMode;
-        page = "dashboard";
+      if (!loaded) {
+        sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
+        page = "connection";
+        session.isError = true;
+        session.message =
+          runtime.controller.error || "Unable to load rankings.";
         return;
       }
 
-      page = "connection";
-      session.isError = true;
-      session.message =
-        runtime.controller.error || "Unable to load rankings.";
+      if (sessionStorage.getItem(PLAYLIST_RESUME_KEY) === "1") {
+        runtime.controller.setView("playlists");
+      }
+      sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
+      mode = nextMode;
+      page = "dashboard";
     } catch (error) {
+      sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
       page = "connection";
       session.fail(error, CONTENT.startup.error);
     }
@@ -138,7 +164,7 @@
       try {
         const { openShareData } = await import("./services/sharing/share");
         const data = await openShareData(window.location.hash);
-        const runtime = await dashboardRuntime();
+        const runtime = await prepareDashboardRuntime();
         runtime.controller.setSharedData(data);
         mode = "shared";
         page = "dashboard";
@@ -168,20 +194,16 @@
       }
       window.history.replaceState({}, "", appPath());
       await loadDashboard("private");
-      if (page === "dashboard") {
-        restorePlaylistView();
-      } else {
-        sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
-      }
       return;
     }
 
     if (session.readAuth()) {
       await loadDashboard("private");
-    } else {
-      session.message = session.readyOrInitialMessage();
-      page = "connection";
+      return;
     }
+
+    session.message = session.readyOrInitialMessage();
+    page = "connection";
   }
 
   onMount(() => {
@@ -214,26 +236,21 @@
     }
   }
 
-  async function reconnectForPlaylists() {
+  async function reconnectForPlaylists(): Promise<boolean> {
     sessionStorage.setItem(PLAYLIST_RESUME_KEY, "1");
-    if (await session.reconnectSelected()) {
+    const connected = await session.reconnectSelected();
+    if (connected) {
       sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
-      dashboard?.setView("playlists");
     }
-  }
-
-  function restorePlaylistView() {
-    if (sessionStorage.getItem(PLAYLIST_RESUME_KEY) !== "1") return;
-    sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
-    dashboard?.setView("playlists");
+    return connected;
   }
 
   async function share() {
-    if (!dashboard) return;
+    if (!dashboardRuntime) return;
     shareStatus = CONTENT.dashboard.sharing;
     try {
       const { createShareUrl } = await import("./services/sharing/share");
-      const url = await createShareUrl(dashboard.data);
+      const url = await createShareUrl(dashboardRuntime.controller.data);
       await copyText(url);
       shareStatus = CONTENT.dashboard.copied;
       window.setTimeout(() => (shareStatus = ""), 3_500);
@@ -246,14 +263,14 @@
   function disconnect() {
     sessionStorage.removeItem(PLAYLIST_RESUME_KEY);
     session.disconnect();
-    dashboard?.reset();
+    if (dashboardRuntime) dashboardRuntime.controller.reset();
     page = "connection";
     mode = DATA_SOURCE === "mock" ? "mock" : "private";
   }
 
   function changeSpotifyApp() {
     session.changeApp();
-    dashboard?.reset();
+    if (dashboardRuntime) dashboardRuntime.controller.reset();
     page = "connection";
     mode = DATA_SOURCE === "mock" ? "mock" : "private";
   }
@@ -282,37 +299,13 @@
     onowneraccess={connectWithOwnerApp}
     onchangeapp={changeSpotifyApp}
   />
-{:else if dashboard && DashboardPage}
-  <DashboardPage
-    model={dashboard.model}
-    data={dashboard.data}
+{:else if dashboardRuntime}
+  <DashboardRoute
+    runtime={dashboardRuntime}
     {mode}
-    busy={dashboard.loading}
     status={shareStatus}
-    view={dashboard.view}
-    playlists={dashboard.playlists}
-    selectedPlaylistId={dashboard.selectedPlaylistId}
-    playlistTracks={selectedPlaylistTracks}
-    playlistsLoading={dashboard.playlistsLoading}
-    playlistTracksLoading={dashboard.playlistTracksLoading}
-    playlistsError={dashboard.playlistsError}
-    playlistTracksError={dashboard.playlistTracksError}
-    playlistsNeedPermission={dashboard.playlistsNeedPermission}
-    playlistQuery={dashboard.playlistQuery}
-    playlistFilter={dashboard.playlistFilter}
-    playlistSort={dashboard.playlistSort}
-    ontypechange={(type) => dashboard?.setType(type)}
-    onrangechange={(range) => dashboard?.setRange(range)}
-    onviewchange={(view) => dashboard?.setView(view)}
-    onplaylistselect={(playlistId) =>
-      dashboard?.selectPlaylist(playlistId)}
-    onplaylistretry={() => dashboard?.loadPlaylists()}
-    onplaylistreconnect={reconnectForPlaylists}
-    onplaylistquerychange={(query) => dashboard?.setPlaylistQuery(query)}
-    onplaylistfilterchange={(filter) =>
-      dashboard?.setPlaylistFilter(filter)}
-    onplaylistsortchange={(sort) => dashboard?.setPlaylistSort(sort)}
     onshare={share}
+    onplaylistreconnect={reconnectForPlaylists}
     ondisconnect={mode === "private" ? disconnect : undefined}
     onowntaste={mode === "shared" ? ownTaste : undefined}
   />

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.2 — 2026-11-21
+
+### Changed
+
+- Prefetch the dashboard after login becomes interactive, while respecting
+  data-saver and slow-network modes.
+- Extracted dashboard module loading and dashboard page wiring from `App.svelte`
+  into focused runtime and route modules.
+
 ## 0.5.1 — 2026-11-21
 
 ### Performance
