@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.1 — 2026-11-21
 
 ### Documentation
 
@@ -8,6 +8,12 @@
 - Documented runtime architecture, feature ownership, Spotify integration, and
   Cloudflare deployment.
 - Refreshed the BYO authentication and Svelte migration records.
+
+### Changed
+
+- Simplified CSV and JSON exports to focus on ranking names, artists, albums,
+  and playlist metadata instead of internal Spotify IDs, images, links, and
+  technical flags.
 
 ## 0.4.0 — 2026-11-21
 

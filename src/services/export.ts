@@ -131,9 +131,6 @@ export function createCompleteCsv(data: ListeningData): ExportFile {
     "name",
     "artist_name",
     "album",
-    "release_date",
-    "duration_ms",
-    "explicit",
   ]];
 
   for (const range of TIME_RANGES) {
@@ -145,9 +142,6 @@ export function createCompleteCsv(data: ListeningData): ExportFile {
         item.title,
         item.artistNames.join(", "),
         item.album.title,
-        item.album.releaseDate,
-        item.durationMs,
-        item.explicit,
       ]);
     });
   }
@@ -158,9 +152,6 @@ export function createCompleteCsv(data: ListeningData): ExportFile {
         rangeLabel(range),
         index + 1,
         item.name,
-        "",
-        "",
-        "",
         "",
         "",
       ]);
@@ -179,12 +170,31 @@ export function createCompleteJson(data: ListeningData): ExportFile {
     filename: "spotify-complete-data.json",
     content: JSON.stringify(
       {
-        schema_version: 1,
+        schema_version: 2,
         exported_at: new Date().toISOString(),
         time_ranges: Object.fromEntries(
           TIME_RANGES.map((range) => [range, rangeLabel(range)]),
         ),
-        data,
+        tracks: Object.fromEntries(
+          TIME_RANGES.map((range) => [
+            range,
+            data.tracks[range].map((track, index) => ({
+              ranking: index + 1,
+              track_name: track.title,
+              artist_name: track.artistNames.join(", "),
+              album_name: track.album.title,
+            })),
+          ]),
+        ),
+        artists: Object.fromEntries(
+          TIME_RANGES.map((range) => [
+            range,
+            data.artists[range].map((artist, index) => ({
+              ranking: index + 1,
+              artist_name: artist.name,
+            })),
+          ]),
+        ),
       },
       null,
       2,

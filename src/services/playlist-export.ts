@@ -14,7 +14,6 @@ export function createPlaylistLibraryCsv(
     "visibility",
     "collaborative",
     "track_count",
-    "spotify_url",
   ]];
 
   for (const playlist of playlists) {
@@ -25,7 +24,6 @@ export function createPlaylistLibraryCsv(
       playlist.isPublic ? "public" : "private",
       playlist.isCollaborative ? "yes" : "no",
       playlist.trackCount,
-      playlist.spotifyUrl,
     ]);
   }
 
@@ -43,7 +41,7 @@ export function createPlaylistLibraryJson(
     filename: "spotify-playlist-library.json",
     content: JSON.stringify(
       {
-        schema_version: 1,
+        schema_version: 2,
         exported_at: new Date().toISOString(),
         items: playlists.map((playlist) => ({
           playlist_name: playlist.name,
@@ -53,7 +51,6 @@ export function createPlaylistLibraryJson(
           public: playlist.isPublic,
           collaborative: playlist.isCollaborative,
           track_count: playlist.trackCount,
-          spotify_url: playlist.spotifyUrl,
         })),
       },
       null,
@@ -72,11 +69,6 @@ export function createPlaylistTracksCsv(
     "track_name",
     "artist_name",
     "album",
-    "release_date",
-    "duration_ms",
-    "explicit",
-    "added_at",
-    "spotify_url",
   ]];
 
   tracks.forEach((track, index) => {
@@ -85,11 +77,6 @@ export function createPlaylistTracksCsv(
       track.title,
       track.artistNames.join(", "),
       track.album.title,
-      track.album.releaseDate,
-      track.durationMs,
-      track.explicit,
-      track.addedAt,
-      track.spotifyUrl,
     ]);
   });
 
@@ -108,7 +95,7 @@ export function createPlaylistTracksJson(
     filename: `${playlistFilename(playlist.name)}.json`,
     content: JSON.stringify(
       {
-        schema_version: 1,
+        schema_version: 2,
         exported_at: new Date().toISOString(),
         playlist: {
           name: playlist.name,
@@ -117,18 +104,12 @@ export function createPlaylistTracksJson(
           public: playlist.isPublic,
           collaborative: playlist.isCollaborative,
           track_count: playlist.trackCount,
-          spotify_url: playlist.spotifyUrl,
         },
         items: tracks.map((track, index) => ({
           position: index + 1,
           track_name: track.title,
           artist_name: track.artistNames.join(", "),
-          album: track.album.title,
-          release_date: track.album.releaseDate,
-          duration_ms: track.durationMs,
-          explicit: track.explicit,
-          added_at: track.addedAt,
-          spotify_url: track.spotifyUrl,
+          album_name: track.album.title,
         })),
       },
       null,

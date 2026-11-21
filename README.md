@@ -29,7 +29,7 @@ Spotify access.
 - Track inspection and track-level CSV/JSON exports for owned or collaborative
   playlists
 - Top-track, top-album, listening-stat, overlap, and release-year insights
-- Current-ranking and complete CSV/JSON exports
+- Current-ranking and complete user-focused CSV/JSON exports
 - Export actions download the selected file and copy its contents
 - No-login sharing through compressed URL fragments
 - A deterministic 50-item demo that requires no Spotify account

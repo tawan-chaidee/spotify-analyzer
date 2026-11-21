@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   createCompleteCsv,
+  createCompleteJson,
   createCurrentCsv,
   createCurrentJson,
 } from "../../src/services/export";
@@ -49,7 +50,27 @@ describe("exports", () => {
   });
 
   it("exports all ranges", () => {
-    const file = createCompleteCsv(createListeningFixture());
-    expect(file.content.split("\n").length).toBeGreaterThan(10);
+    const data = createListeningFixture();
+    const csv = createCompleteCsv(data);
+    const json = createCompleteJson(data);
+    const payload = JSON.parse(json.content);
+
+    expect(csv.content.split("\n").length).toBeGreaterThan(10);
+    expect(csv.content.split("\n")[0]).toBe(
+      "\uFEFFtype,time_range,ranking,name,artist_name,album",
+    );
+    expect(csv.content).not.toContain("duration_ms");
+    expect(csv.content).not.toContain("explicit");
+    expect(payload.schema_version).toBe(2);
+    expect(payload.data).toBeUndefined();
+    expect(payload.tracks.medium_term[0]).toEqual({
+      ranking: 1,
+      track_name: 'Alpha, "One"',
+      artist_name: "Artist 1, Guest",
+      album_name: "Album 1",
+    });
+    expect(json.content).not.toContain("imageUrl");
+    expect(json.content).not.toContain("spotifyUrl");
+    expect(json.content).not.toContain("explicit");
   });
 });

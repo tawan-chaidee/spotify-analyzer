@@ -20,8 +20,8 @@ This map connects user-visible behavior to implementation and test locations.
 | Playlist discovery | Search by name or owner, filter All/Owned/Followed, and sort by Spotify order/name/track count | `src/components/PlaylistLibrary.svelte` | `e2e/app.spec.ts` |
 | Playlist details | Lazily loads playlist items for owned or collaborative playlists | `src/api/spotify/client.ts`, `src/components/PlaylistLibrary.svelte` | `tests/api/spotify/client.test.ts`, `e2e/app.spec.ts` |
 | Playlist permission recovery | Detects missing playlist scopes and offers a reconnect flow that returns to Playlist mode | `src/services/auth.ts`, `src/features/spotify/session.svelte.ts`, `src/App.svelte` | `e2e/app.spec.ts` |
-| Ranking exports | Current and complete data as CSV or JSON | `src/services/export.ts`, `src/components/ExportPanel.svelte` | `tests/services/export.test.ts`, `e2e/app.spec.ts` |
-| Playlist exports | Playlist-library metadata or selected-playlist tracks as CSV or JSON | `src/services/playlist-export.ts`, `src/components/PlaylistLibrary.svelte` | `e2e/app.spec.ts` |
+| Ranking exports | Current and complete user-focused data as CSV or JSON without internal IDs, images, links, or technical flags | `src/services/export.ts`, `src/components/ExportPanel.svelte` | `tests/services/export.test.ts`, `e2e/app.spec.ts` |
+| Playlist exports | Playlist-library metadata or selected-playlist tracks as CSV or JSON using readable names and rankings | `src/services/playlist-export.ts`, `src/components/PlaylistLibrary.svelte` | `tests/services/playlist-export.test.ts`, `e2e/app.spec.ts` |
 | Copy plus download | Exports download their file and copy content; clipboard failure does not block download | `src/services/export.ts`, `src/services/clipboard.ts` | `e2e/app.spec.ts` |
 | Playlist filenames | Selected-playlist exports preserve the playlist name | `src/services/playlist-export.ts` | `e2e/app.spec.ts` |
 | No-login sharing | Compresses track and artist snapshots into a share-safe URL fragment | `src/services/sharing/`, `src/App.svelte` | `tests/services/sharing.test.ts`, `e2e/share.spec.ts` |
