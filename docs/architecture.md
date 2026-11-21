@@ -1,6 +1,6 @@
 # Architecture
 
-Last verified: 2026-11-21 · Application version: 0.4.0
+Last verified: 2026-11-21 · Application version: 0.5.1
 
 ## System context
 

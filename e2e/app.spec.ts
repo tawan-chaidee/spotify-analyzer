@@ -2,6 +2,34 @@ import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { mockSpotify, seedAuth } from "./support/app-fixture";
 
+test("renders the connection page without loading dashboard code", async ({
+  page,
+}) => {
+  const dashboardRequests: string[] = [];
+  page.on("request", (request) => {
+    if (
+      request.url().includes("DashboardPage") ||
+      request.url().includes("dashboard.svelte")
+    ) {
+      dashboardRequests.push(request.url());
+    }
+  });
+
+  await page.goto("/");
+
+  await expect(
+    page.getByRole("heading", {
+      name: "Your listening taste, ranked.",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: "Loading your listening dashboard.",
+    }),
+  ).toHaveCount(0);
+  expect(dashboardRequests).toEqual([]);
+});
+
 test("loads the private dashboard and switches rankings", async ({
   page,
 }) => {

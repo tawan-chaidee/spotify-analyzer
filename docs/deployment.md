@@ -1,6 +1,6 @@
 # Deployment
 
-Last verified: 2026-11-21 · Application version: 0.4.0
+Last verified: 2026-11-21 · Application version: 0.5.1
 
 ## Deployment model
 
@@ -139,7 +139,7 @@ Expected current coverage:
 
 ```text
 54 unit/component tests
-18 Playwright tests
+19 Playwright tests
 Production build
 Desktop and mobile visual baselines
 ```

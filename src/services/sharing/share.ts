@@ -3,8 +3,8 @@ import { appPath } from "../auth";
 import {
   decodeShareHash,
   encodeShareValue,
-  shareHashPrefix,
 } from "./codec";
+import { SHARE_HASH_PREFIX } from "./hash";
 import {
   compactListeningData,
   expandListeningData,
@@ -14,7 +14,7 @@ export async function createShareUrl(
   data: ListeningData,
 ): Promise<string> {
   const encoded = await encodeShareValue(compactListeningData(data));
-  return `${window.location.origin}${appPath()}${shareHashPrefix()}${encoded}`;
+  return `${window.location.origin}${appPath()}${SHARE_HASH_PREFIX}${encoded}`;
 }
 
 export async function openShareData(
@@ -23,10 +23,4 @@ export async function openShareData(
   return expandListeningData(await decodeShareHash(hash));
 }
 
-export function clearShareHash(): void {
-  window.history.replaceState({}, "", appPath());
-}
-
-export function hasShareHash(): boolean {
-  return window.location.hash.startsWith(shareHashPrefix());
-}
+export { clearShareHash, hasShareHash } from "./hash";

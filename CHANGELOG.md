@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.1 — 2026-11-21
+
+### Performance
+
+- Serve the login route without downloading dashboard, Spotify client, or
+  sharing code.
+- Skip the redundant startup render for signed-out visitors while preserving
+  loading states for saved sessions, callbacks, demo mode, and shared views.
+
 ## 0.5.0 — 2026-11-21
 
 ### Changed

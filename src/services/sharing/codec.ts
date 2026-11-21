@@ -1,4 +1,5 @@
-const SHARE_HASH_PREFIX = "#share=";
+import { SHARE_HASH_PREFIX } from "./hash";
+
 const SHARE_FORMAT_PREFIX = "gz.";
 const MAX_SHARE_HASH_LENGTH = 300_000;
 const MAX_SHARE_JSON_BYTES = 2_000_000;
@@ -77,9 +78,7 @@ export async function encodeShareValue(value: unknown): Promise<string> {
   return encoded;
 }
 
-export function shareHashPrefix(): string {
-  return SHARE_HASH_PREFIX;
-}
+export { shareHashPrefix } from "./hash";
 
 export async function decodeShareHash(hash: string): Promise<unknown> {
   if (!hash.startsWith(SHARE_HASH_PREFIX)) {
