@@ -46,26 +46,30 @@
   }: Props = $props();
 </script>
 
-<div class="mb-6 mt-5 grid gap-2.5">
+<div
+  class="relative z-10 mb-6 mt-5 grid gap-2 rounded-[3px] border border-line bg-secondary p-2 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:p-2.5"
+>
   {#if mode !== "shared"}
     <DashboardViewSwitch view={view} onchange={onviewchange} />
   {/if}
 
-  {#if mode !== "shared" && view === "playlists"}
-    <PlaylistSelectors
-      query={playlistQuery}
-      filter={playlistFilter}
-      sort={playlistSort}
-      onquerychange={onplaylistquerychange}
-      onfilterchange={onplaylistfilterchange}
-      onsortchange={onplaylistsortchange}
-    />
-  {:else}
-    <ListeningSelectors
-      {type}
-      {range}
-      {ontypechange}
-      {onrangechange}
-    />
-  {/if}
+  <div class="min-w-0">
+    {#if mode !== "shared" && view === "playlists"}
+      <PlaylistSelectors
+        query={playlistQuery}
+        filter={playlistFilter}
+        sort={playlistSort}
+        onquerychange={onplaylistquerychange}
+        onfilterchange={onplaylistfilterchange}
+        onsortchange={onplaylistsortchange}
+      />
+    {:else}
+      <ListeningSelectors
+        {type}
+        {range}
+        {ontypechange}
+        {onrangechange}
+      />
+    {/if}
+  </div>
 </div>

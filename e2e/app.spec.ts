@@ -170,7 +170,10 @@ test("browses and exports playlist mode", async ({ context, page }) => {
   await expect(page.locator("[data-component='playlist-list'] li"))
     .toHaveCount(3);
 
-  await page.getByLabel("Playlist access").selectOption("owned");
+  await page
+    .getByRole("button", { name: "Playlist access: All" })
+    .click();
+  await page.getByRole("option", { name: "Owned" }).click();
   await expect(page.getByRole("button", { name: /Current Rotation/ }))
     .toBeVisible();
 
@@ -210,10 +213,46 @@ test("browses and exports playlist mode", async ({ context, page }) => {
   ) as { items: unknown[] };
   expect(libraryPayload.items).toHaveLength(3);
 
-  await page.getByLabel("Playlist access").selectOption("all");
+  await page
+    .getByRole("button", { name: "Playlist access: Owned" })
+    .click();
+  await page.getByRole("option", { name: "All" }).click();
   await page.getByRole("button", { name: /Late Night Drive/ }).click();
   await expect(
     page.getByText(/Spotify only exposes track items for playlists/),
+  ).toBeVisible();
+});
+
+test("uses a bottom-sheet playlist selector on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedAuth(page);
+  await mockSpotify(page);
+  await page.goto("/");
+  await page.getByRole("button", { name: "Playlists" }).click();
+
+  await page
+    .getByRole("button", { name: "Playlist access: All" })
+    .click();
+  await expect(
+    page.getByRole("dialog", { name: "Playlist access" }),
+  ).toBeVisible();
+  const scrollBefore = await page.evaluate(() => window.scrollY);
+  await page.mouse.move(8, 120);
+  await page.mouse.wheel(0, 320);
+  await page.waitForTimeout(80);
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(
+    scrollBefore,
+  );
+  await page.mouse.click(8, 120);
+  await expect(
+    page.getByRole("dialog", { name: "Playlist access" }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("button", { name: "Playlist access: All" })
+    .click();
+  await page.getByRole("option", { name: "Owned" }).click();
+  await expect(
+    page.getByRole("button", { name: "Playlist access: Owned" }),
   ).toBeVisible();
 });
 

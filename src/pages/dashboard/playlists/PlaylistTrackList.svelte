@@ -31,7 +31,7 @@
   const visibleTracks = $derived(tracks.slice(0, 100));
 </script>
 
-<div class="mt-5 flex items-center justify-between gap-3">
+<div class="mt-6 flex items-center justify-between gap-3 border-b border-line pb-3">
   <h3 class="m-0 text-sm font-bold">{CONTENT.playlists.tracksTitle}</h3>
   <span class="text-xs text-muted">
     {tracks.length} {CONTENT.playlists.trackCount}
@@ -71,24 +71,24 @@
 {:else if visibleTracks.length === 0}
   <p class="my-4 text-sm text-muted">{CONTENT.playlists.empty}</p>
 {:else}
-  <ol class="m-0 mt-2 grid list-none gap-1 p-0">
+  <ol class="m-0 grid list-none p-0">
     {#each visibleTracks as track, index (`${index}:${track.id}`)}
       <li
-        class="grid grid-cols-[1.5rem_2.5rem_minmax(0,1fr)] items-center gap-2 rounded-control p-1.5"
+        class="grid min-h-[4.75rem] grid-cols-[1.75rem_3rem_minmax(0,1fr)] items-center gap-3 border-b border-line p-3.5 last:border-b-0"
       >
-        <span class="text-right text-xs tabular-nums text-muted">
+        <span class="grid size-7 place-items-center text-[12px] font-bold tabular-nums text-foreground">
           {index + 1}
         </span>
         <Artwork
           src={track.album.imageUrl}
           title={track.album.title}
-          class="size-10"
+          class="size-12"
         />
         <span class="min-w-0">
-          <span class="block truncate text-sm font-bold">
+          <span class="line-clamp-2 text-[15px] font-bold leading-snug">
             {track.title}
           </span>
-          <span class="mt-0.5 block truncate text-xs text-muted">
+          <span class="mt-1 line-clamp-2 text-xs leading-relaxed text-muted">
             {track.artistNames.join(", ")} · {formatDuration(
               track.durationMs,
             )}

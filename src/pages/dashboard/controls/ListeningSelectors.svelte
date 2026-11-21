@@ -20,7 +20,7 @@
   let { type, range, ontypechange, onrangechange }: Props = $props();
 </script>
 
-<div class="flex flex-wrap gap-2.5">
+<div class="grid gap-2 sm:flex sm:flex-wrap">
   <Selector
     label={CONTENT.controls.contentLabel}
     value={type}

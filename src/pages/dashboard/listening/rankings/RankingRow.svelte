@@ -15,38 +15,45 @@
   const spotifyUrl = $derived(safeSpotifyUrl(row.spotifyUrl));
   const rowClass = $derived(
     cn(
-      "grid min-h-14 items-center gap-2 rounded-xl p-2 text-inherit no-underline",
+      "grid min-h-[4.75rem] items-center gap-3 border-b border-line/70 p-3 text-inherit no-underline last:border-b-0",
       "motion-safe:transition-colors hover:bg-foreground/5 active:bg-foreground/10",
       "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight",
-      "sm:gap-3",
       showTrend
-        ? "grid-cols-[1.5rem_2.5rem_minmax(0,1fr)_3.25rem] sm:grid-cols-[1.75rem_3rem_minmax(0,1fr)_3.5rem]"
-        : "grid-cols-[1.5rem_2.5rem_minmax(0,1fr)] sm:grid-cols-[1.75rem_3rem_minmax(0,1fr)_1.5rem]",
+        ? "grid-cols-[2rem_2.75rem_minmax(0,1fr)_3.5rem] sm:grid-cols-[2rem_3rem_minmax(0,1fr)_4rem]"
+        : "grid-cols-[2rem_2.75rem_minmax(0,1fr)] sm:grid-cols-[2rem_3rem_minmax(0,1fr)]",
     ),
   );
 </script>
 
+{#snippet trendContent()}
+  {#if showTrend && row.trend}
+    <TrendStatus trend={row.trend} />
+  {:else if showTrend}
+    <span aria-hidden="true" class="text-muted">↗</span>
+  {/if}
+{/snippet}
+
 {#snippet content()}
-  <span class="text-right text-sm text-muted tabular-nums">
+  <span class="grid size-7 place-items-center justify-self-center text-[12px] font-bold tabular-nums text-foreground">
     <span class="sr-only">{CONTENT.ranking.rank} </span>
     {row.rank}
   </span>
   <Artwork
     src={row.imageUrl}
     title={row.title}
-    class="size-10 sm:size-12"
+    class="size-11 self-center sm:size-12"
   />
   <span class="min-w-0">
-    <span class="block truncate font-bold">{row.title}</span>
-    <span class="mt-1 block truncate text-xs text-muted sm:text-[13px]">
+    <span class="line-clamp-2 text-[15px] font-bold leading-snug">
+      {row.title}
+    </span>
+    <span class="mt-1 line-clamp-2 text-xs leading-relaxed text-muted sm:text-[13px]">
       {row.subtitle}
     </span>
   </span>
-  {#if showTrend && row.trend}
-    <TrendStatus trend={row.trend} />
-  {:else}
-    <span aria-hidden="true" class="text-muted max-[559px]:hidden">
-      ↗
+    {#if showTrend}
+      <span class="justify-self-end">
+      {@render trendContent()}
     </span>
   {/if}
 {/snippet}

@@ -67,26 +67,16 @@
   title={CONTENT.exports.title}
   subtitle={`${CONTENT.exports.subtitle} ${CONTENT.exports.actionHint}`}
 >
-  <div class="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2">
-    <span></span>
-    <span
-      class="text-center text-[10px] font-extrabold uppercase tracking-widest text-muted"
+  <div class="grid gap-2.5">
+    <div
+      class="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2 rounded-control bg-main/35 p-3"
     >
-      {CONTENT.exports.formatCsv}
-    </span>
-    <span
-      class="text-center text-[10px] font-extrabold uppercase tracking-widest text-muted"
-    >
-      {CONTENT.exports.formatJson}
-    </span>
-
-    <span class="min-w-0 border-t border-line py-3">
+      <span class="min-w-0">
       <strong class="block text-sm">{CONTENT.exports.current}</strong>
       <span class="mt-1 block truncate text-[11px] text-muted">
         {currentLabel} · {rangeLabel(range)} · {currentCount} rows
       </span>
-    </span>
-    <span class="border-t border-line py-3">
+      </span>
       <Button
         variant="secondary"
         size="compact"
@@ -102,8 +92,6 @@
       >
         {CONTENT.exports.formatCsv}
       </Button>
-    </span>
-    <span class="border-t border-line py-3">
       <Button
         variant="secondary"
         size="compact"
@@ -119,15 +107,17 @@
       >
         {CONTENT.exports.formatJson}
       </Button>
-    </span>
+    </div>
 
-    <span class="min-w-0 border-t border-line py-3">
+    <div
+      class="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2 rounded-control bg-main/35 p-3"
+    >
+      <span class="min-w-0">
       <strong class="block text-sm">{CONTENT.exports.complete}</strong>
       <span class="mt-1 block truncate text-[11px] text-muted">
         Tracks and artists · 3 ranges · {totalCount} rows
       </span>
-    </span>
-    <span class="border-t border-line py-3">
+      </span>
       <Button
         variant="secondary"
         size="compact"
@@ -140,8 +130,6 @@
       >
         {CONTENT.exports.formatCsv}
       </Button>
-    </span>
-    <span class="border-t border-line py-3">
       <Button
         variant="secondary"
         size="compact"
@@ -154,7 +142,7 @@
       >
         {CONTENT.exports.formatJson}
       </Button>
-    </span>
+    </div>
   </div>
   <InlineFeedback
     kind={actionKind}

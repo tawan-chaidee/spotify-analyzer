@@ -10,6 +10,15 @@
 - Broke playlist discovery, details, tracks, and exports into focused
   components.
 - Removed the unused legacy application-state model.
+- Consolidated dashboard controls into a responsive, squared control deck with
+  shared pill selectors and optional mobile dropdown presentations.
+- Refined the application frame and background artwork, reducing visual
+  overlap and unnecessary glass effects.
+- Improved mobile rankings and playlists with clearer row separation, wider
+  content, and stronger track numbering.
+- Rebuilt playlist discovery around search plus responsive filter/sort
+  dropdowns, including a dismissible bottom sheet that preserves page scrolling.
+- Simplified export controls into cleaner grouped actions.
 
 ## 0.4.1 — 2026-11-21
 

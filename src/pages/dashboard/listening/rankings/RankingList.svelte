@@ -29,7 +29,7 @@
   {#if model.type === "albums"}
     <AlbumRankingMethod />
   {/if}
-  <ol class="m-0 grid list-none gap-2 p-0">
+  <ol class="m-0 grid list-none p-0">
     {#if model.rows.length === 0}
       <li role="status" class="px-2 py-6 text-center text-muted">
         {CONTENT.ranking.empty}

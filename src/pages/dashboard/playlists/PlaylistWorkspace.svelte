@@ -56,7 +56,7 @@
     </p>
   </div>
 
-  <div class="grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,.65fr)]">
+  <div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(420px,1fr)]">
     <PlaylistBrowser
       playlists={visiblePlaylists}
       {selectedPlaylistId}

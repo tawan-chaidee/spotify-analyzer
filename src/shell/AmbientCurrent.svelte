@@ -2,7 +2,7 @@
 </script>
 
 <svg
-  class="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[min(780px,90vh)] w-full text-highlight"
+  class="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[min(500px,60vh)] w-full text-highlight opacity-75 [mask-image:linear-gradient(to_bottom,black_0%,black_45%,transparent_95%)]"
   viewBox="0 0 1440 780"
   preserveAspectRatio="xMidYMin slice"
   aria-hidden="true"

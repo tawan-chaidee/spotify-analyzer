@@ -4,6 +4,7 @@
     PlaylistSort,
   } from "../../../models/playlist";
   import { CONTENT } from "../../../services/content";
+  import DropdownSelect from "../../../ui/components/DropdownSelect.svelte";
 
   type Props = {
     query: string;
@@ -24,44 +25,39 @@
   }: Props = $props();
 </script>
 
-<div class="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_auto]">
-  <label class="min-w-0">
+<div
+  data-component="playlist-filters"
+  class="grid gap-2 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(11rem,auto)_minmax(11rem,auto)]"
+>
+  <label class="min-w-0 sm:col-span-2 lg:col-span-1">
     <span class="sr-only">{CONTENT.playlists.searchLabel}</span>
     <input
       value={query}
       oninput={(event) =>
         onquerychange(event.currentTarget.value)}
       type="search"
-      class="min-h-11 w-full rounded-control border border-line bg-main px-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-highlight"
+      class="min-h-12 w-full rounded-pill border border-line bg-main px-3.5 text-sm text-foreground outline-none placeholder:text-muted focus:border-highlight"
       placeholder={CONTENT.playlists.searchPlaceholder}
     />
   </label>
-  <label>
-    <span class="sr-only">{CONTENT.playlists.filterLabel}</span>
-    <select
-      value={filter}
-      onchange={(event) =>
-        onfilterchange(event.currentTarget.value as PlaylistFilter)}
-      class="min-h-11 w-full rounded-control border border-line bg-main px-3 text-sm font-bold text-foreground outline-none focus:border-highlight"
-    >
-      <option value="all">{CONTENT.playlists.filter.all}</option>
-      <option value="owned">{CONTENT.playlists.filter.owned}</option>
-      <option value="followed">
-        {CONTENT.playlists.filter.followed}
-      </option>
-    </select>
-  </label>
-  <label>
-    <span class="sr-only">{CONTENT.playlists.sortLabel}</span>
-    <select
-      value={sort}
-      onchange={(event) =>
-        onsortchange(event.currentTarget.value as PlaylistSort)}
-      class="min-h-11 w-full rounded-control border border-line bg-main px-3 text-sm font-bold text-foreground outline-none focus:border-highlight"
-    >
-      <option value="spotify">{CONTENT.playlists.sort.spotify}</option>
-      <option value="name">{CONTENT.playlists.sort.name}</option>
-      <option value="tracks">{CONTENT.playlists.sort.tracks}</option>
-    </select>
-  </label>
+  <DropdownSelect
+    label={CONTENT.playlists.filterLabel}
+    value={filter}
+    options={[
+      { value: "all", label: CONTENT.playlists.filter.all },
+      { value: "owned", label: CONTENT.playlists.filter.owned },
+      { value: "followed", label: CONTENT.playlists.filter.followed },
+    ]}
+    onchange={(value) => onfilterchange(value as PlaylistFilter)}
+  />
+  <DropdownSelect
+    label={CONTENT.playlists.sortLabel}
+    value={sort}
+    options={[
+      { value: "spotify", label: CONTENT.playlists.sort.spotify },
+      { value: "name", label: CONTENT.playlists.sort.name },
+      { value: "tracks", label: CONTENT.playlists.sort.tracks },
+    ]}
+    onchange={(value) => onsortchange(value as PlaylistSort)}
+  />
 </div>

@@ -14,9 +14,13 @@
 <div class="relative isolate min-h-screen overflow-x-clip">
   <AmbientCurrent />
   <div
-    class="relative z-10 mx-auto w-[min(1180px,calc(100%-32px))] py-7 pb-14 max-[560px]:w-[calc(100%-22px)] max-[560px]:pt-4"
+    class="relative z-10 mx-auto w-[min(1320px,calc(100%-32px))] py-5 pb-12 max-[560px]:w-[calc(100%-22px)] max-[560px]:py-3"
   >
-    <PageHeader {actions} />
-    {@render children()}
+    <div
+      class="border border-line/80 bg-main/55 px-6 py-6 max-[560px]:px-4 max-[560px]:py-4"
+    >
+      <PageHeader {actions} />
+      {@render children()}
+    </div>
   </div>
 </div>

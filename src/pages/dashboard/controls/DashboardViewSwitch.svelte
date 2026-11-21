@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class="inline-flex w-fit max-w-full rounded-pill border border-line bg-secondary p-1"
+  class="inline-flex max-w-full rounded-pill border border-line bg-main/80 p-1 max-sm:w-full"
   role="group"
   aria-label={CONTENT.views.label}
 >
@@ -25,7 +25,7 @@
       type="button"
       aria-pressed={active}
       class={cn(
-        "rounded-pill px-4 py-2 text-sm font-extrabold transition-colors",
+        "min-h-10 whitespace-nowrap rounded-pill px-4 py-2 text-sm font-extrabold transition-colors",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight",
         active
           ? "bg-foreground text-main"
