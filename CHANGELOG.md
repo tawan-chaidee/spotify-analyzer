@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+
+- Added a root documentation map for AI and contributor navigation.
+- Documented runtime architecture, feature ownership, Spotify integration, and
+  Cloudflare deployment.
+- Refreshed the BYO authentication and Svelte migration records.
+
 ## 0.4.0 — 2026-11-21
 
 ### Added

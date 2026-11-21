@@ -1,8 +1,7 @@
 # Bring Your Own Spotify App
 
-Status: Implemented on Svelte migration branch
-Branch: `migration/svelte`
-Last updated: 2026-11-02
+Status: Implemented on `main`
+Last updated: 2026-11-21
 
 ## Summary
 
@@ -10,8 +9,9 @@ Change the default authentication flow so visitors can use their own Spotify
 Developer Client ID with the hosted application. This removes the need to fork,
 deploy, or share the owner's limited Spotify allowlist.
 
-The dashboard, exports, and shared snapshots remain unchanged. Only the source
-of the Spotify Client ID changes.
+This document is the design record for the original BYO authentication change.
+Current runtime and API details are maintained in
+[spotify-integration.md](spotify-integration.md).
 
 Runtime profiles are explicit:
 
@@ -27,8 +27,8 @@ fresh tab returns to onboarding.
 
 ## Problem
 
-The current build uses one public Client ID configured through
-`VITE_SPOTIFY_CLIENT_ID`.
+Before this implementation, the build used one public Client ID configured
+through `VITE_SPOTIFY_CLIENT_ID`.
 
 Spotify apps in development mode can only use a small allowlist of
 authenticated users. A public visitor who is not on that allowlist reaches
@@ -578,8 +578,8 @@ Include direct links:
 - [x] Update unit, component, and browser tests.
 - [x] Rewrite the README user flow.
 - [x] Add `dev:demo` and `dev:mock-auth` runtime profiles.
-- [ ] Deploy a preview and verify with a real custom Spotify app.
-- [ ] Merge to `main` after the preview verification.
+- [x] Deploy a preview and verify with a real custom Spotify app.
+- [x] Merge to `main`.
 
 ## Acceptance criteria
 

@@ -21,6 +21,7 @@ Spotify access.
 - Bring-your-own Spotify Client ID setup with no deployment required
 - Optional Owner Access for approved Spotify accounts
 - Spotify Authorization Code with PKCE and automatic token refresh
+- Startup authentication check with no connection-page flash
 - Top 50 tracks and artists for 4 weeks, 6 months, and 1 year
 - Artist and inferred album movement compared with the yearly ranking
 - Searchable owned and followed playlist library
@@ -155,6 +156,14 @@ sharing remain framework-independent services.
 
 Framework and state-boundary details are documented in
 [docs/svelte-migration.md](docs/svelte-migration.md).
+
+## Documentation
+
+- [Documentation guide](docs/README.md)
+- [Architecture and data flow](docs/architecture.md)
+- [Feature-to-code map](docs/features.md)
+- [Spotify authentication and API integration](docs/spotify-integration.md)
+- [Cloudflare and GitHub Actions deployment](docs/deployment.md)
 
 ## Tests
 

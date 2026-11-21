@@ -1,6 +1,7 @@
 # Svelte Migration
 
-Status: Implemented on `migration/svelte`
+Status: Implemented on `main`
+Last updated: 2026-11-21
 
 ## Scope
 
@@ -18,8 +19,10 @@ Before: React + TypeScript + Vite + Tailwind
 After:  Svelte 5 + TypeScript + Vite + Tailwind
 ```
 
-Production JavaScript changed from approximately 82 KB gzipped to approximately
-33 KB gzipped.
+At migration time, production JavaScript changed from approximately 82 KB
+gzipped to approximately 33 KB gzipped. The current v0.4.0 bundle is
+approximately 42 KB gzipped after adding album, playlist, startup, and export
+features.
 
 ## Reusable UI
 
@@ -84,13 +87,15 @@ tests/components/ranking-row.test.ts
 tests/components/selector.test.ts
 ```
 
-The same 12 Playwright journeys cover:
+The Playwright suite covers:
 
 - Visitor Client ID authorization
 - Owner Access
 - Mocked OAuth callback
 - Dashboard filters
-- CSV downloads
+- CSV downloads and clipboard copying
+- Startup loading behavior
+- Playlist library access and exports
 - Sharing
 - Invalid share links
 - 403 recovery
@@ -109,8 +114,8 @@ npm run test:e2e
 
 Current status:
 
-- 41 unit/component tests passing
-- 12 Playwright tests passing
+- 48 unit/component tests passing
+- 17 Playwright tests passing
 - Svelte check passes with no diagnostics
 - Production build passes
 - Demo build passes
@@ -119,5 +124,4 @@ Current status:
 ## Rollback
 
 The pre-migration React implementation is preserved by the local `pre-svelte`
-tag. The migration remains isolated on `migration/svelte` until it is reviewed
-and merged.
+tag. The Svelte implementation is now merged and deployed from `main`.
