@@ -27,14 +27,14 @@ features.
 ## Reusable UI
 
 ```text
-src/components/Button.svelte
-src/components/Card.svelte
-src/components/Panel.svelte
-src/components/CheckboxField.svelte
-src/components/InlineFeedback.svelte
-src/components/StatusBadge.svelte
-src/components/Artwork.svelte
-src/components/Selector.svelte
+src/ui/components/Button.svelte
+src/ui/components/Card.svelte
+src/ui/components/Panel.svelte
+src/ui/components/CheckboxField.svelte
+src/ui/components/InlineFeedback.svelte
+src/ui/components/StatusBadge.svelte
+src/ui/components/Artwork.svelte
+src/ui/components/Selector.svelte
 src/ui/styles.ts
 ```
 
@@ -114,7 +114,7 @@ npm run test:e2e
 
 Current status:
 
-- 48 unit/component tests passing
+- 52 unit/component tests passing
 - 17 Playwright tests passing
 - Svelte check passes with no diagnostics
 - Production build passes

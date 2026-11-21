@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0 — 2026-11-21
+
+### Changed
+
+- Separated authentication and dashboard page composition.
+- Moved reusable visual primitives into `src/ui/components`.
+- Split the dashboard into selectors, listening, and playlist workspaces.
+- Broke playlist discovery, details, tracks, and exports into focused
+  components.
+- Removed the unused legacy application-state model.
+
 ## 0.4.1 — 2026-11-21
 
 ### Documentation

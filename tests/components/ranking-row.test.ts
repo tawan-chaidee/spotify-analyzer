@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 import { fireEvent, render, screen } from "@testing-library/svelte";
 import { describe, expect, it } from "vitest";
-import RankingRow from "../../src/components/RankingRow.svelte";
+import RankingRow from "../../src/pages/dashboard/listening/rankings/RankingRow.svelte";
 
 const row = {
   id: "track-1",

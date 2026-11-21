@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 import { render, screen } from "@testing-library/svelte";
 import { describe, expect, it, vi } from "vitest";
-import ConnectionCard from "../../src/components/ConnectionCard.svelte";
+import ConnectionCard from "../../src/pages/auth/components/ConnectionCard.svelte";
 
 const props = {
   selectedApp: {

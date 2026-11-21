@@ -448,9 +448,9 @@ Implemented files:
 
 ```text
 src/App.svelte
-src/routes/ConnectionPage.svelte
-src/components/ConnectionCard.svelte
-src/components/ClientIdSetup.svelte
+src/pages/auth/AuthPage.svelte
+src/pages/auth/components/ConnectionCard.svelte
+src/pages/auth/components/ClientIdSetup.svelte
 src/features/spotify/session.svelte.ts
 src/features/dashboard/dashboard.svelte.ts
 src/services/spotify-app.ts

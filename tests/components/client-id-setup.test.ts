@@ -2,7 +2,7 @@
 import { render, screen } from "@testing-library/svelte";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import ClientIdSetup from "../../src/components/ClientIdSetup.svelte";
+import ClientIdSetup from "../../src/pages/auth/components/ClientIdSetup.svelte";
 
 const VALID_CLIENT_ID = "0123456789abcdef0123456789abcdef";
 

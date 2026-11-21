@@ -36,8 +36,9 @@ npm run build          Production build
 
 ```text
 src/App.svelte                         Application bootstrap and page orchestration
-src/routes/                            Top-level pages
-src/components/                        Reusable dashboard UI
+src/pages/                             Page-level composition and page-owned UI
+src/shell/                             Shared page layout and background chrome
+src/ui/components/                     Reusable visual primitives
 src/features/spotify/                  Spotify connection state
 src/features/dashboard/                Dashboard and playlist state
 src/api/spotify/                       Spotify HTTP client, DTOs, and mappers

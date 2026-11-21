@@ -2,7 +2,7 @@
 import { render, screen } from "@testing-library/svelte";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import Button from "../../src/components/Button.svelte";
+import Button from "../../src/ui/components/Button.svelte";
 import { textSnippet } from "./text-snippet";
 
 describe("Button", () => {

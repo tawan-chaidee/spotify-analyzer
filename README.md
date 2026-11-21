@@ -173,7 +173,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-The project currently has 48 passing unit/component tests and 17 fixture-backed
+The project currently has 52 passing unit/component tests and 17 fixture-backed
 Playwright journeys, including desktop and mobile visual regression checks.
 Automated tests never contact Spotify.
 

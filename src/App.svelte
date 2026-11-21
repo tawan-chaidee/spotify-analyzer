@@ -4,15 +4,13 @@
     createSpotifyClient,
     type SpotifyClient,
   } from "./api/spotify/client";
-  import AmbientCurrent from "./components/AmbientCurrent.svelte";
-  import AppHeader from "./components/AppHeader.svelte";
   import { DashboardController } from "./features/dashboard/dashboard.svelte";
   import { SpotifySession } from "./features/spotify/session.svelte";
   import { createMockSpotifyClient } from "./mocks/spotify-client";
-  import type { DashboardMode } from "./models/app";
-  import ConnectionPage from "./routes/ConnectionPage.svelte";
-  import DashboardPage from "./routes/DashboardPage.svelte";
-  import LoadingPage from "./routes/LoadingPage.svelte";
+  import type { DashboardMode } from "./models/dashboard";
+  import AuthPage from "./pages/auth/AuthPage.svelte";
+  import DashboardPage from "./pages/dashboard/DashboardPage.svelte";
+  import LoadingPage from "./pages/LoadingPage.svelte";
   import { appPath, redirectUri } from "./services/auth";
   import { CONTENT } from "./services/content";
   import {
@@ -218,63 +216,56 @@
   }
 </script>
 
-<div class="relative isolate min-h-screen overflow-x-clip">
-  <AmbientCurrent />
-  <div
-    class="relative z-10 mx-auto w-[min(1180px,calc(100%-32px))] py-7 pb-14 max-[560px]:w-[calc(100%-22px)] max-[560px]:pt-4"
-  >
-    <AppHeader
-      {mode}
-      status={shareStatus}
-      isMock={DATA_SOURCE === "mock"}
-      onshare={page === "dashboard" ? share : undefined}
-      ondisconnect={mode === "private" && page === "dashboard"
-        ? disconnect
-        : undefined}
-      onowntaste={mode === "shared" ? ownTaste : undefined}
-    />
-
-    {#if page === "booting"}
-      <LoadingPage />
-    {:else if page === "connection"}
-      <ConnectionPage
-        selectedApp={session.selectedApp}
-        ownerAvailable={session.ownerAvailable}
-        initialClientId={session.initialClientId}
-        remember={session.remember}
-        redirectUri={callback}
-        message={session.message}
-        isError={session.isError}
-        busy={session.busy}
-        onrememberchange={(value) => (session.remember = value)}
-        onconnect={connect}
-        onclientidsubmit={connectWithOwnApp}
-        onowneraccess={connectWithOwnerApp}
-        onchangeapp={changeSpotifyApp}
-      />
-    {:else}
-      <DashboardPage
-        model={dashboard.model}
-        data={dashboard.data}
-        {mode}
-        busy={dashboard.loading}
-        view={dashboard.view}
-        playlists={dashboard.playlists}
-        selectedPlaylistId={dashboard.selectedPlaylistId}
-        playlistTracks={selectedPlaylistTracks}
-        playlistsLoading={dashboard.playlistsLoading}
-        playlistTracksLoading={dashboard.playlistTracksLoading}
-        playlistsError={dashboard.playlistsError}
-        playlistTracksError={dashboard.playlistTracksError}
-        playlistsNeedPermission={dashboard.playlistsNeedPermission}
-        ontypechange={(type) => dashboard.setType(type)}
-        onrangechange={(range) => dashboard.setRange(range)}
-        onviewchange={(view) => dashboard.setView(view)}
-        onplaylistselect={(playlistId) =>
-          dashboard.selectPlaylist(playlistId)}
-        onplaylistretry={() => dashboard.loadPlaylists()}
-        onplaylistreconnect={reconnectForPlaylists}
-      />
-    {/if}
-  </div>
-</div>
+{#if page === "booting"}
+  <LoadingPage />
+{:else if page === "connection"}
+  <AuthPage
+    selectedApp={session.selectedApp}
+    ownerAvailable={session.ownerAvailable}
+    initialClientId={session.initialClientId}
+    remember={session.remember}
+    redirectUri={callback}
+    message={session.message}
+    isError={session.isError}
+    busy={session.busy}
+    onrememberchange={(value) => (session.remember = value)}
+    onconnect={connect}
+    onclientidsubmit={connectWithOwnApp}
+    onowneraccess={connectWithOwnerApp}
+    onchangeapp={changeSpotifyApp}
+  />
+{:else}
+  <DashboardPage
+    model={dashboard.model}
+    data={dashboard.data}
+    {mode}
+    busy={dashboard.loading}
+    status={shareStatus}
+    view={dashboard.view}
+    playlists={dashboard.playlists}
+    selectedPlaylistId={dashboard.selectedPlaylistId}
+    playlistTracks={selectedPlaylistTracks}
+    playlistsLoading={dashboard.playlistsLoading}
+    playlistTracksLoading={dashboard.playlistTracksLoading}
+    playlistsError={dashboard.playlistsError}
+    playlistTracksError={dashboard.playlistTracksError}
+    playlistsNeedPermission={dashboard.playlistsNeedPermission}
+    playlistQuery={dashboard.playlistQuery}
+    playlistFilter={dashboard.playlistFilter}
+    playlistSort={dashboard.playlistSort}
+    ontypechange={(type) => dashboard.setType(type)}
+    onrangechange={(range) => dashboard.setRange(range)}
+    onviewchange={(view) => dashboard.setView(view)}
+    onplaylistselect={(playlistId) =>
+      dashboard.selectPlaylist(playlistId)}
+    onplaylistretry={() => dashboard.loadPlaylists()}
+    onplaylistreconnect={reconnectForPlaylists}
+    onplaylistquerychange={(query) => dashboard.setPlaylistQuery(query)}
+    onplaylistfilterchange={(filter) =>
+      dashboard.setPlaylistFilter(filter)}
+    onplaylistsortchange={(sort) => dashboard.setPlaylistSort(sort)}
+    onshare={share}
+    ondisconnect={mode === "private" ? disconnect : undefined}
+    onowntaste={mode === "shared" ? ownTaste : undefined}
+  />
+{/if}

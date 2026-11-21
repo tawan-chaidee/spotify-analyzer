@@ -60,8 +60,21 @@ booting
 ```
 
 The initial `booting` state prevents the connection page from flashing before a
-stored session is checked. `src/routes/LoadingPage.svelte` renders during this
+stored session is checked. `src/pages/LoadingPage.svelte` renders during this
 phase.
+
+## Page boundaries
+
+```text
+src/pages/auth/        Authentication and BYO Spotify setup
+src/pages/dashboard/   Listening and playlist dashboard composition
+src/pages/LoadingPage  Startup state
+src/shell/             Shared page layout and visual header
+src/ui/components/     Reusable presentation primitives
+```
+
+`App.svelte` selects the page and connects controllers to page callbacks.
+Dashboard-specific controls and workspaces remain under `pages/dashboard`.
 
 ## State ownership
 

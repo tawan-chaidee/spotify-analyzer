@@ -10,6 +10,8 @@ import {
 } from "../../models/listening";
 import type {
   DashboardView,
+  PlaylistFilter,
+  PlaylistSort,
   PlaylistSummary,
   PlaylistTrack,
 } from "../../models/playlist";
@@ -47,6 +49,9 @@ export class DashboardController {
   playlistsError = $state("");
   playlistTracksError = $state("");
   playlistsNeedPermission = $state(false);
+  playlistQuery = $state("");
+  playlistFilter = $state<PlaylistFilter>("all");
+  playlistSort = $state<PlaylistSort>("spotify");
   private client: SpotifyClient | null = null;
   private playlistsLoaded = false;
 
@@ -65,6 +70,18 @@ export class DashboardController {
     if (view === "playlists" && !this.playlistsLoaded) {
       void this.loadPlaylists();
     }
+  }
+
+  setPlaylistQuery(query: string): void {
+    this.playlistQuery = query;
+  }
+
+  setPlaylistFilter(filter: PlaylistFilter): void {
+    this.playlistFilter = filter;
+  }
+
+  setPlaylistSort(sort: PlaylistSort): void {
+    this.playlistSort = sort;
   }
 
   async loadPlaylists(): Promise<void> {
@@ -176,6 +193,9 @@ export class DashboardController {
     this.playlistsError = "";
     this.playlistTracksError = "";
     this.playlistsNeedPermission = false;
+    this.playlistQuery = "";
+    this.playlistFilter = "all";
+    this.playlistSort = "spotify";
     this.playlistsLoaded = false;
     this.client = null;
   }

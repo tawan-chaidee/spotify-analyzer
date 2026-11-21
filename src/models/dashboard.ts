@@ -4,6 +4,8 @@ import type {
   TimeRange,
 } from "./listening";
 
+export type DashboardMode = "private" | "shared" | "mock";
+
 export interface DashboardSelection {
   type: RankingType;
   range: TimeRange;

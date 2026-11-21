@@ -33,7 +33,7 @@ npm run test:e2e    OAuth, dashboard, playlists, exports, and visual regressions
 Current automated coverage:
 
 ```text
-48 unit/component tests
+52 unit/component tests
 17 Playwright tests
 Desktop and mobile visual baselines
 ```

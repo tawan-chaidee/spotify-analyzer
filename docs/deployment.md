@@ -138,7 +138,7 @@ npm run test:e2e
 Expected current coverage:
 
 ```text
-48 unit/component tests
+52 unit/component tests
 17 Playwright tests
 Production build
 Desktop and mobile visual baselines
